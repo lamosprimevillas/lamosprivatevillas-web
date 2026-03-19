@@ -39,7 +39,7 @@ export function CompetitorSlide({ total }: { total: number }) {
               <div className="p-2 sm:p-3 md:p-4 lg:p-2">
                 <span
                   style={{ fontFamily: "'Inter', sans-serif" }}
-                  className="text-[#C9A96E] text-[22px] sm:text-sm md:text-base lg-lock-22 uppercase tracking-wider"
+                  className="text-[#C9A96E] text-[9px] sm:text-sm md:text-base lg-lock-22 uppercase tracking-wider"
                 >
                   Özellik
                 </span>
@@ -47,7 +47,7 @@ export function CompetitorSlide({ total }: { total: number }) {
               <div className="p-2 sm:p-3 md:p-4 lg:p-2 text-center">
                 <span
                   style={{ fontFamily: "'Playfair Display', serif" }}
-                  className="text-[#C9A96E] text-[22px] sm:text-base lg-lock-22"
+                  className="text-[#C9A96E] text-[11px] sm:text-base lg-lock-22"
                 >
                   Lamos Prime
                 </span>
@@ -55,7 +55,7 @@ export function CompetitorSlide({ total }: { total: number }) {
               <div className="p-2 sm:p-3 md:p-4 lg:p-2 text-center">
                 <span
                   style={{ fontFamily: "'Inter', sans-serif" }}
-                  className="text-white/40 text-[22px] sm:text-base lg-lock-22"
+                  className="text-white/40 text-[11px] sm:text-base lg-lock-22"
                 >
                   Standart Villalar
                 </span>
@@ -75,7 +75,7 @@ export function CompetitorSlide({ total }: { total: number }) {
               >
                 <div className="p-1.5 sm:p-2.5 md:p-3 lg:p-2.5"><span
                     style={{ fontFamily: "'Inter', sans-serif" }}
-                    className="text-white/80 text-[18px] sm:text-xs md:text-sm lg-lock-18"
+                    className="text-white/80 text-[10px] sm:text-xs md:text-sm lg-lock-18"
                   >{f}</span></div>
                 <div className="p-1.5 sm:p-2.5 md:p-3 lg:p-2.5 flex justify-center">
                   <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-8 lg:h-8 rounded-full bg-[#2D6A4F]/20 flex items-center justify-center">

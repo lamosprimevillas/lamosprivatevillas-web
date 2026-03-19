@@ -17,7 +17,7 @@ export function ContactSlide({ total }: { total: number }) {
           <div className="w-14 sm:w-20 lg:w-14 h-[1px] bg-[#C9A96E]" />
           <span
             style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.3em" }}
-            className="text-[#C9A96E] uppercase text-[20px] lg-lock-20"
+            className="text-[#C9A96E] uppercase text-[11px] lg-lock-20"
           >
             İletişim ve Kapanış
           </span>
@@ -29,7 +29,7 @@ export function ContactSlide({ total }: { total: number }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
           style={{ fontFamily: "'Playfair Display', serif", lineHeight: 1.1 }}
-          className="text-white lg-lock-72 text-[52px]"
+          className="text-white lg-lock-72 text-[22px]"
         >
           <span style={{ fontWeight: 700, fontSize: "1.3em" }}>BALİ</span>'de Özel Bir Dünyaya
           <br />
@@ -41,7 +41,7 @@ export function ContactSlide({ total }: { total: number }) {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.5 }}
           style={{ fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.7 }}
-          className="text-white/50 italic max-w-lg text-[28px] lg-lock-28"
+          className="text-white/50 italic max-w-lg text-[14px] lg-lock-28"
         >
           Sizi bu özel ve sınırlı topluluğun bir parçası olmaya davet ediyoruz.
           Detaylı bilgi ve yerinde ziyaret için bizimle iletişime geçin.
@@ -60,7 +60,7 @@ export function ContactSlide({ total }: { total: number }) {
               <a
                 href="mailto:balifamilyworld@gmail.com"
                 style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.05em" }}
-                className="text-white hover:text-[#C9A96E] transition-colors text-[24px] lg-lock-24"
+                className="text-white hover:text-[#C9A96E] transition-colors text-[12px] lg-lock-24"
               >lamosprimevillas@gmail.com</a>
             </div>
 
@@ -70,7 +70,7 @@ export function ContactSlide({ total }: { total: number }) {
               <MapPin className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-[#C9A96E] shrink-0" />
               <span
                 style={{ fontFamily: "'Inter', sans-serif" }}
-                className="text-white/60 text-[20px] lg-lock-20"
+                className="text-white/60 text-[11px] lg-lock-20"
               >
                 Sayan, Ubud, Bali, Endonezya
               </span>
@@ -80,7 +80,7 @@ export function ContactSlide({ total }: { total: number }) {
               <Globe className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-[#C9A96E] shrink-0" />
               <span
                 style={{ fontFamily: "'Inter', sans-serif" }}
-                className="text-white/60 text-[20px] lg-lock-20"
+                className="text-white/60 text-[11px] lg-lock-20"
               >
                 www.lamosprimevillas.com
               </span>
@@ -98,13 +98,13 @@ export function ContactSlide({ total }: { total: number }) {
           <div className="w-10 sm:w-12 lg:w-10 h-[1px] bg-[#C9A96E]/40" />
           <span
             style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.2em" }}
-            className="text-white/70 uppercase lg-lock-24 text-[18px]"
+            className="text-white/70 uppercase lg-lock-24 text-[11px]"
           >
             Lamos Prime Villas &mdash; Sayan, Ubud
           </span>
           <span
             style={{ fontFamily: "'Inter', sans-serif" }}
-            className="text-white/70 uppercase lg-lock-20 text-[16px]"
+            className="text-white/70 uppercase lg-lock-20 text-[10px]"
           >
             Sadece 7 Özel Rezidans
           </span>

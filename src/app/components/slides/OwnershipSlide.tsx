@@ -20,7 +20,7 @@ export function OwnershipSlide({ total }: { total: number }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
           style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.8 }}
-          className="text-white/60 max-w-xl text-[20px] lg-lock-20"
+          className="text-white/60 max-w-xl text-[11px] lg-lock-20"
         >
           Uzun vadeli, yüksek güvenlikli bir mülkiyet modeli. 30 yıllık birincil hak
           sözleşmesi ve 30 yıllık uzatma önceliği &mdash; kuşaklar arası değer yaratır.
@@ -39,13 +39,13 @@ export function OwnershipSlide({ total }: { total: number }) {
               <Clock className="w-4 h-4 sm:w-6 sm:h-6 text-[#2D6A4F] mx-auto mb-1.5 sm:mb-3" />
               <div
                 style={{ fontFamily: "'Playfair Display', serif" }}
-                className="text-white mb-0.5 sm:mb-1 text-[42px] lg-lock-48"
+                className="text-white mb-0.5 sm:mb-1 text-[22px] lg-lock-48"
               >
                 30
               </div>
               <div
                 style={{ fontFamily: "'Inter', sans-serif" }}
-                className="text-white/50 uppercase tracking-wider text-[14px] lg-lock-14"
+                className="text-white/50 uppercase tracking-wider text-[9px] lg-lock-14"
               >
                 Yıl Birincil Hak
               </div>
@@ -61,13 +61,13 @@ export function OwnershipSlide({ total }: { total: number }) {
               <RefreshCw className="w-4 h-4 sm:w-6 sm:h-6 text-[#C9A96E] mx-auto mb-1.5 sm:mb-3" />
               <div
                 style={{ fontFamily: "'Playfair Display', serif" }}
-                className="text-[#C9A96E] mb-0.5 sm:mb-1 text-[42px] lg-lock-48"
+                className="text-[#C9A96E] mb-0.5 sm:mb-1 text-[22px] lg-lock-48"
               >
                 +30
               </div>
               <div
                 style={{ fontFamily: "'Inter', sans-serif" }}
-                className="text-white/50 uppercase tracking-wider text-[14px] lg-lock-14"
+                className="text-white/50 uppercase tracking-wider text-[9px] lg-lock-14"
               >
                 Yıl Uzatma Önceliği
               </div>
@@ -87,13 +87,13 @@ export function OwnershipSlide({ total }: { total: number }) {
             <div className="flex-1 bg-white/5 border border-white/15 rounded-lg p-2.5 sm:p-4 md:p-5 text-center">
               <div
                 style={{ fontFamily: "'Playfair Display', serif" }}
-                className="text-white mb-0.5 sm:mb-1 text-[58px] lg-lock-64"
+                className="text-white mb-0.5 sm:mb-1 text-[28px] lg-lock-64"
               >
                 60
               </div>
               <div
                 style={{ fontFamily: "'Inter', sans-serif" }}
-                className="text-white/50 uppercase tracking-wider text-[14px] lg-lock-14"
+                className="text-white/50 uppercase tracking-wider text-[9px] lg-lock-14"
               >
                 Yıl Toplam Güvence
               </div>

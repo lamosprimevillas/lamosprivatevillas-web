@@ -27,7 +27,7 @@ export function ConstructionSlide({ total }: { total: number }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
           style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.8 }}
-          className="text-white/60 max-w-xl text-[22px] lg-lock-22"
+          className="text-white/60 max-w-xl text-[11px] lg-lock-22"
         >
           İnşaat açıkça planlanmış aşamaları takip eder. Yatırımcılar teslimata kadar
           aylık ilerleme raporları ve görsel güncellemeler alacaktır.
@@ -52,13 +52,13 @@ export function ConstructionSlide({ total }: { total: number }) {
                   <div className="flex items-center justify-between mb-1 sm:mb-2 lg:mb-1">
                     <span
                       style={{ fontFamily: "'Inter', sans-serif" }}
-                      className="text-white lg-lock-18 text-[18px]"
+                      className="text-white lg-lock-18 text-[11px]"
                     >
                       {p.label}
                     </span>
                     <span
                       style={{ fontFamily: "'Inter', sans-serif" }}
-                      className={`uppercase tracking-wider px-1.5 sm:px-2 lg:px-1.5 py-0.5 rounded-full ${ p.status === "Tamamlandı" ? "text-[#2D6A4F] bg-[#2D6A4F]/15" : p.status === "Devam Ediyor" ? "text-[#C9A96E] bg-[#C9A96E]/15" : "text-white/30 bg-white/5" } text-[15px] lg-lock-15`}
+                      className={`uppercase tracking-wider px-1.5 sm:px-2 lg:px-1.5 py-0.5 rounded-full ${ p.status === "Tamamlandı" ? "text-[#2D6A4F] bg-[#2D6A4F]/15" : p.status === "Devam Ediyor" ? "text-[#C9A96E] bg-[#C9A96E]/15" : "text-white/30 bg-white/5" } text-[8px] lg-lock-15`}
                     >
                       {p.status}
                     </span>
@@ -105,13 +105,13 @@ export function ConstructionSlide({ total }: { total: number }) {
                 <f.icon className="w-4 h-4 sm:w-5 sm:h-5 lg:w-7 lg:h-7 text-[#C9A96E]" />
                 <span
                   style={{ fontFamily: "'Playfair Display', serif" }}
-                  className="text-white lg-lock-26 text-[22px]"
+                  className="text-white lg-lock-26 text-[12px]"
                 >
                   {f.title}
                 </span>
                 <span
                   style={{ fontFamily: "'Inter', sans-serif" }}
-                  className="text-white/50 lg-lock-18 text-[16px]"
+                  className="text-white/50 lg-lock-18 text-[9px]"
                 >
                   {f.desc}
                 </span>

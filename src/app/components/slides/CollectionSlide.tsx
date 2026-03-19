@@ -54,14 +54,14 @@ function AreaRow({ areas, accentColor }: { areas: AreaDetail[]; accentColor: str
           />
           <span
             style={{ fontFamily: "'Inter', sans-serif" }}
-            className="text-white/40 lg-lock-16 uppercase tracking-wider shrink-0 text-[15px]"
+            className="text-white/40 lg-lock-16 uppercase tracking-wider shrink-0 text-[9px]"
           >
             {a.label}
           </span>
           <span className="flex-1" />
           <span
             style={{ fontFamily: "'Playfair Display', serif", color: a.highlight ? accentColor : "rgba(255,255,255,0.7)" }}
-            className={`lg-lock-20 ${a.highlight ? "font-bold" : ""} text-[24px]`}
+            className={`lg-lock-20 ${a.highlight ? "font-bold" : ""} text-[13px]`}
           >
             {a.value}
           </span>
@@ -87,7 +87,7 @@ export function CollectionSlide({ total }: { total: number }) {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.5 }}
           style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.8 }}
-          className="text-white/60 max-w-lg lg-lock-22 text-[16px]"
+          className="text-white/60 max-w-lg lg-lock-22 text-[11px]"
         >
           Mutlak mahremiyet ve münhasırlık için sadece 7 villa ile sınırlı.
           Seçici yatırımcı için tasarlanmış butik, düşük yoğunluklu bir konsept.
@@ -108,7 +108,7 @@ export function CollectionSlide({ total }: { total: number }) {
             </div>
             <div
               style={{ fontFamily: "'Playfair Display', serif" }}
-              className="text-white lg-lock-24 text-[24px]"
+              className="text-white lg-lock-24 text-[15px]"
             >
               Prime Villa
             </div>
@@ -122,7 +122,7 @@ export function CollectionSlide({ total }: { total: number }) {
             <div className="flex flex-col items-center gap-0.5">
               <span
                 style={{ fontFamily: "'Playfair Display', serif" }}
-                className="text-[#C9A96E] lg-lock-48 text-[42px]"
+                className="text-[#C9A96E] lg-lock-48 text-[24px]"
               >
                 5
               </span>
@@ -151,7 +151,7 @@ export function CollectionSlide({ total }: { total: number }) {
             </div>
             <div
               style={{ fontFamily: "'Playfair Display', serif" }}
-              className="text-white lg-lock-24 text-[24px]"
+              className="text-white lg-lock-24 text-[15px]"
             >
               Premium Villa
             </div>
@@ -165,7 +165,7 @@ export function CollectionSlide({ total }: { total: number }) {
             <div className="flex flex-col items-center gap-0.5">
               <span
                 style={{ fontFamily: "'Playfair Display', serif" }}
-                className="text-[#C9A96E] lg-lock-48 text-[42px]"
+                className="text-[#C9A96E] lg-lock-48 text-[24px]"
               >
                 2
               </span>
@@ -194,7 +194,7 @@ export function CollectionSlide({ total }: { total: number }) {
               <div className="flex-1 h-[1px] bg-[#C9A96E]/20" />
               <span
                 style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.15em" }}
-                className="text-[#C9A96E]/70 uppercase lg-lock-20 text-[20px]"
+                className="text-[#C9A96E]/70 uppercase lg-lock-20 text-[12px]"
               >
                 Villaya Dahil
               </span>
@@ -216,7 +216,7 @@ export function CollectionSlide({ total }: { total: number }) {
                   </div>
                   <span
                     style={{ fontFamily: "'Inter', sans-serif" }}
-                    className="text-white/55 lg-lock-20 text-left text-[18px]"
+                    className="text-white/55 lg-lock-20 text-left text-[11px]"
                   >
                     {item.label}
                   </span>

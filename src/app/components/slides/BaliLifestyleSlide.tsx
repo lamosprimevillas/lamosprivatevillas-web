@@ -42,7 +42,7 @@ export function BaliLifestyleSlide({ total }: { total: number }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.45 }}
           style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.7 }}
-          className="text-white/60 max-w-2xl text-[16px] lg-lock-24"
+          className="text-white/60 max-w-2xl text-[11px] lg-lock-24"
         >
           Ancak Bali'yi güçlü yapan yalnızca turist sayısı değildir.
           Bali, <span className="text-[#C9A96E]">"yaşam tarzı ekonomisi"</span> olan full paket bir adadır.
@@ -63,7 +63,7 @@ export function BaliLifestyleSlide({ total }: { total: number }) {
               </div>
               <span
                 style={{ fontFamily: "'Inter', sans-serif" }}
-                className="text-white/80 text-[15px] lg-lock-20"
+                className="text-white/80 text-[10px] lg-lock-20"
               >
                 {item.text}
               </span>
@@ -80,14 +80,14 @@ export function BaliLifestyleSlide({ total }: { total: number }) {
         >
           <p
             style={{ fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.7 }}
-            className="text-white/50 italic text-[24px] lg-lock-26"
+            className="text-white/50 italic text-[14px] lg-lock-26"
           >
             Bali'de turizm geçici değildir. Bali bir trend değil, <span className="text-[#C9A96E]">global bir yaşam merkezidir.</span>
           </p>
           <div className="w-10 h-[1px] bg-[#C9A96E]/30 my-2 sm:my-3 lg:my-1.5" />
           <p
             style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.7 }}
-            className="text-white/45 text-[16px] lg-lock-18"
+            className="text-white/45 text-[10px] lg-lock-18"
           >
             Bu nedenle doğru lokasyonda yapılan yatırımlar, yalnızca kira getirisi değil,
             <span className="text-[#C9A96E]/80"> değer artışı</span> da üretir.

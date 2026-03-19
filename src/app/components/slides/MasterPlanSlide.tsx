@@ -26,7 +26,7 @@ export function MasterPlanSlide({ total }: { total: number }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
           style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.8 }}
-          className="text-white/60 max-w-lg text-[20px] lg-lock-20"
+          className="text-white/60 max-w-lg text-[11px] lg-lock-20"
         >
           Her villa, maksimum misafir mahremiyetini sağlamak için stratejik olarak
           konumlandırılmıştır; geliştirme genelinde dengeli yaya ve araç trafiği akışı sağlanmıştır.
@@ -54,13 +54,13 @@ export function MasterPlanSlide({ total }: { total: number }) {
                   >
                     <span
                       style={{ fontFamily: "'Playfair Display', serif" }}
-                      className="text-white text-[24px] lg-lock-24"
+                      className="text-white text-[13px] lg-lock-24"
                     >
                       P{i + 1}
                     </span>
                     <span
                       style={{ fontFamily: "'Inter', sans-serif" }}
-                      className="text-white/40 text-[18px] lg-lock-18"
+                      className="text-white/40 text-[9px] lg-lock-18"
                     >
                       105m²
                     </span>
@@ -80,13 +80,13 @@ export function MasterPlanSlide({ total }: { total: number }) {
                   >
                     <span
                       style={{ fontFamily: "'Playfair Display', serif" }}
-                      className="text-white text-[24px] lg-lock-24"
+                      className="text-white text-[13px] lg-lock-24"
                     >
                       PR{i + 1}
                     </span>
                     <span
                       style={{ fontFamily: "'Inter', sans-serif" }}
-                      className="text-white/40 text-[18px] lg-lock-18"
+                      className="text-white/40 text-[9px] lg-lock-18"
                     >
                       120m²
                     </span>
@@ -101,7 +101,7 @@ export function MasterPlanSlide({ total }: { total: number }) {
                 <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 lg:w-1.5 lg:h-1.5 rounded bg-[#2D6A4F]/40 border border-[#2D6A4F]/60" />
                 <span
                   style={{ fontFamily: "'Inter', sans-serif" }}
-                  className="text-white/50 text-[20px] lg-lock-20"
+                  className="text-white/50 text-[10px] lg-lock-20"
                 >
                   5 Prime Villa
                 </span>
@@ -110,7 +110,7 @@ export function MasterPlanSlide({ total }: { total: number }) {
                 <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 lg:w-1.5 lg:h-1.5 rounded bg-[#C9A96E]/30 border border-[#C9A96E]/50" />
                 <span
                   style={{ fontFamily: "'Inter', sans-serif" }}
-                  className="text-white/50 text-[20px] lg-lock-20"
+                  className="text-white/50 text-[10px] lg-lock-20"
                 >
                   2 Premium Villa
                 </span>
@@ -132,7 +132,7 @@ export function MasterPlanSlide({ total }: { total: number }) {
               <p.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-3.5 lg:h-3.5 text-[#C9A96E]" />
               <span
                 style={{ fontFamily: "'Inter', sans-serif" }}
-                className="text-white/50 uppercase tracking-wider text-center text-[15px] lg-lock-15"
+                className="text-white/50 uppercase tracking-wider text-center text-[8px] lg-lock-15"
               >
                 {p.label}
               </span>

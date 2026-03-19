@@ -22,7 +22,7 @@ export function ArchitectureSlide({ total }: { total: number }) {
           <SlideTitle>
             Modern Tropikal
             <br />
-            <span className="italic text-[#C9A96E] text-[58px] lg-lock-64">Çelik Mimari</span>
+            <span className="italic text-[#C9A96E] text-[24px] lg-lock-64">Çelik Mimari</span>
           </SlideTitle>
           <GoldDivider />
 
@@ -31,7 +31,7 @@ export function ArchitectureSlide({ total }: { total: number }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.5 }}
             style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.8 }}
-            className="text-white/70 max-w-md lg-lock-20 text-[18px]"
+            className="text-white/70 max-w-md lg-lock-20 text-[11px]"
           >
             Modern tasarım, dayanıklı çelik yapı sistemiyle tropikal mimariyle buluşuyor.
             Geniş cam açıklıkları ve yüksek tavanlar lüks iç mekanları nefes kesici
@@ -52,13 +52,13 @@ export function ArchitectureSlide({ total }: { total: number }) {
                 <div>
                   <div
                     style={{ fontFamily: "'Playfair Display', serif" }}
-                    className="text-white text-[24px] lg-lock-24"
+                    className="text-white text-[13px] lg-lock-24"
                   >
                     {d.title}
                   </div>
                   <div
                     style={{ fontFamily: "'Inter', sans-serif" }}
-                    className="text-white/50 lg-lock-18 text-[16px]"
+                    className="text-white/50 lg-lock-18 text-[10px]"
                   >
                     {d.desc}
                   </div>

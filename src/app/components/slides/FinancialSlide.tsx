@@ -16,7 +16,7 @@ export function FinancialSlide({ total }: { total: number }) {
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center text-center gap-2 sm:gap-3 md:gap-4 lg:gap-2.5">
         <SlideSubtitle>Finansal Projeksiyonlar (ROI)</SlideSubtitle>
         <SlideTitle>
-          Yüksek <span className="italic text-[#C9A96E] lg-lock-72 text-[58px]">Kira Getirisi</span>
+          Yüksek <span className="italic text-[#C9A96E] lg-lock-72 text-[24px]">Kira Getirisi</span>
         </SlideTitle>
         <GoldDivider />
 
@@ -36,7 +36,7 @@ export function FinancialSlide({ total }: { total: number }) {
                   className={`p-2 sm:p-3 md:p-4 lg:p-3 flex items-center ${i === 0 ? "" : "justify-center"}`}
                   style={{ fontFamily: "'Inter', sans-serif" }}
                 >
-                  <span className="text-[#C9A96E] uppercase tracking-wider lg-lock-18 text-[14px]">
+                  <span className="text-[#C9A96E] uppercase tracking-wider lg-lock-18 text-[8px]">
                     {h}
                   </span>
                 </div>
@@ -49,7 +49,7 @@ export function FinancialSlide({ total }: { total: number }) {
                 <DollarSign className="w-3 h-3 sm:w-4 sm:h-4 lg:w-4 lg:h-4 text-[#2D6A4F] shrink-0" />
                 <span
                   style={{ fontFamily: "'Playfair Display', serif" }}
-                  className="text-white lg-lock-24 text-[18px]"
+                  className="text-white lg-lock-24 text-[11px]"
                 >
                   Prime Villa
                 </span>
@@ -57,13 +57,13 @@ export function FinancialSlide({ total }: { total: number }) {
               <div className="p-2 sm:p-3 md:p-4 lg:p-3 flex flex-col items-center justify-center">
                 <span
                   style={{ fontFamily: "'Playfair Display', serif" }}
-                  className="text-white lg-lock-28 text-[20px]"
+                  className="text-white lg-lock-28 text-[12px]"
                 >
                   $120–180
                 </span>
                 <span
                   style={{ fontFamily: "'Inter', sans-serif" }}
-                  className="text-white/30 lg-lock-15 text-[13px]"
+                  className="text-white/30 lg-lock-15 text-[8px]"
                 >
                   gece başına
                 </span>
@@ -72,14 +72,14 @@ export function FinancialSlide({ total }: { total: number }) {
                 <Percent className="w-2.5 h-2.5 sm:w-3 sm:h-3 lg:w-3 lg:h-3 text-[#C9A96E] shrink-0" />
                 <span
                   style={{ fontFamily: "'Inter', sans-serif" }}
-                  className="text-white lg-lock-24 text-[18px]"
+                  className="text-white lg-lock-24 text-[11px]"
                 >
                   70-80%
                 </span>
               </div>
               <div className="p-2 sm:p-3 md:p-4 lg:p-3 flex items-center justify-center"><span
                   style={{ fontFamily: "'Playfair Display', serif" }}
-                  className="text-white text-[26px] lg-lock-28"
+                  className="text-white text-[14px] lg-lock-28"
                 >$40.000</span></div>
             </div>
 
@@ -89,7 +89,7 @@ export function FinancialSlide({ total }: { total: number }) {
                 <DollarSign className="w-3 h-3 sm:w-4 sm:h-4 lg:w-4 lg:h-4 text-[#C9A96E] shrink-0" />
                 <span
                   style={{ fontFamily: "'Playfair Display', serif" }}
-                  className="text-white lg-lock-24 text-[18px]"
+                  className="text-white lg-lock-24 text-[11px]"
                 >
                   Premium Villa
                 </span>
@@ -97,13 +97,13 @@ export function FinancialSlide({ total }: { total: number }) {
               <div className="p-2 sm:p-3 md:p-4 lg:p-3 flex flex-col items-center justify-center">
                 <span
                   style={{ fontFamily: "'Playfair Display', serif" }}
-                  className="text-white lg-lock-28 text-[20px]"
+                  className="text-white lg-lock-28 text-[12px]"
                 >
                   $140–200
                 </span>
                 <span
                   style={{ fontFamily: "'Inter', sans-serif" }}
-                  className="text-white/30 lg-lock-15 text-[13px]"
+                  className="text-white/30 lg-lock-15 text-[8px]"
                 >
                   gece başına
                 </span>
@@ -112,7 +112,7 @@ export function FinancialSlide({ total }: { total: number }) {
                 <Percent className="w-2.5 h-2.5 sm:w-3 sm:h-3 lg:w-3 lg:h-3 text-[#C9A96E] shrink-0" />
                 <span
                   style={{ fontFamily: "'Inter', sans-serif" }}
-                  className="text-white lg-lock-24 text-[18px]"
+                  className="text-white lg-lock-24 text-[11px]"
                 >
                   70-80%
                 </span>
@@ -120,7 +120,7 @@ export function FinancialSlide({ total }: { total: number }) {
               <div className="p-2 sm:p-3 md:p-4 lg:p-3 flex items-center justify-center">
                 <span
                   style={{ fontFamily: "'Playfair Display', serif" }}
-                  className="text-white text-[26px] lg-lock-28"
+                  className="text-white text-[14px] lg-lock-28"
                 >
                   $48.000
                 </span>
@@ -142,7 +142,7 @@ export function FinancialSlide({ total }: { total: number }) {
               <MinusCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-4 lg:h-4 text-red-400/70" />
               <span
                 style={{ fontFamily: "'Inter', sans-serif" }}
-                className="text-white/60 uppercase tracking-wider lg-lock-18 text-[15px]"
+                className="text-white/60 uppercase tracking-wider lg-lock-18 text-[9px]"
               >
                 Giderler
               </span>
@@ -152,13 +152,13 @@ export function FinancialSlide({ total }: { total: number }) {
                 <div key={e.label} className="flex items-center justify-between">
                   <span
                     style={{ fontFamily: "'Inter', sans-serif" }}
-                    className="text-white/50 lg-lock-18 text-[14px]"
+                    className="text-white/50 lg-lock-18 text-[9px]"
                   >
                     {e.label}
                   </span>
                   <span
                     style={{ fontFamily: "'Inter', sans-serif" }}
-                    className="text-red-400/60 text-[14px] lg-lock-15"
+                    className="text-red-400/60 text-[9px] lg-lock-15"
                   >
                     {e.pct}
                   </span>
@@ -168,13 +168,13 @@ export function FinancialSlide({ total }: { total: number }) {
               <div className="flex items-center justify-between">
                 <span
                   style={{ fontFamily: "'Inter', sans-serif" }}
-                  className="text-white/70 lg-lock-18 text-[15px]"
+                  className="text-white/70 lg-lock-18 text-[10px]"
                 >
                   Ort. Toplam Gider
                 </span>
                 <span
                   style={{ fontFamily: "'Inter', sans-serif" }}
-                  className="text-red-400/80 lg-lock-20 text-[17px]"
+                  className="text-red-400/80 lg-lock-20 text-[11px]"
                 >
                   %40
                 </span>
@@ -193,7 +193,7 @@ export function FinancialSlide({ total }: { total: number }) {
               <BarChart3 className="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-4 lg:h-4 text-[#C9A96E]" />
               <span
                 style={{ fontFamily: "'Inter', sans-serif" }}
-                className="text-[#C9A96E] uppercase tracking-wider lg-lock-18 text-[16px]"
+                className="text-[#C9A96E] uppercase tracking-wider lg-lock-18 text-[10px]"
               >
                 Net Yıllık Gelir
               </span>
@@ -202,13 +202,13 @@ export function FinancialSlide({ total }: { total: number }) {
               <div className="flex items-center justify-between bg-white/5 rounded-lg p-2 sm:p-3 lg:p-2.5">
                 <span
                   style={{ fontFamily: "'Playfair Display', serif" }}
-                  className="text-white lg-lock-24 text-[20px]"
+                  className="text-white lg-lock-24 text-[12px]"
                 >
                   Prime Villa
                 </span>
                 <span
                   style={{ fontFamily: "'Playfair Display', serif" }}
-                  className="text-[#C9A96E] lg-lock-26 text-[20px]"
+                  className="text-[#C9A96E] lg-lock-26 text-[12px]"
                 >
                   $24.000
                 </span>
@@ -216,13 +216,13 @@ export function FinancialSlide({ total }: { total: number }) {
               <div className="flex items-center justify-between bg-white/5 rounded-lg p-2 sm:p-3 lg:p-2.5">
                 <span
                   style={{ fontFamily: "'Playfair Display', serif" }}
-                  className="text-white lg-lock-24 text-[20px]"
+                  className="text-white lg-lock-24 text-[12px]"
                 >
                   Premium Villa
                 </span>
                 <span
                   style={{ fontFamily: "'Playfair Display', serif" }}
-                  className="text-[#C9A96E] lg-lock-26 text-[20px]"
+                  className="text-[#C9A96E] lg-lock-26 text-[12px]"
                 >
                   $29.000
                 </span>
@@ -248,13 +248,13 @@ export function FinancialSlide({ total }: { total: number }) {
               <m.icon className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-[#C9A96E]" />
               <span
                 style={{ fontFamily: "'Playfair Display', serif" }}
-                className="text-white lg-lock-48 text-[28px]"
+                className="text-white lg-lock-48 text-[16px]"
               >
                 {m.value}
               </span>
               <span
                 style={{ fontFamily: "'Inter', sans-serif" }}
-                className="text-white/40 uppercase tracking-wider font-bold lg-lock-18 text-[15px]"
+                className="text-white/40 uppercase tracking-wider font-bold lg-lock-18 text-[8px]"
               >
                 {m.label}
               </span>

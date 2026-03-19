@@ -28,7 +28,7 @@ export function MarketSlide({ total }: { total: number }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
           style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.8 }}
-          className="text-white/70 max-w-xl text-[22px] lg-lock-22"
+          className="text-white/70 max-w-xl text-[12px] lg-lock-22"
         >
           Günümüzün yüksek harcama yapan turistleri doğa, mutlak mahremiyet ve lüks arıyor.
           Bu yüksek değerli proje olağanüstü kira getirisi ve sermaye değer artışı sunuyor.
@@ -47,13 +47,13 @@ export function MarketSlide({ total }: { total: number }) {
               <stat.icon className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-[#C9A96E] mx-auto mb-2 sm:mb-3" />
               <div
                 style={{ fontFamily: "'Playfair Display', serif" }}
-                className="text-white text-[40px] lg-lock-40"
+                className="text-white text-[22px] lg-lock-40"
               >
                 {stat.value}
               </div>
               <div
                 style={{ fontFamily: "'Inter', sans-serif" }}
-                className="text-white/50 text-[14px] sm:text-[11px] md:text-xs lg-lock-18 uppercase tracking-wider mt-1"
+                className="text-white/50 text-[9px] sm:text-[11px] md:text-xs lg-lock-18 uppercase tracking-wider mt-1"
               >
                 {stat.label}
               </div>

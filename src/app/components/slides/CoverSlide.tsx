@@ -28,7 +28,7 @@ export function CoverSlide({ total }: { total: number }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3 }}
           style={{ fontFamily: "'Playfair Display', serif", lineHeight: 1.05 }}
-          className="text-white lg-lock-96 text-[128px]"
+          className="text-white lg-lock-96 text-[36px]"
         >
           Lamos Prime
           <br />
@@ -96,7 +96,7 @@ export function CoverSlide({ total }: { total: number }) {
         >
           <p
             style={{ fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.7 }}
-            className="text-white/50 italic text-[34px] mx-[2px] my-[0px] p-[0px]"
+            className="text-white/50 italic text-[15px] lg:text-[34px] mx-[2px] my-[0px] p-[0px]"
           >
             Dünyanın En Güçlü Turizm Destinasyonlarından Birinde
             7 Özel Tropikal Rezidans

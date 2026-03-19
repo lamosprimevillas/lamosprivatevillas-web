@@ -41,7 +41,7 @@ export function LegalSlide({ total }: { total: number }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
           style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.8 }}
-          className="text-white/60 max-w-xl text-[20px] lg-lock-20"
+          className="text-white/60 max-w-xl text-[11px] lg-lock-20"
         >
           Yatırımınız hukuki olarak güvence altındadır. Proje, tüm resmi prosedürlere
           tam uyumludur &mdash; muhafazakâr gayrimenkul yatırımcıları için kritik bir faktör.
@@ -63,13 +63,13 @@ export function LegalSlide({ total }: { total: number }) {
               <div className="flex flex-col items-center gap-0.5 sm:gap-1">
                 <span
                   style={{ fontFamily: "'Playfair Display', serif" }}
-                  className="text-[#C9A96E] text-[42px] lg-lock-48"
+                  className="text-[#C9A96E] text-[20px] lg-lock-48"
                 >
                   {p.code}
                 </span>
                 <span
                   style={{ fontFamily: "'Inter', sans-serif" }}
-                  className="text-white text-[20px] lg-lock-20"
+                  className="text-white text-[11px] lg-lock-20"
                 >
                   {p.title}
                 </span>
@@ -77,7 +77,7 @@ export function LegalSlide({ total }: { total: number }) {
               <div className="w-6 h-[1px] bg-[#C9A96E]/30 hidden sm:block" />
               <p
                 style={{ fontFamily: "'Inter', sans-serif" }}
-                className="text-white/40 hidden sm:block text-[16px] lg-lock-16"
+                className="text-white/40 hidden sm:block text-[10px] lg-lock-16"
               >
                 {p.desc}
               </p>

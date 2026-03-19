@@ -54,7 +54,7 @@ export function SlideTitle({ children, delay = 0.2 }: { children: ReactNode; del
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay }}
       style={{ fontFamily: "'Playfair Display', serif", lineHeight: 1.1 }}
-      className="text-white lg-lock-72 text-[36px]"
+      className="text-white lg-lock-72 text-[22px]"
     >
       {children}
     </motion.h1>
@@ -68,7 +68,7 @@ export function SlideSubtitle({ children, delay = 0.4 }: { children: ReactNode; 
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, delay }}
       style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.15em" }}
-      className="text-[#C9A96E] uppercase tracking-[0.15em] lg-lock-22 text-[16px]"
+      className="text-[#C9A96E] uppercase tracking-[0.15em] lg-lock-22 text-[10px]"
     >
       {children}
     </motion.p>

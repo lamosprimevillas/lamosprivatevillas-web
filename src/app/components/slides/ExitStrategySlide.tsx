@@ -20,7 +20,7 @@ export function ExitStrategySlide({ total }: { total: number }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
           style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.8 }}
-          className="text-white/60 max-w-xl text-[20px] lg-lock-20"
+          className="text-white/60 max-w-xl text-[11px] lg-lock-20"
         >
           Kısa vadeli yüksek kira gelirine ek olarak, hızla değerlenen bölgesel değer
           yatırımcılara kârlı bir yeniden satış çıkış fırsatı sunuyor.
@@ -80,13 +80,13 @@ export function ExitStrategySlide({ total }: { total: number }) {
                 <div>
                   <div
                     style={{ fontFamily: "'Playfair Display', serif" }}
-                    className="text-white text-[24px] lg-lock-24"
+                    className="text-white text-[13px] lg-lock-24"
                   >
                     Kira Geliri
                   </div>
                   <div
                     style={{ fontFamily: "'Inter', sans-serif" }}
-                    className="text-white/40 text-[16px] lg-lock-16"
+                    className="text-white/40 text-[10px] lg-lock-16"
                   >
                     İlk günden istikrarlı nakit akışı
                   </div>
@@ -97,13 +97,13 @@ export function ExitStrategySlide({ total }: { total: number }) {
                 <div>
                   <div
                     style={{ fontFamily: "'Playfair Display', serif" }}
-                    className="text-white text-[24px] lg-lock-24"
+                    className="text-white text-[13px] lg-lock-24"
                   >
                     Sermaye Değer Artışı
                   </div>
                   <div
                     style={{ fontFamily: "'Inter', sans-serif" }}
-                    className="text-white/40 text-[16px] lg-lock-16"
+                    className="text-white/40 text-[10px] lg-lock-16"
                   >
                     Zamanla artan mülk değeri
                   </div>

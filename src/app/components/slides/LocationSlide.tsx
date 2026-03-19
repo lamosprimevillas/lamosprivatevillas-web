@@ -27,7 +27,7 @@ export function LocationSlide({ total }: { total: number }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.5 }}
             style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.8 }}
-            className="text-white/60 max-w-md text-[18px] lg-lock-26"
+            className="text-white/60 max-w-md text-[11px] lg-lock-26"
           >
             Konum kira performansını belirler. Sayan, küresel yoga ve wellness
             turizminin merkezi olup en yüksek harcama yapan gezgin profilini çekiyor.
@@ -49,13 +49,13 @@ export function LocationSlide({ total }: { total: number }) {
               </div>
               <div
                 style={{ fontFamily: "'Playfair Display', serif" }}
-                className="text-white text-[24px] lg-lock-26"
+                className="text-white text-[14px] lg-lock-26"
               >
                 {f.title}
               </div>
               <div
                 style={{ fontFamily: "'Inter', sans-serif" }}
-                className="text-white/50 text-[15px] lg-lock-18"
+                className="text-white/50 text-[10px] lg-lock-18"
               >
                 {f.desc}
               </div>

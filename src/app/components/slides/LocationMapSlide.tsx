@@ -16,7 +16,7 @@ export function LocationMapSlide({ total }: { total: number }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           style={{ fontFamily: "'Playfair Display', serif", lineHeight: 1.1 }}
-          className="text-white text-[50px] lg-lock-56"
+          className="text-white text-[24px] lg-lock-56"
         >
           Lokasyon{" "}
           <span className="text-[#C9A96E] italic">Avantajı</span>
@@ -29,7 +29,7 @@ export function LocationMapSlide({ total }: { total: number }) {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.4 }}
           style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.7 }}
-          className="text-white/55 max-w-xl text-[18px] lg-lock-18"
+          className="text-white/55 max-w-xl text-[11px] lg-lock-18"
         >
           Sayan, Ubud'un en prestijli ve yüksek gelirli segmentine hitap eden bölgesidir.
         </motion.p>
@@ -65,7 +65,7 @@ export function LocationMapSlide({ total }: { total: number }) {
           </div>
           <p
             style={{ fontFamily: "'Inter', sans-serif" }}
-            className="text-white/50 max-w-lg lg-lock-24 text-[20px]"
+            className="text-white/50 max-w-lg lg-lock-24 text-[12px]"
           >
             Lokasyon, kira performansının{" "}
             <span className="text-[#C9A96E]" style={{ fontWeight: 600 }}>%50</span>'sini belirler.
