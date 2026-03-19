@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { useRef, useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight, MapPin, Home, Calendar, Award, X } from "lucide-react";
 
-import interiorBg from "@/assets/interior2.jpg";
+import interiorBg from "@/assets/interior2.webp";
 import img1 from "figma:asset/0ec89edbc1b48cea234b8d4bdae1ab86d23da1fa.png";
 import img2 from "figma:asset/5ba4151e9d82f2b08dc11dcbf7c09f1f4934db04.png";
 import img3 from "figma:asset/619e7839cc517646c704b1c88c1df4032b05c437.png";

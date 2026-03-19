@@ -11,8 +11,8 @@ function figmaAssetPlugin(): Plugin {
     resolveId(source) {
       if (source.startsWith(FIGMA_PREFIX)) {
         const filename = source.slice(FIGMA_PREFIX.length)
-        const jpgFilename = filename.replace(/\.png$/, '.jpg')
-        return path.resolve(__dirname, 'src/assets', jpgFilename)
+        const webpFilename = filename.replace(/\.png$/, '.webp')
+        return path.resolve(__dirname, 'src/assets', webpFilename)
       }
     },
   }

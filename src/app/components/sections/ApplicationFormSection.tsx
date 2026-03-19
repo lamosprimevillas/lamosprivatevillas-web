@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import { useState } from "react";
 import { Send, User, Mail, Phone, MessageSquare, CheckCircle } from "lucide-react";
 
-import bgImage from "@/assets/interior1.jpg";
+import bgImage from "@/assets/interior1.webp";
 
 export function ApplicationFormSection() {
   const [submitted, setSubmitted] = useState(false);
