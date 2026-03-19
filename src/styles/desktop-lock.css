@@ -1,0 +1,40 @@
+/* ==========================================================================
+   Desktop Font Size Locks
+   ==========================================================================
+   These classes lock font sizes on desktop (lg: 1024px+) using !important.
+   When point-and-edit changes the base text-[Xpx] class on mobile,
+   the desktop size remains unchanged.
+   
+   Usage: className="text-[64px] lg-lock-64"
+   - Mobile: text-[64px] applies (editable via point-and-edit)
+   - Desktop: lg-lock-64 overrides with !important (protected)
+   
+   To change desktop size: update the lg-lock-XX class to a different size.
+   ========================================================================== */
+
+@media (min-width: 1024px) {
+  .lg-lock-7  { font-size: 7px !important; }
+  .lg-lock-8  { font-size: 8px !important; }
+  .lg-lock-9  { font-size: 9px !important; }
+  .lg-lock-10 { font-size: 10px !important; }
+  .lg-lock-11 { font-size: 11px !important; }
+  .lg-lock-12 { font-size: 12px !important; }
+  .lg-lock-13 { font-size: 13px !important; }
+  .lg-lock-14 { font-size: 14px !important; }
+  .lg-lock-15 { font-size: 15px !important; }
+  .lg-lock-16 { font-size: 16px !important; }
+  .lg-lock-18 { font-size: 18px !important; }
+  .lg-lock-20 { font-size: 20px !important; }
+  .lg-lock-22 { font-size: 22px !important; }
+  .lg-lock-24 { font-size: 24px !important; }
+  .lg-lock-26 { font-size: 26px !important; }
+  .lg-lock-28 { font-size: 28px !important; }
+  .lg-lock-32 { font-size: 32px !important; }
+  .lg-lock-40 { font-size: 40px !important; }
+  .lg-lock-48 { font-size: 48px !important; }
+  .lg-lock-56 { font-size: 56px !important; }
+  .lg-lock-64 { font-size: 64px !important; }
+  .lg-lock-72 { font-size: 72px !important; }
+  .lg-lock-80 { font-size: 80px !important; }
+  .lg-lock-96 { font-size: 96px !important; }
+}
