@@ -38,30 +38,30 @@ const premiumAreas: AreaDetail[] = [
 
 function AreaRow({ areas, accentColor }: { areas: AreaDetail[]; accentColor: string }) {
   return (
-    <div className="flex flex-col gap-1.5 sm:gap-2 lg:gap-1 w-full">
+    <div className="flex flex-col gap-0.5 sm:gap-2 lg:gap-1 w-full">
       {areas.map((a) => (
         <div
           key={a.label}
-          className={`flex items-center gap-2 lg:gap-2 rounded-lg px-2.5 py-1.5 lg:px-2.5 lg:py-1.5 ${
+          className={`flex items-center gap-1 sm:gap-2 lg:gap-2 rounded-lg px-1 py-0.5 sm:px-2.5 sm:py-1.5 lg:px-2.5 lg:py-1.5 ${
             a.highlight
               ? "bg-white/8 border border-white/10"
               : "bg-white/[0.03]"
           }`}
         >
           <a.icon
-            className="w-3 h-3 sm:w-3.5 sm:h-3.5 lg:w-3 lg:h-3 shrink-0"
+            className="w-2 h-2 sm:w-3.5 sm:h-3.5 lg:w-3 lg:h-3 shrink-0 hidden sm:block"
             style={{ color: a.highlight ? accentColor : "rgba(255,255,255,0.4)" }}
           />
           <span
             style={{ fontFamily: "'Inter', sans-serif" }}
-            className="text-white/40 lg-lock-16 uppercase tracking-wider shrink-0 text-[9px]"
+            className="text-white/40 lg-lock-16 uppercase tracking-wider shrink-0 text-[7px] sm:text-[9px]"
           >
             {a.label}
           </span>
           <span className="flex-1" />
           <span
             style={{ fontFamily: "'Playfair Display', serif", color: a.highlight ? accentColor : "rgba(255,255,255,0.7)" }}
-            className={`lg-lock-20 ${a.highlight ? "font-bold" : ""} text-[13px]`}
+            className={`lg-lock-20 ${a.highlight ? "font-bold" : ""} text-[9px] sm:text-[13px]`}
           >
             {a.value}
           </span>
@@ -94,17 +94,17 @@ export function CollectionSlide({ total }: { total: number }) {
         </motion.p>
 
         {/* 3-Column Grid: Prime | Premium | Dahil Olanlar */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-4 mt-2 sm:mt-4 lg:mt-2 w-full">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-1.5 sm:gap-4 lg:gap-4 mt-1 sm:mt-4 lg:mt-2 w-full">
 
           {/* Prime Villa */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.6 }}
-            className="bg-white/5 backdrop-blur-sm border border-[#C9A96E]/20 rounded-xl p-4 sm:p-5 lg:p-4 flex flex-col items-center gap-2 sm:gap-3 lg:gap-2"
+            className="bg-white/5 backdrop-blur-sm border border-[#C9A96E]/20 rounded-xl p-2 sm:p-5 lg:p-4 flex flex-col items-center gap-1 sm:gap-3 lg:gap-2"
           >
-            <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-8 lg:h-8 rounded-full bg-[#C9A96E]/10 border border-[#C9A96E]/30 flex items-center justify-center">
-              <Crown className="w-5 h-5 sm:w-6 sm:h-6 lg:w-4 lg:h-4 text-[#C9A96E]" />
+            <div className="w-6 h-6 sm:w-12 sm:h-12 lg:w-8 lg:h-8 rounded-full bg-[#C9A96E]/10 border border-[#C9A96E]/30 flex items-center justify-center">
+              <Crown className="w-3 h-3 sm:w-6 sm:h-6 lg:w-4 lg:h-4 text-[#C9A96E]" />
             </div>
             <div
               style={{ fontFamily: "'Playfair Display', serif" }}
@@ -114,7 +114,7 @@ export function CollectionSlide({ total }: { total: number }) {
             </div>
             <span
               style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.12em" }}
-              className="text-[#C9A96E]/70 uppercase text-[11px] lg-lock-13 border border-[#C9A96E]/25 bg-[#C9A96E]/5 px-3 py-0.5 rounded-full"
+              className="text-[#C9A96E]/70 uppercase text-[7px] sm:text-[11px] lg-lock-13 border border-[#C9A96E]/25 bg-[#C9A96E]/5 px-2 py-0.5 rounded-full"
             >
               2+1 Rezidans
             </span>
@@ -128,7 +128,7 @@ export function CollectionSlide({ total }: { total: number }) {
               </span>
               <span
                 style={{ fontFamily: "'Inter', sans-serif" }}
-                className="text-white/40 uppercase tracking-wider text-[13px]"
+                className="text-white/40 uppercase tracking-wider text-[8px] sm:text-[13px]"
               >
                 Mevcut Ünite
               </span>
@@ -144,10 +144,10 @@ export function CollectionSlide({ total }: { total: number }) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.75 }}
-            className="bg-[#C9A96E]/5 backdrop-blur-sm border border-[#C9A96E]/30 rounded-xl p-4 sm:p-5 lg:p-4 flex flex-col items-center gap-2 sm:gap-3 lg:gap-2"
+            className="bg-[#C9A96E]/5 backdrop-blur-sm border border-[#C9A96E]/30 rounded-xl p-2 sm:p-5 lg:p-4 flex flex-col items-center gap-1 sm:gap-3 lg:gap-2"
           >
-            <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-8 lg:h-8 rounded-full bg-[#C9A96E]/15 border border-[#C9A96E]/40 flex items-center justify-center">
-              <Diamond className="w-5 h-5 sm:w-6 sm:h-6 lg:w-4 lg:h-4 text-[#C9A96E]" />
+            <div className="w-6 h-6 sm:w-12 sm:h-12 lg:w-8 lg:h-8 rounded-full bg-[#C9A96E]/15 border border-[#C9A96E]/40 flex items-center justify-center">
+              <Diamond className="w-3 h-3 sm:w-6 sm:h-6 lg:w-4 lg:h-4 text-[#C9A96E]" />
             </div>
             <div
               style={{ fontFamily: "'Playfair Display', serif" }}
@@ -157,7 +157,7 @@ export function CollectionSlide({ total }: { total: number }) {
             </div>
             <span
               style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.12em" }}
-              className="text-[#C9A96E]/70 uppercase text-[11px] lg-lock-13 border border-[#C9A96E]/25 bg-[#C9A96E]/5 px-3 py-0.5 rounded-full"
+              className="text-[#C9A96E]/70 uppercase text-[7px] sm:text-[11px] lg-lock-13 border border-[#C9A96E]/25 bg-[#C9A96E]/5 px-2 py-0.5 rounded-full"
             >
               2+1 Rezidans
             </span>
@@ -171,7 +171,7 @@ export function CollectionSlide({ total }: { total: number }) {
               </span>
               <span
                 style={{ fontFamily: "'Inter', sans-serif" }}
-                className="text-white/40 uppercase tracking-wider text-[13px]"
+                className="text-white/40 uppercase tracking-wider text-[8px] sm:text-[13px]"
               >
                 Mevcut Ünite
               </span>
@@ -187,7 +187,7 @@ export function CollectionSlide({ total }: { total: number }) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.9 }}
-            className="sm:col-span-2 lg:col-span-1 bg-white/[0.03] backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-5 lg:p-4 flex flex-col gap-2 sm:gap-3 lg:gap-2"
+            className="col-span-2 lg:col-span-1 bg-white/[0.03] backdrop-blur-sm border border-white/10 rounded-xl p-2 sm:p-5 lg:p-4 flex flex-col gap-1 sm:gap-3 lg:gap-2"
           >
             {/* Header */}
             <div className="flex items-center gap-2 lg:gap-1.5">
@@ -202,21 +202,21 @@ export function CollectionSlide({ total }: { total: number }) {
             </div>
 
             {/* Items */}
-            <div className="flex flex-col gap-1 lg:gap-0.5">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-1 gap-0.5 sm:gap-1 lg:gap-0.5">
               {furnitureItems.map((item, i) => (
                 <motion.div
                   key={item.label}
                   initial={{ opacity: 0, x: 10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.25, delay: 1.0 + i * 0.04 }}
-                  className="flex items-center gap-2 lg:gap-2 bg-white/[0.04] hover:bg-white/[0.07] transition-colors rounded-lg px-2.5 py-1.5 lg:px-2.5 lg:py-1.5"
+                  className="flex items-center gap-1 sm:gap-2 lg:gap-2 bg-white/[0.04] hover:bg-white/[0.07] transition-colors rounded-lg px-1.5 py-1 sm:px-2.5 sm:py-1.5 lg:px-2.5 lg:py-1.5"
                 >
-                  <div className="w-5 h-5 lg:w-5 lg:h-5 rounded bg-[#C9A96E]/8 flex items-center justify-center shrink-0">
-                    <item.icon className="w-3 h-3 lg:w-3 lg:h-3 text-[#C9A96E]/50" />
+                  <div className="w-4 h-4 sm:w-5 sm:h-5 lg:w-5 lg:h-5 rounded bg-[#C9A96E]/8 flex items-center justify-center shrink-0">
+                    <item.icon className="w-2.5 h-2.5 sm:w-3 sm:h-3 lg:w-3 lg:h-3 text-[#C9A96E]/50" />
                   </div>
                   <span
                     style={{ fontFamily: "'Inter', sans-serif" }}
-                    className="text-white/55 lg-lock-20 text-left text-[11px]"
+                    className="text-white/55 lg-lock-20 text-left text-[8px] sm:text-[11px]"
                   >
                     {item.label}
                   </span>
@@ -224,10 +224,8 @@ export function CollectionSlide({ total }: { total: number }) {
               ))}
             </div>
 
-            {/* Checkmark note */}
-            <div className="mt-auto pt-1 lg:pt-0.5">
-              <div className="w-full h-[1px] bg-white/5 mb-1.5 lg:mb-1" />
-              
+            <div className="hidden lg:block mt-auto pt-0.5">
+              <div className="w-full h-[1px] bg-white/5 mb-1" />
             </div>
           </motion.div>
         </div>
