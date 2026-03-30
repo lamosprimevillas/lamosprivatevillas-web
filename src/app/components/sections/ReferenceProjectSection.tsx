@@ -1,6 +1,8 @@
+import React from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useRef, useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight, MapPin, Home, Calendar, Award, X } from "lucide-react";
+import { PremiumVideoFrame } from "../PremiumVideoFrame";
 
 import interiorBg from "@/assets/interior2.webp";
 import img1 from "figma:asset/0ec89edbc1b48cea234b8d4bdae1ab86d23da1fa.png";
@@ -25,11 +27,17 @@ const galleryImages = [
   { src: img8, alt: "Bali geleneksel dokunuşlar" },
 ];
 
+const referenceVideoEmbed =
+  typeof import.meta.env.VITE_REFERENCE_VIDEO_EMBED === "string" &&
+  import.meta.env.VITE_REFERENCE_VIDEO_EMBED.trim() !== ""
+    ? import.meta.env.VITE_REFERENCE_VIDEO_EMBED.trim()
+    : undefined;
+
 const stats = [
-  { icon: Home, value: "5", label: "Villa" },
-  { icon: MapPin, value: "Ubud", label: "Bali, Endonezya" },
-  { icon: Calendar, value: "2023", label: "Tamamlanma" },
-  { icon: Award, value: "%94", label: "Doluluk Oranı" },
+  { icon: Home, value: "3", label: "Villa" },
+  { icon: MapPin, value: "Canggu", label: "Konum" },
+  { icon: Calendar, value: "2025", label: "Tamamlanma" },
+  { icon: Award, value: "Teslim Edildi", label: "Durum" },
 ];
 
 export function ReferenceProjectSection() {
@@ -88,13 +96,13 @@ export function ReferenceProjectSection() {
 
       <div className="relative z-10 w-full min-h-screen flex flex-col justify-center py-12 sm:py-16">
         {/* Header */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 mb-5 sm:mb-8">
+        <div className="mx-auto mb-5 flex max-w-7xl flex-col items-center px-4 sm:mb-8 sm:px-8 lg:px-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7 }}
-            className="flex flex-col gap-2 sm:gap-3"
+            className="flex w-full flex-col items-center gap-2 text-center sm:gap-3"
           >
             <span
               style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.3em" }}
@@ -109,14 +117,14 @@ export function ReferenceProjectSection() {
               Referans{" "}
               <span className="italic text-[#C9A96E]">Projemiz</span>
             </h2>
-            <div className="w-16 h-[1px] bg-gradient-to-r from-[#C9A96E] to-transparent" />
+            <div className="mx-auto h-[1px] w-16 bg-gradient-to-r from-[#C9A96E] to-transparent" />
             <p
               style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.8 }}
-              className="text-white/60 max-w-2xl text-base sm:text-2xl"
+              className="max-w-2xl text-base text-white/60 sm:text-2xl"
             >
-              Bali Ubud'da başarıyla tamamladığımız ilk villa projemiz, yatırımcılarımıza
-              güçlü kira getirisi ve değer artışı sağlamaya devam ediyor. Aynı kalite ve
-              vizyonla Lamos Prime Villas'ı hayata geçiriyoruz.
+              Canggu'da tamamladığımız 3 özel villa projemiz, yatırımcılarımıza güçlü kira
+              getirisi ve değer artışı sağlamaya devam ediyor. 2025 tamamlanma sürecini
+              geride bırakıp Teslim Edildi statüsüne ulaştı.
             </p>
           </motion.div>
 
@@ -126,7 +134,7 @@ export function ReferenceProjectSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 mt-5 sm:mt-6"
+            className="mx-auto mt-5 grid w-full max-w-4xl grid-cols-2 justify-items-stretch gap-2 sm:mt-6 sm:gap-3 md:grid-cols-4"
           >
             {stats.map((stat) => (
               <div
@@ -149,6 +157,21 @@ export function ReferenceProjectSection() {
               </div>
             ))}
           </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.65, delay: 0.15 }}
+            className="mx-auto mt-5 w-full max-w-2xl sm:mt-6"
+          >
+            <PremiumVideoFrame
+              embedUrl={referenceVideoEmbed}
+              eyebrow="Referans proje"
+              title="Video turu"
+              emptyHint="Proje videosu yakında"
+            />
+          </motion.div>
         </div>
 
         {/* Gallery */}
@@ -157,6 +180,7 @@ export function ReferenceProjectSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.8, delay: 0.3 }}
+          id="galeri"
           className="relative"
         >
           {/* Gallery Label */}

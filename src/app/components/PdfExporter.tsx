@@ -7,7 +7,6 @@ import { Download, Loader2, Check, FileText } from "lucide-react";
 import { CoverSlide } from "./slides/CoverSlide";
 import { MarketSlide } from "./slides/MarketSlide";
 import { BaliLifestyleSlide } from "./slides/BaliLifestyleSlide";
-import { LocationSlide } from "./slides/LocationSlide";
 import { LocationMapSlide } from "./slides/LocationMapSlide";
 import { CollectionSlide } from "./slides/CollectionSlide";
 import { ArchitectureSlide } from "./slides/ArchitectureSlide";
@@ -15,14 +14,14 @@ import { MasterPlanSlide } from "./slides/MasterPlanSlide";
 import { LegalSlide } from "./slides/LegalSlide";
 import { OwnershipSlide } from "./slides/OwnershipSlide";
 import { FinancialSlide } from "./slides/FinancialSlide";
-import { CompetitorSlide } from "./slides/CompetitorSlide";
 import { ExitStrategySlide } from "./slides/ExitStrategySlide";
 import { PaymentSlide } from "./slides/PaymentSlide";
 import { ConstructionSlide } from "./slides/ConstructionSlide";
+import { AboutUsSlide } from "./slides/AboutUsSlide";
 import { ContactSlide } from "./slides/ContactSlide";
 import { PaymentPricingSlide } from "./slides/PaymentPricingSlide";
 
-const TOTAL = 16;
+const TOTAL = 15;
 const SLIDE_W = 1920;
 const SLIDE_H = 1080;
 
@@ -30,22 +29,21 @@ const allSlideComponents = [
   <CoverSlide key="c1" total={TOTAL} />,
   <MarketSlide key="c2" total={TOTAL} />,
   <BaliLifestyleSlide key="c3" total={TOTAL} />,
-  <LocationSlide key="c4" total={TOTAL} />,
-  <LocationMapSlide key="c5" total={TOTAL} />,
-  <CollectionSlide key="c6" total={TOTAL} />,
-  <ArchitectureSlide key="c7" total={TOTAL} />,
-  <MasterPlanSlide key="c8" total={TOTAL} />,
-  <LegalSlide key="c9" total={TOTAL} />,
-  <OwnershipSlide key="c10" total={TOTAL} />,
-  <FinancialSlide key="c11" total={TOTAL} />,
-  <CompetitorSlide key="c12" total={TOTAL} />,
-  <ExitStrategySlide key="c13" total={TOTAL} />,
-  <PaymentSlide key="c14" total={TOTAL} />,
-  <ConstructionSlide key="c15" total={TOTAL} />,
-  <ContactSlide key="c16" total={TOTAL} />,
+  <LocationMapSlide key="c4" total={TOTAL} />,
+  <CollectionSlide key="c5" total={TOTAL} />,
+  <ArchitectureSlide key="c6" total={TOTAL} />,
+  <MasterPlanSlide key="c7" total={TOTAL} />,
+  <LegalSlide key="c8" total={TOTAL} />,
+  <OwnershipSlide key="c9" total={TOTAL} />,
+  <FinancialSlide key="c10" total={TOTAL} />,
+  <ExitStrategySlide key="c11" total={TOTAL} />,
+  <PaymentSlide key="c12" total={TOTAL} />,
+  <ConstructionSlide key="c13" total={TOTAL} />,
+  <AboutUsSlide key="c14" total={TOTAL} />,
+  <ContactSlide key="c15" total={TOTAL} />,
 ];
 
-// Financial (slide 11) + Pricing page slides
+// Financial (slide 10) + Pricing page slides
 const financialPricingSlides = [
   <FinancialSlide key="fp1" total={TOTAL} />,
   <PaymentPricingSlide key="fp2" />,

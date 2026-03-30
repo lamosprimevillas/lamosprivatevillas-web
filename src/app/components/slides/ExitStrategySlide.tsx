@@ -5,7 +5,7 @@ import exitBg from "figma:asset/c9f4663867d5a9406c20f613231e5563eb38097e.png";
 
 export function ExitStrategySlide({ total }: { total: number }) {
   return (
-    <SlideLayout bgImage={exitBg} overlay="left-dark" slideNumber={13} totalSlides={total}>
+    <SlideLayout bgImage={exitBg} overlay="left-dark" slideNumber={11} totalSlides={total}>
       <div className="w-full max-w-5xl mx-auto flex flex-col items-center text-center gap-2 sm:gap-4 md:gap-5 lg:gap-2">
         <SlideSubtitle>Çıkış Stratejisi</SlideSubtitle>
         <SlideTitle>

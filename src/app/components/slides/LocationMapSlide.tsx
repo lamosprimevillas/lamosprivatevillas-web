@@ -6,7 +6,7 @@ import locationMapImage from "figma:asset/20d1ad4c7a7d9df060eed7ddcded96d2309e3e
 
 export function LocationMapSlide({ total }: { total: number }) {
   return (
-    <SlideLayout bgImage={locationMapBg} overlay="darker" slideNumber={5} totalSlides={total}>
+    <SlideLayout bgImage={locationMapBg} overlay="darker" slideNumber={4} totalSlides={total}>
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center text-center gap-2 sm:gap-3 md:gap-4 lg:gap-2">
         {/* Header */}
         <SlideSubtitle>Sayan, Ubud'un En Değerli Koridoru</SlideSubtitle>

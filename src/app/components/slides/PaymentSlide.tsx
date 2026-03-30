@@ -11,7 +11,7 @@ const installments = [
 
 export function PaymentSlide({ total }: { total: number }) {
   return (
-    <SlideLayout bgImage={paymentBg} overlay="darker" slideNumber={14} totalSlides={total}>
+    <SlideLayout bgImage={paymentBg} overlay="darker" slideNumber={12} totalSlides={total}>
       <div className="w-full max-w-5xl mx-auto flex flex-col items-center text-center gap-2 sm:gap-3 lg:gap-1.5">
         <SlideSubtitle>Şeffaf Ödeme Planı</SlideSubtitle>
         <SlideTitle>

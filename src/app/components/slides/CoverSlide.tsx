@@ -77,7 +77,7 @@ export function CoverSlide({ total }: { total: number }) {
               >
                 {[
                   { text: "7 Villa" },
-                  { text: "2+1", accent: true },
+                  { text: "2+1 - 3+1", accent: true },
                   { text: "Özel Havuzlu" },
                 ].map((item) => (
                   <div

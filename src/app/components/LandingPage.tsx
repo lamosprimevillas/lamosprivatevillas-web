@@ -3,7 +3,6 @@ import { Navbar } from "./Navbar";
 import { CoverSlide } from "./slides/CoverSlide";
 import { MarketSlide } from "./slides/MarketSlide";
 import { BaliLifestyleSlide } from "./slides/BaliLifestyleSlide";
-import { LocationSlide } from "./slides/LocationSlide";
 import { LocationMapSlide } from "./slides/LocationMapSlide";
 import { CollectionSlide } from "./slides/CollectionSlide";
 import { ArchitectureSlide } from "./slides/ArchitectureSlide";
@@ -11,10 +10,10 @@ import { MasterPlanSlide } from "./slides/MasterPlanSlide";
 import { LegalSlide } from "./slides/LegalSlide";
 import { OwnershipSlide } from "./slides/OwnershipSlide";
 import { FinancialSlide } from "./slides/FinancialSlide";
-import { CompetitorSlide } from "./slides/CompetitorSlide";
 import { ExitStrategySlide } from "./slides/ExitStrategySlide";
 import { PaymentSlide } from "./slides/PaymentSlide";
 import { ConstructionSlide } from "./slides/ConstructionSlide";
+import { AboutUsSlide } from "./slides/AboutUsSlide";
 import { ContactSlide } from "./slides/ContactSlide";
 import { ReferenceProjectSection } from "./sections/ReferenceProjectSection";
 import { ApplicationFormSection } from "./sections/ApplicationFormSection";
@@ -22,9 +21,9 @@ import { useSequentialPreload } from "../hooks/useSequentialPreload";
 
 import marketBg from "figma:asset/c9f4663867d5a9406c20f613231e5563eb38097e.png";
 import baliBg from "figma:asset/8629ca25f7da3679368f202246d1cede8739f913.png";
-import locationBg from "figma:asset/619e7839cc517646c704b1c88c1df4032b05c437.png";
+import locationMapBg from "figma:asset/5ba4151e9d82f2b08dc11dcbf7c09f1f4934db04.png";
 
-const TOTAL = 16;
+const TOTAL = 15;
 
 function LazySection({
   children,
@@ -83,7 +82,7 @@ function EagerSection({ children, id }: { children: ReactNode; id?: string }) {
 }
 
 export function LandingPage() {
-  useSequentialPreload([marketBg, baliBg, locationBg]);
+  useSequentialPreload([marketBg, baliBg, locationMapBg]);
 
   return (
     <div className="w-full bg-black">
@@ -95,18 +94,13 @@ export function LandingPage() {
       </EagerSection>
 
       {/* 2 - Market: eager (preloaded sequentially) */}
-      <EagerSection id="hakkimizda">
+      <EagerSection>
         <MarketSlide total={TOTAL} />
       </EagerSection>
 
       {/* 3 - Bali Lifestyle: eager */}
       <EagerSection>
         <BaliLifestyleSlide total={TOTAL} />
-      </EagerSection>
-
-      {/* 4 - Location: eager */}
-      <EagerSection>
-        <LocationSlide total={TOTAL} />
       </EagerSection>
 
       {/* 5+ : Lazy with generous rootMargin */}
@@ -139,10 +133,6 @@ export function LandingPage() {
       </SlideSection>
 
       <SlideSection rootMargin="0px 0px 2000px 0px">
-        <CompetitorSlide total={TOTAL} />
-      </SlideSection>
-
-      <SlideSection rootMargin="0px 0px 2000px 0px">
         <ExitStrategySlide total={TOTAL} />
       </SlideSection>
 
@@ -152,6 +142,11 @@ export function LandingPage() {
 
       <SlideSection rootMargin="0px 0px 2000px 0px">
         <ConstructionSlide total={TOTAL} />
+      </SlideSection>
+
+      {/* Hakkımızda */}
+      <SlideSection id="hakkimizda" rootMargin="0px 0px 2000px 0px">
+        <AboutUsSlide total={TOTAL} />
       </SlideSection>
 
       {/* Referans Projemiz */}

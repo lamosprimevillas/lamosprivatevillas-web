@@ -45,7 +45,7 @@ export function BaliLifestyleSlide({ total }: { total: number }) {
           className="text-white/60 max-w-2xl text-[11px] lg-lock-24"
         >
           Ancak Bali'yi güçlü yapan yalnızca turist sayısı değildir.
-          Bali, <span className="text-[#C9A96E]">"yaşam tarzı ekonomisi"</span> olan full paket bir adadır.
+          Bali, <span className="text-[#C9A96E]">"yaşam merkezi"</span> olan full paket bir adadır.
         </motion.p>
 
         {/* Lifestyle Grid */}

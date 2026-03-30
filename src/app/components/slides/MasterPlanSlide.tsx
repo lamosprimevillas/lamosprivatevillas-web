@@ -12,7 +12,7 @@ const pillars = [
 
 export function MasterPlanSlide({ total }: { total: number }) {
   return (
-    <SlideLayout bgImage={masterPlanBg} overlay="darker" slideNumber={8} totalSlides={total}>
+    <SlideLayout bgImage={masterPlanBg} overlay="darker" slideNumber={7} totalSlides={total}>
       <div className="w-full max-w-5xl mx-auto flex flex-col items-center text-center gap-2 sm:gap-4 md:gap-5 lg:gap-2">
         <SlideSubtitle>Vaziyet Planı ve Yerleşim</SlideSubtitle>
         <SlideTitle>

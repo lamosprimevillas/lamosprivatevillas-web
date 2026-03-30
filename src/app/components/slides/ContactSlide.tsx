@@ -5,7 +5,7 @@ import contactBg from "figma:asset/619e7839cc517646c704b1c88c1df4032b05c437.png"
 
 export function ContactSlide({ total }: { total: number }) {
   return (
-    <SlideLayout bgImage={contactBg} overlay="darker" slideNumber={16} totalSlides={total}>
+    <SlideLayout bgImage={contactBg} overlay="darker" slideNumber={15} totalSlides={total}>
       <div className="w-full flex flex-col items-center text-center gap-3 sm:gap-5 md:gap-6 lg:gap-3">
         {/* Decorative Top */}
         <motion.div

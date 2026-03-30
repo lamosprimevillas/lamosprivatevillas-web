@@ -73,7 +73,7 @@ function AreaRow({ areas, accentColor }: { areas: AreaDetail[]; accentColor: str
 
 export function CollectionSlide({ total }: { total: number }) {
   return (
-    <SlideLayout bgImage={collectionBg} overlay="darker" slideNumber={6} totalSlides={total}>
+    <SlideLayout bgImage={collectionBg} overlay="darker" slideNumber={5} totalSlides={total}>
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center text-center gap-2 sm:gap-4 md:gap-5 lg:gap-2">
         <SlideSubtitle>Lamos Prime Sınırlı Koleksiyon</SlideSubtitle>
         <SlideTitle>
@@ -118,6 +118,15 @@ export function CollectionSlide({ total }: { total: number }) {
             >
               2+1 Rezidans
             </span>
+            <div
+              style={{ fontFamily: "'Inter', sans-serif" }}
+              className="mt-1 text-white/60 text-[7px] sm:text-[10px] lg-lock-16 leading-tight text-center"
+            >
+              <span className="block">2+1 - 3+1 REZİDANS</span>
+              <span className="block">
+                — <span className="text-[#C9A96E]/80">Premium 3+1 REZİDANS</span>
+              </span>
+            </div>
             <div className="w-8 h-[1px] bg-[#C9A96E]/40" />
             <div className="flex flex-col items-center gap-0.5">
               <span

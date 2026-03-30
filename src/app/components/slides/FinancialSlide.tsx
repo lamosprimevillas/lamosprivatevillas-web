@@ -10,9 +10,12 @@ const expenses = [
   { label: "Yönetim (Management)", pct: "" },
 ];
 
+/** First column min width so long villa names stay on one line */
+const FIN_TABLE_COLS = "minmax(10rem, 1.75fr) minmax(0, 1fr) minmax(0, 0.85fr) minmax(0, 1fr)" as const;
+
 export function FinancialSlide({ total }: { total: number }) {
   return (
-    <SlideLayout bgImage={financialBg} overlay="darker" slideNumber={11} totalSlides={total}>
+    <SlideLayout bgImage={financialBg} overlay="darker" slideNumber={10} totalSlides={total}>
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center text-center gap-2 sm:gap-3 md:gap-4 lg:gap-2.5">
         <SlideSubtitle>Finansal Projeksiyonlar (ROI)</SlideSubtitle>
         <SlideTitle>
@@ -24,108 +27,101 @@ export function FinancialSlide({ total }: { total: number }) {
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
           className="w-full max-w-3xl"
         >
           <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden">
-            {/* Table Header */}
-            <div className="grid grid-cols-4 bg-[#C9A96E]/10 border-b border-white/10">
+            {/* Table: wider first column so villa names stay on one line */}
+            <div
+              className="grid bg-[#C9A96E]/10 border-b border-white/10"
+              style={{ gridTemplateColumns: FIN_TABLE_COLS }}
+            >
               {["", "Gecelik Ücret", "Doluluk", "Brüt Yıllık Gelir"].map((h, i) => (
                 <div
                   key={h || "empty"}
-                  className={`p-2 sm:p-3 md:p-4 lg:p-3 flex items-center ${i === 0 ? "" : "justify-center"}`}
+                  className={`p-1.5 sm:p-2.5 md:p-3 lg:p-2.5 flex items-center ${i === 0 ? "" : "justify-center text-center"}`}
                   style={{ fontFamily: "'Inter', sans-serif" }}
                 >
-                  <span className="text-[#C9A96E] uppercase tracking-wider lg-lock-18 text-[8px]">
+                  <span className="text-[#C9A96E] uppercase tracking-wider lg-lock-18 text-[7px] sm:text-[8px] leading-tight">
                     {h}
                   </span>
                 </div>
               ))}
             </div>
 
-            {/* Prime Villa Row */}
-            <div className="grid grid-cols-4 border-b border-white/5">
-              <div className="p-2 sm:p-3 md:p-4 lg:p-3 flex items-center gap-1 sm:gap-2">
-                <DollarSign className="w-3 h-3 sm:w-4 sm:h-4 lg:w-4 lg:h-4 text-[#2D6A4F] shrink-0" />
-                <span
-                  style={{ fontFamily: "'Playfair Display', serif" }}
-                  className="text-white lg-lock-24 text-[11px]"
-                >
-                  Prime Villa
-                </span>
+            {[
+              {
+                name: "Prime Villa 2+1",
+                rate: "$120–180",
+                occ: "70-80%",
+                gross: "$40.000",
+                iconClass: "text-[#2D6A4F]",
+                border: "border-b border-white/5",
+              },
+              {
+                name: "Prime Plus Villa 3+1",
+                rate: "$140–200",
+                occ: "70-80%",
+                gross: "$48.000",
+                iconClass: "text-[#C9A96E]",
+                border: "border-b border-white/5",
+              },
+              {
+                name: "Premium Villa 3+1",
+                rate: "$160–220",
+                occ: "70-80%",
+                gross: "$56.000",
+                iconClass: "text-[#C9A96E]",
+                border: "",
+              },
+            ].map((row) => (
+              <div
+                key={row.name}
+                className={`grid ${row.border}`}
+                style={{ gridTemplateColumns: FIN_TABLE_COLS }}
+              >
+                <div className="p-1.5 sm:p-2.5 md:p-3 lg:p-2.5 flex items-center gap-1 min-w-0">
+                  <DollarSign className={`w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4 shrink-0 self-center ${row.iconClass}`} />
+                  <span
+                    style={{ fontFamily: "'Playfair Display', serif" }}
+                    className="text-white lg-lock-24 text-left leading-none whitespace-nowrap text-[8px] sm:text-[9px] md:text-[10px] lg:text-[11px]"
+                  >
+                    {row.name}
+                  </span>
+                </div>
+                <div className="p-2 sm:p-3 md:p-4 lg:p-3 flex flex-col items-center justify-center">
+                  <span
+                    style={{ fontFamily: "'Playfair Display', serif" }}
+                    className="text-white lg-lock-28 text-[12px]"
+                  >
+                    {row.rate}
+                  </span>
+                  <span
+                    style={{ fontFamily: "'Inter', sans-serif" }}
+                    className="text-white/30 lg-lock-15 text-[8px]"
+                  >
+                    gece başına
+                  </span>
+                </div>
+                <div className="flex items-center justify-center gap-1 sm:gap-2 lg:gap-1.5 p-2 sm:p-3 md:p-4 lg:p-3">
+                  <Percent className="w-2.5 h-2.5 sm:w-3 sm:h-3 lg:w-3 lg:h-3 text-[#C9A96E] shrink-0" />
+                  <span
+                    style={{ fontFamily: "'Inter', sans-serif" }}
+                    className="text-white lg-lock-24 text-[11px]"
+                  >
+                    {row.occ}
+                  </span>
+                </div>
+                <div className="p-2 sm:p-3 md:p-4 lg:p-3 flex items-center justify-center">
+                  <span
+                    style={{ fontFamily: "'Playfair Display', serif" }}
+                    className="text-white text-[14px] lg-lock-28"
+                  >
+                    {row.gross}
+                  </span>
+                </div>
               </div>
-              <div className="p-2 sm:p-3 md:p-4 lg:p-3 flex flex-col items-center justify-center">
-                <span
-                  style={{ fontFamily: "'Playfair Display', serif" }}
-                  className="text-white lg-lock-28 text-[12px]"
-                >
-                  $120–180
-                </span>
-                <span
-                  style={{ fontFamily: "'Inter', sans-serif" }}
-                  className="text-white/30 lg-lock-15 text-[8px]"
-                >
-                  gece başına
-                </span>
-              </div>
-              <div className="flex items-center justify-center gap-1 sm:gap-2 lg:gap-1.5 p-2 sm:p-3 md:p-4 lg:p-3">
-                <Percent className="w-2.5 h-2.5 sm:w-3 sm:h-3 lg:w-3 lg:h-3 text-[#C9A96E] shrink-0" />
-                <span
-                  style={{ fontFamily: "'Inter', sans-serif" }}
-                  className="text-white lg-lock-24 text-[11px]"
-                >
-                  70-80%
-                </span>
-              </div>
-              <div className="p-2 sm:p-3 md:p-4 lg:p-3 flex items-center justify-center"><span
-                  style={{ fontFamily: "'Playfair Display', serif" }}
-                  className="text-white text-[14px] lg-lock-28"
-                >$40.000</span></div>
-            </div>
-
-            {/* Premium Villa Row */}
-            <div className="grid grid-cols-4">
-              <div className="p-2 sm:p-3 md:p-4 lg:p-3 flex items-center gap-1 sm:gap-2">
-                <DollarSign className="w-3 h-3 sm:w-4 sm:h-4 lg:w-4 lg:h-4 text-[#C9A96E] shrink-0" />
-                <span
-                  style={{ fontFamily: "'Playfair Display', serif" }}
-                  className="text-white lg-lock-24 text-[11px]"
-                >
-                  Premium Villa
-                </span>
-              </div>
-              <div className="p-2 sm:p-3 md:p-4 lg:p-3 flex flex-col items-center justify-center">
-                <span
-                  style={{ fontFamily: "'Playfair Display', serif" }}
-                  className="text-white lg-lock-28 text-[12px]"
-                >
-                  $140–200
-                </span>
-                <span
-                  style={{ fontFamily: "'Inter', sans-serif" }}
-                  className="text-white/30 lg-lock-15 text-[8px]"
-                >
-                  gece başına
-                </span>
-              </div>
-              <div className="flex items-center justify-center gap-1 sm:gap-2 lg:gap-1.5 p-2 sm:p-3 md:p-4 lg:p-3">
-                <Percent className="w-2.5 h-2.5 sm:w-3 sm:h-3 lg:w-3 lg:h-3 text-[#C9A96E] shrink-0" />
-                <span
-                  style={{ fontFamily: "'Inter', sans-serif" }}
-                  className="text-white lg-lock-24 text-[11px]"
-                >
-                  70-80%
-                </span>
-              </div>
-              <div className="p-2 sm:p-3 md:p-4 lg:p-3 flex items-center justify-center">
-                <span
-                  style={{ fontFamily: "'Playfair Display', serif" }}
-                  className="text-white text-[14px] lg-lock-28"
-                >
-                  $48.000
-                </span>
-              </div>
-            </div>
+            ))}
           </div>
         </motion.div>
 
@@ -199,34 +195,29 @@ export function FinancialSlide({ total }: { total: number }) {
               </span>
             </div>
             <div className="flex flex-col gap-2 sm:gap-3 lg:gap-2">
-              <div className="flex items-center justify-between bg-white/5 rounded-lg p-2 sm:p-3 lg:p-2.5">
-                <span
-                  style={{ fontFamily: "'Playfair Display', serif" }}
-                  className="text-white lg-lock-24 text-[12px]"
+              {[
+                { label: "Prime Villa 2+1", net: "$24.000" },
+                { label: "Prime Plus Villa 3+1", net: "$28.800" },
+                { label: "Premium Villa 3+1", net: "$33.600" },
+              ].map((row) => (
+                <div
+                  key={row.label}
+                  className="flex items-center justify-between gap-2 bg-white/5 rounded-lg p-2 sm:p-3 lg:p-2.5"
                 >
-                  Prime Villa
-                </span>
-                <span
-                  style={{ fontFamily: "'Playfair Display', serif" }}
-                  className="text-[#C9A96E] lg-lock-26 text-[12px]"
-                >
-                  $24.000
-                </span>
-              </div>
-              <div className="flex items-center justify-between bg-white/5 rounded-lg p-2 sm:p-3 lg:p-2.5">
-                <span
-                  style={{ fontFamily: "'Playfair Display', serif" }}
-                  className="text-white lg-lock-24 text-[12px]"
-                >
-                  Premium Villa
-                </span>
-                <span
-                  style={{ fontFamily: "'Playfair Display', serif" }}
-                  className="text-[#C9A96E] lg-lock-26 text-[12px]"
-                >
-                  $29.000
-                </span>
-              </div>
+                  <span
+                    style={{ fontFamily: "'Playfair Display', serif" }}
+                    className="text-white lg-lock-24 text-[11px] sm:text-[12px] text-left leading-tight"
+                  >
+                    {row.label}
+                  </span>
+                  <span
+                    style={{ fontFamily: "'Playfair Display', serif" }}
+                    className="text-[#C9A96E] lg-lock-26 text-[12px] shrink-0"
+                  >
+                    {row.net}
+                  </span>
+                </div>
+              ))}
             </div>
           </motion.div>
         </div>

@@ -5,7 +5,7 @@ import ownershipBg from "figma:asset/824b55987c2a902814d98214f672927f0a231642.pn
 
 export function OwnershipSlide({ total }: { total: number }) {
   return (
-    <SlideLayout bgImage={ownershipBg} overlay="left-dark" slideNumber={10} totalSlides={total}>
+    <SlideLayout bgImage={ownershipBg} overlay="left-dark" slideNumber={9} totalSlides={total}>
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center text-center gap-2 sm:gap-4 md:gap-5 lg:gap-4">
         <SlideSubtitle>Mülkiyet ve Kira Sözleşmesi</SlideSubtitle>
         <SlideTitle>
@@ -22,8 +22,9 @@ export function OwnershipSlide({ total }: { total: number }) {
           style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.8 }}
           className="text-white/60 max-w-xl text-[11px] lg-lock-20"
         >
-          Uzun vadeli, yüksek güvenlikli bir mülkiyet modeli. 30 yıllık birincil hak
-          sözleşmesi ve 30 yıllık uzatma önceliği &mdash; kuşaklar arası değer yaratır.
+          Bu süre yalnızca arsa 30+30 = 60 yıllığına geçerlidir. İnşa edilen villa
+          tamamen yatırımcının mülkiyetindedir; yatırımcı dilerse villayı satabilir,
+          yeniden geliştirebilir, yıkabilir veya farklı bir şekilde değerlendirebilir.
         </motion.p>
 
         {/* Timeline Infographic */}

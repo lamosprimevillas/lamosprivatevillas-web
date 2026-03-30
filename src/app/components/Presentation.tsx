@@ -4,7 +4,6 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { CoverSlide } from "./slides/CoverSlide";
 import { MarketSlide } from "./slides/MarketSlide";
 import { BaliLifestyleSlide } from "./slides/BaliLifestyleSlide";
-import { LocationSlide } from "./slides/LocationSlide";
 import { LocationMapSlide } from "./slides/LocationMapSlide";
 import { CollectionSlide } from "./slides/CollectionSlide";
 import { ArchitectureSlide } from "./slides/ArchitectureSlide";
@@ -12,14 +11,14 @@ import { MasterPlanSlide } from "./slides/MasterPlanSlide";
 import { LegalSlide } from "./slides/LegalSlide";
 import { OwnershipSlide } from "./slides/OwnershipSlide";
 import { FinancialSlide } from "./slides/FinancialSlide";
-import { CompetitorSlide } from "./slides/CompetitorSlide";
 import { ExitStrategySlide } from "./slides/ExitStrategySlide";
 import { PaymentSlide } from "./slides/PaymentSlide";
 import { ConstructionSlide } from "./slides/ConstructionSlide";
+import { AboutUsSlide } from "./slides/AboutUsSlide";
 import { ContactSlide } from "./slides/ContactSlide";
 import { PdfExporter } from "./PdfExporter";
 
-const TOTAL_SLIDES = 16;
+const TOTAL_SLIDES = 15;
 
 export function Presentation() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -97,7 +96,6 @@ export function Presentation() {
     <CoverSlide key="cover" total={TOTAL_SLIDES} />,
     <MarketSlide key="market" total={TOTAL_SLIDES} />,
     <BaliLifestyleSlide key="balilifestyle" total={TOTAL_SLIDES} />,
-    <LocationSlide key="location" total={TOTAL_SLIDES} />,
     <LocationMapSlide key="locationmap" total={TOTAL_SLIDES} />,
     <CollectionSlide key="collection" total={TOTAL_SLIDES} />,
     <ArchitectureSlide key="architecture" total={TOTAL_SLIDES} />,
@@ -105,10 +103,10 @@ export function Presentation() {
     <LegalSlide key="legal" total={TOTAL_SLIDES} />,
     <OwnershipSlide key="ownership" total={TOTAL_SLIDES} />,
     <FinancialSlide key="financial" total={TOTAL_SLIDES} />,
-    <CompetitorSlide key="competitor" total={TOTAL_SLIDES} />,
     <ExitStrategySlide key="exit" total={TOTAL_SLIDES} />,
     <PaymentSlide key="payment" total={TOTAL_SLIDES} />,
     <ConstructionSlide key="construction" total={TOTAL_SLIDES} />,
+    <AboutUsSlide key="about" total={TOTAL_SLIDES} />,
     <ContactSlide key="contact" total={TOTAL_SLIDES} />,
   ];
 
