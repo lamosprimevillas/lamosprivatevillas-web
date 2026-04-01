@@ -13,7 +13,7 @@ export function LocationMapSlide({ total }: { total: number }) {
 
   return (
     <SlideLayout bgImage={locationMapBg} overlay="darker" slideNumber={4} totalSlides={total}>
-      <div className="w-full max-w-6xl mx-auto flex flex-col items-center text-center gap-2 sm:gap-3 md:gap-4 lg:gap-2">
+      <div className="location-slide-compact w-full max-w-6xl mx-auto flex flex-col items-center text-center gap-2 sm:gap-3 md:gap-4 lg:gap-2">
         <SlideSubtitle>{l.subtitle}</SlideSubtitle>
 
         <motion.h1
@@ -43,14 +43,14 @@ export function LocationMapSlide({ total }: { total: number }) {
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="relative w-full max-w-lg sm:max-w-3xl md:max-w-4xl lg:max-w-5xl mt-1"
+          className="location-map-frame relative w-full max-w-lg sm:max-w-3xl md:max-w-4xl lg:max-w-5xl mt-1"
         >
           <div className="absolute inset-0 bg-[#C9A96E]/5 blur-3xl rounded-full scale-90" />
 
           <img
             src={locationMapImage}
             alt={l.mapAlt}
-            className="relative w-full h-auto rounded-xl"
+            className="location-map-img relative mx-auto block w-full h-auto max-h-none overflow-hidden rounded-xl"
           />
         </motion.div>
 
@@ -58,7 +58,7 @@ export function LocationMapSlide({ total }: { total: number }) {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.8 }}
-          className="flex flex-col items-center gap-2 mt-1"
+          className="location-map-footer flex flex-col items-center gap-2 mt-1"
         >
           <div className="flex items-center gap-3">
             <div className="w-5 h-[1px] bg-[#C9A96E]/40" />

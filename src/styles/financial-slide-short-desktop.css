@@ -1,0 +1,145 @@
+/* ==========================================================================
+   Financial slide (Finansal Projeksiyon / ROI): short desktop — same pattern as market/collection.
+   ========================================================================== */
+
+@media (min-width: 1024px) and (max-height: 920px) {
+  .financial-slide-compact {
+    gap: 0.375rem !important;
+  }
+
+  .financial-slide-compact .lg-lock-72 {
+    font-size: 52px !important;
+    line-height: 1.08 !important;
+  }
+  .financial-slide-compact .lg-lock-22 {
+    font-size: 18px !important;
+  }
+  .financial-slide-compact .lg-lock-18 {
+    font-size: 15px !important;
+  }
+  .financial-slide-compact .lg-lock-24 {
+    font-size: 20px !important;
+  }
+  .financial-slide-compact .lg-lock-26 {
+    font-size: 22px !important;
+  }
+  .financial-slide-compact .lg-lock-28 {
+    font-size: 24px !important;
+  }
+  .financial-slide-compact .lg-lock-15 {
+    font-size: 13px !important;
+  }
+  .financial-slide-compact .lg-lock-20 {
+    font-size: 17px !important;
+  }
+  .financial-slide-compact .lg-lock-48 {
+    font-size: 36px !important;
+  }
+
+  /* Tighter table; override inline gridTemplateColumns (no !important on inline) */
+  .financial-slide-compact .financial-table-grid {
+    grid-template-columns: minmax(8.5rem, 1.55fr) minmax(0, 1fr) minmax(0, 0.88fr) minmax(0, 1fr) !important;
+  }
+
+  .financial-slide-compact .financial-table-grid > div {
+    padding: 0.375rem 0.5rem !important;
+  }
+
+  .financial-slide-compact .financial-bottom-row {
+    gap: 0.75rem !important;
+  }
+
+  .financial-slide-compact .financial-card-expenses,
+  .financial-slide-compact .financial-card-net {
+    padding: 0.75rem !important;
+  }
+
+  .financial-slide-compact .financial-expense-list,
+  .financial-slide-compact .financial-net-list {
+    gap: 0.375rem !important;
+  }
+
+  .financial-slide-compact .financial-net-row {
+    padding: 0.375rem 0.5rem !important;
+  }
+
+  .financial-slide-compact .financial-metrics-row {
+    gap: 0.75rem !important;
+    margin-top: 0.25rem !important;
+  }
+
+  .financial-slide-compact .financial-metrics-row svg {
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+  }
+}
+
+@media (min-width: 1024px) and (max-height: 800px) {
+  .financial-slide-compact {
+    gap: 0.25rem !important;
+  }
+
+  .financial-slide-compact .lg-lock-72 {
+    font-size: 44px !important;
+    line-height: 1.06 !important;
+  }
+  .financial-slide-compact .lg-lock-22 {
+    font-size: 16px !important;
+  }
+  .financial-slide-compact .lg-lock-18 {
+    font-size: 13px !important;
+  }
+  .financial-slide-compact .lg-lock-24 {
+    font-size: 18px !important;
+  }
+  .financial-slide-compact .lg-lock-26 {
+    font-size: 19px !important;
+  }
+  .financial-slide-compact .lg-lock-28 {
+    font-size: 21px !important;
+  }
+  .financial-slide-compact .lg-lock-15 {
+    font-size: 11px !important;
+  }
+  .financial-slide-compact .lg-lock-20 {
+    font-size: 15px !important;
+  }
+  .financial-slide-compact .lg-lock-48 {
+    font-size: 30px !important;
+  }
+
+  .financial-slide-compact .financial-table-grid {
+    grid-template-columns: minmax(7.5rem, 1.45fr) minmax(0, 1fr) minmax(0, 0.85fr) minmax(0, 1fr) !important;
+  }
+
+  .financial-slide-compact .financial-table-grid > div {
+    padding: 0.25rem 0.375rem !important;
+  }
+
+  .financial-slide-compact .financial-bottom-row {
+    gap: 0.5rem !important;
+  }
+
+  .financial-slide-compact .financial-card-expenses,
+  .financial-slide-compact .financial-card-net {
+    padding: 0.625rem !important;
+  }
+
+  .financial-slide-compact .financial-net-row {
+    padding: 0.25rem 0.375rem !important;
+  }
+
+  .financial-slide-compact .financial-metrics-row {
+    gap: 0.5rem !important;
+  }
+
+  .financial-slide-compact .financial-metrics-row svg {
+    width: 1.125rem !important;
+    height: 1.125rem !important;
+  }
+
+  .financial-slide-compact .financial-expense-list,
+  .financial-slide-compact .financial-net-list {
+    gap: 0.25rem !important;
+  }
+}

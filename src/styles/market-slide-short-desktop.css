@@ -1,0 +1,135 @@
+/* ==========================================================================
+   Market slide (presentation slide 2 / landing section 2)
+   Short desktop viewports: shrink locked typography + spacing so one screen fits
+   without in-slide scroll. Does NOT apply when viewport height is comfortably tall
+   (typical 16" fullscreen), so those layouts stay as designed.
+   Relies on .market-slide-compact wrapper in MarketSlide.tsx.
+   ========================================================================== */
+
+@media (min-width: 1024px) and (max-height: 920px) {
+  .market-slide-compact {
+    gap: 0.5rem !important;
+  }
+
+  .market-slide-compact .market-body {
+    line-height: 1.55 !important;
+  }
+
+  .market-slide-compact .market-highlight-grid {
+    margin-top: 0.25rem !important;
+    gap: 0.5rem !important;
+  }
+
+  .market-slide-compact .market-stat-row {
+    margin-top: 0.375rem !important;
+    gap: 0.75rem !important;
+  }
+
+  .market-slide-compact .lg-lock-72 {
+    font-size: 56px !important;
+    line-height: 1.08 !important;
+  }
+  .market-slide-compact .lg-lock-22 {
+    font-size: 18px !important;
+  }
+  .market-slide-compact .lg-lock-24 {
+    font-size: 20px !important;
+  }
+  .market-slide-compact .lg-lock-16 {
+    font-size: 13px !important;
+  }
+  .market-slide-compact .lg-lock-40 {
+    font-size: 32px !important;
+  }
+  .market-slide-compact .lg-lock-18 {
+    font-size: 15px !important;
+  }
+
+  .market-slide-compact .market-highlight-card {
+    padding: 0.5rem 0.75rem !important;
+    gap: 0.5rem !important;
+  }
+
+  .market-slide-compact .market-highlight-card .icon-box {
+    height: 1.75rem !important;
+    width: 1.75rem !important;
+  }
+
+  .market-slide-compact .market-highlight-card .icon-box svg {
+    height: 0.875rem !important;
+    width: 0.875rem !important;
+  }
+
+  .market-slide-compact .market-stat-card {
+    padding: 0.625rem 0.75rem !important;
+  }
+
+  .market-slide-compact .market-stat-card svg {
+    width: 1rem !important;
+    height: 1rem !important;
+    margin-bottom: 0.375rem !important;
+  }
+}
+
+@media (min-width: 1024px) and (max-height: 800px) {
+  .market-slide-compact {
+    gap: 0.375rem !important;
+  }
+
+  .market-slide-compact .market-body {
+    line-height: 1.45 !important;
+  }
+
+  .market-slide-compact .market-highlight-grid {
+    gap: 0.375rem !important;
+  }
+
+  .market-slide-compact .market-stat-row {
+    margin-top: 0.25rem !important;
+    gap: 0.5rem !important;
+  }
+
+  .market-slide-compact .lg-lock-72 {
+    font-size: 44px !important;
+    line-height: 1.06 !important;
+  }
+  .market-slide-compact .lg-lock-22 {
+    font-size: 16px !important;
+  }
+  .market-slide-compact .lg-lock-24 {
+    font-size: 18px !important;
+  }
+  .market-slide-compact .lg-lock-16 {
+    font-size: 12px !important;
+  }
+  .market-slide-compact .lg-lock-40 {
+    font-size: 28px !important;
+  }
+  .market-slide-compact .lg-lock-18 {
+    font-size: 13px !important;
+  }
+
+  .market-slide-compact .market-highlight-card {
+    padding: 0.375rem 0.625rem !important;
+  }
+
+  .market-slide-compact .market-highlight-card .icon-box {
+    height: 1.5rem !important;
+    width: 1.5rem !important;
+  }
+
+  .market-slide-compact .market-highlight-card .icon-box svg {
+    height: 0.75rem !important;
+    width: 0.75rem !important;
+  }
+
+  .market-slide-compact .market-stat-card {
+    padding: 0.5rem 0.625rem !important;
+  }
+
+  .market-slide-compact .market-stat-card svg {
+    width: 0.875rem !important;
+    height: 0.875rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+}

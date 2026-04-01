@@ -22,7 +22,7 @@ export function MarketSlide({ total }: { total: number }) {
 
   return (
     <SlideLayout bgImage={marketBg} overlay="darker" slideNumber={2} totalSlides={total}>
-      <div className="w-full max-w-6xl mx-auto flex flex-col items-start text-left gap-2 sm:gap-4 md:gap-5 lg:gap-4">
+      <div className="market-slide-compact w-full max-w-6xl mx-auto flex flex-col items-start text-left gap-2 sm:gap-4 md:gap-5 lg:gap-4">
         <SlideSubtitle>{m.subtitle}</SlideSubtitle>
         <SlideTitle>
           <span style={{ fontWeight: 700, fontSize: "1.3em" }}>{m.titleBold}</span>
@@ -37,12 +37,12 @@ export function MarketSlide({ total }: { total: number }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
           style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.8 }}
-          className="text-white/70 w-full max-w-2xl text-[12px] lg-lock-22"
+          className="market-body text-white/70 w-full max-w-2xl text-[12px] lg-lock-22"
         >
           {m.body}
         </motion.p>
 
-        <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 mt-1 sm:mt-2">
+        <div className="market-highlight-grid w-full grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 mt-1 sm:mt-2">
           {m.highlights.map((item, idx) => {
             const Icon = highlightIcons[idx];
             return (
@@ -51,9 +51,9 @@ export function MarketSlide({ total }: { total: number }) {
                 initial={{ opacity: 0, x: -12 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.55, delay: 0.55 + idx * 0.07 }}
-                className="group flex gap-3 sm:gap-3.5 rounded-lg border border-white/10 border-l-[3px] border-l-[#C9A96E] bg-white/[0.04] p-3 sm:p-3.5 pl-3 sm:pl-4 backdrop-blur-sm"
+                className="market-highlight-card group flex gap-3 sm:gap-3.5 rounded-lg border border-white/10 border-l-[3px] border-l-[#C9A96E] bg-white/[0.04] p-3 sm:p-3.5 pl-3 sm:pl-4 backdrop-blur-sm"
               >
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-[#C9A96E]/35 bg-[#C9A96E]/10">
+                <div className="icon-box flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-[#C9A96E]/35 bg-[#C9A96E]/10">
                   <Icon className="h-4 w-4 text-[#C9A96E]" strokeWidth={1.75} />
                 </div>
                 <div className="min-w-0 flex-1 text-left">
@@ -75,7 +75,7 @@ export function MarketSlide({ total }: { total: number }) {
           })}
         </div>
 
-        <div className="grid w-full grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 md:gap-6 lg:gap-8 mt-2 sm:mt-3">
+        <div className="market-stat-row grid w-full grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 md:gap-6 lg:gap-8 mt-2 sm:mt-3">
           {m.stats.map((stat, idx) => {
             const Icon = statIcons[idx];
             const delay = 0.6 + idx * 0.1;
@@ -85,7 +85,7 @@ export function MarketSlide({ total }: { total: number }) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay }}
-                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-3 sm:p-4 md:p-6 text-left"
+                className="market-stat-card bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-3 sm:p-4 md:p-6 text-left"
               >
                 <Icon className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-[#C9A96E] mb-2 sm:mb-3" />
                 <div

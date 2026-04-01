@@ -2,3 +2,8 @@
 @import './tailwind.css';
 @import './theme.css';
 @import './desktop-lock.css';
+@import './market-slide-short-desktop.css';
+@import './location-map-slide-short-desktop.css';
+@import './collection-slide-short-desktop.css';
+@import './financial-slide-short-desktop.css';
+@import './payment-slide-short-desktop.css';

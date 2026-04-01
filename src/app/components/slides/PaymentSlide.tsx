@@ -10,12 +10,12 @@ export function PaymentSlide({ total }: { total: number }) {
 
   return (
     <SlideLayout bgImage={paymentBg} overlay="darker" slideNumber={13} totalSlides={total}>
-      <div className="w-full max-w-5xl mx-auto flex flex-col items-center text-center gap-2 sm:gap-3 lg:gap-1.5">
+      <div className="payment-slide-compact w-full max-w-5xl mx-auto flex flex-col items-center text-center gap-2 sm:gap-3 lg:gap-1.5">
         <SlideSubtitle>{p.subtitle}</SlideSubtitle>
         <SlideTitle>
           {p.titleLine1}
           <br />
-          <span className="italic text-[#C9A96E] text-[18px] lg:text-[44px]">{p.titleAccent}</span>
+          <span className="payment-title-accent italic text-[#C9A96E] text-[18px] lg:text-[44px]">{p.titleAccent}</span>
         </SlideTitle>
         <GoldDivider />
 
@@ -23,9 +23,9 @@ export function PaymentSlide({ total }: { total: number }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="w-full grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 lg:gap-4 mt-1 lg:mt-0 max-w-5xl mx-auto"
+          className="payment-cards-grid w-full grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 lg:gap-4 mt-1 lg:mt-0 max-w-5xl mx-auto"
         >
-          <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 pt-6 sm:p-5 sm:pt-7 lg:p-3 lg:pt-5 flex flex-col items-center text-center gap-1.5 sm:gap-2 lg:gap-1.5">
+          <div className="payment-card payment-card--step1 relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 pt-6 sm:p-5 sm:pt-7 lg:p-3 lg:pt-5 flex flex-col items-center text-center gap-1.5 sm:gap-2 lg:gap-1.5">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
               <span
                 style={{ fontFamily: "'Inter', sans-serif" }}
@@ -34,12 +34,12 @@ export function PaymentSlide({ total }: { total: number }) {
                 {p.step1}
               </span>
             </div>
-            <div className="flex items-center gap-3 lg:gap-2">
+            <div className="payment-step-row flex items-center gap-3 lg:gap-2">
               <div
-                className="w-12 h-12 sm:w-14 sm:h-14 lg:w-10 lg:h-10 rounded-full flex items-center justify-center shrink-0"
+                className="payment-step-icon w-12 h-12 sm:w-14 sm:h-14 lg:w-10 lg:h-10 rounded-full flex items-center justify-center shrink-0"
                 style={{ backgroundColor: "#7DCEA015", border: "1px solid #7DCEA040" }}
               >
-                <Home className="w-5 h-5 sm:w-6 sm:h-6 lg:w-4.5 lg:h-4.5 text-[#7DCEA0]" />
+                <Home className="payment-step-icon-svg w-5 h-5 sm:w-6 sm:h-6 lg:w-4.5 lg:h-4.5 text-[#7DCEA0]" />
               </div>
               <div className="text-left">
                 <div
@@ -62,11 +62,11 @@ export function PaymentSlide({ total }: { total: number }) {
             >
               {p.step1Note}
             </p>
-            <div className="flex flex-col gap-1 lg:gap-0.5 w-full">
+            <div className="payment-step1-bullets flex flex-col gap-1 lg:gap-0.5 w-full">
               {p.step1Bullets.map((d, j) => (
                 <div
                   key={j}
-                  className="flex items-center gap-2 lg:gap-1.5 bg-white/5 rounded-lg px-3 py-1.5 lg:py-1"
+                  className="payment-bullet-row flex items-center gap-2 lg:gap-1.5 bg-white/5 rounded-lg px-3 py-1.5 lg:py-1"
                 >
                   <div className="w-1.5 h-1.5 lg:w-1 lg:h-1 rounded-full bg-[#C9A96E] shrink-0" />
                   <span
@@ -84,7 +84,7 @@ export function PaymentSlide({ total }: { total: number }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.65 }}
-            className="relative bg-white/5 backdrop-blur-sm border border-[#C9A96E]/20 rounded-xl p-4 pt-6 sm:p-5 sm:pt-7 lg:p-3 lg:pt-5 flex flex-col items-center justify-center text-center gap-1.5 sm:gap-2 lg:gap-1.5"
+            className="payment-card payment-card--step2 relative bg-white/5 backdrop-blur-sm border border-[#C9A96E]/20 rounded-xl p-4 pt-6 sm:p-5 sm:pt-7 lg:p-3 lg:pt-5 flex flex-col items-center justify-center text-center gap-1.5 sm:gap-2 lg:gap-1.5"
           >
             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
               <span
@@ -94,12 +94,12 @@ export function PaymentSlide({ total }: { total: number }) {
                 {p.step2}
               </span>
             </div>
-            <div className="flex items-center gap-3 lg:gap-2">
+            <div className="payment-step-row flex items-center gap-3 lg:gap-2">
               <div
-                className="w-12 h-12 sm:w-14 sm:h-14 lg:w-10 lg:h-10 rounded-full flex items-center justify-center shrink-0"
+                className="payment-step-icon w-12 h-12 sm:w-14 sm:h-14 lg:w-10 lg:h-10 rounded-full flex items-center justify-center shrink-0"
                 style={{ backgroundColor: "#C9A96E15", border: "1px solid #C9A96E40" }}
               >
-                <CalendarClock className="w-5 h-5 sm:w-6 sm:h-6 lg:w-4.5 lg:h-4.5 text-[#C9A96E]" />
+                <CalendarClock className="payment-step-icon-svg w-5 h-5 sm:w-6 sm:h-6 lg:w-4.5 lg:h-4.5 text-[#C9A96E]" />
               </div>
               <div className="text-left">
                 <div
@@ -129,10 +129,10 @@ export function PaymentSlide({ total }: { total: number }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="w-full"
+          className="payment-installments-wrap w-full"
         >
-          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-3 sm:p-4 lg:p-3">
-            <div className="flex items-center gap-2 mb-2 sm:mb-3 lg:mb-1.5">
+          <div className="payment-installments-card bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-3 sm:p-4 lg:p-3">
+            <div className="payment-installments-header flex items-center gap-2 mb-2 sm:mb-3 lg:mb-1.5">
               <div className="flex-1 h-[1px] bg-white/10" />
               <span
                 style={{ fontFamily: "'Inter', sans-serif" }}
@@ -142,14 +142,14 @@ export function PaymentSlide({ total }: { total: number }) {
               </span>
               <div className="flex-1 h-[1px] bg-white/10" />
             </div>
-            <div className="grid grid-cols-3 gap-1.5 sm:gap-2 lg:gap-2">
+            <div className="payment-installments-grid grid grid-cols-3 gap-1.5 sm:gap-2 lg:gap-2">
               {p.installments.map((label, i) => (
                 <motion.div
                   key={label}
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.3, delay: 0.9 + i * 0.04 }}
-                  className="bg-white/5 border border-white/8 rounded-lg p-2.5 sm:p-3 lg:p-2 flex flex-col items-center justify-center gap-0.5 sm:gap-1 lg:gap-0.5"
+                  className="payment-installment-cell bg-white/5 border border-white/8 rounded-lg p-2.5 sm:p-3 lg:p-2 flex flex-col items-center justify-center gap-0.5 sm:gap-1 lg:gap-0.5"
                 >
                   <span
                     style={{ fontFamily: "'Playfair Display', serif" }}
@@ -169,14 +169,14 @@ export function PaymentSlide({ total }: { total: number }) {
           </div>
         </motion.div>
 
-        <div className="w-full flex flex-col items-center gap-1.5 sm:gap-2 lg:gap-1">
+        <div className="payment-footer w-full flex flex-col items-center gap-1.5 sm:gap-2 lg:gap-1">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.3 }}
-            className="w-full max-w-4xl bg-[#2D6A4F]/10 backdrop-blur-sm border border-[#2D6A4F]/25 rounded-lg p-2.5 sm:p-3 lg:p-2 flex items-center justify-center gap-2 lg:gap-1.5"
+            className="payment-risk-banner w-full max-w-4xl bg-[#2D6A4F]/10 backdrop-blur-sm border border-[#2D6A4F]/25 rounded-lg p-2.5 sm:p-3 lg:p-2 flex items-center justify-center gap-2 lg:gap-1.5"
           >
-            <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5 lg:w-3.5 lg:h-3.5 text-[#2D6A4F] shrink-0" />
+            <ShieldCheck className="payment-risk-icon w-4 h-4 sm:w-5 sm:h-5 lg:w-3.5 lg:h-3.5 text-[#2D6A4F] shrink-0" />
             <span
               style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.08em" }}
               className="text-[#2D6A4F] uppercase lg-lock-20 text-[10px]"

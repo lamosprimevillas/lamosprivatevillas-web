@@ -14,7 +14,7 @@ export function FinancialSlide({ total }: { total: number }) {
 
   return (
     <SlideLayout bgImage={financialBg} overlay="darker" slideNumber={11} totalSlides={total}>
-      <div className="w-full max-w-6xl mx-auto flex flex-col items-center text-center gap-2 sm:gap-3 md:gap-4 lg:gap-2.5">
+      <div className="financial-slide-compact w-full max-w-6xl mx-auto flex flex-col items-center text-center gap-2 sm:gap-3 md:gap-4 lg:gap-2.5">
         <SlideSubtitle>{f.subtitle}</SlideSubtitle>
         <SlideTitle>
           {f.titleBefore}
@@ -26,11 +26,11 @@ export function FinancialSlide({ total }: { total: number }) {
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="w-full max-w-3xl"
+          className="financial-table-wrap w-full max-w-3xl"
         >
-          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden">
+          <div className="financial-table-card bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden">
             <div
-              className="grid bg-[#C9A96E]/10 border-b border-white/10"
+              className="financial-table-grid grid bg-[#C9A96E]/10 border-b border-white/10"
               style={{ gridTemplateColumns: FIN_TABLE_COLS }}
             >
               {f.tableHeaders.map((h, i) => (
@@ -49,7 +49,7 @@ export function FinancialSlide({ total }: { total: number }) {
             {f.villaRows.map((row, idx) => (
               <div
                 key={row.name}
-                className={`grid ${idx < 2 ? "border-b border-white/5" : ""}`}
+                className={`financial-table-grid grid ${idx < 2 ? "border-b border-white/5" : ""}`}
                 style={{ gridTemplateColumns: FIN_TABLE_COLS }}
               >
                 <div className="p-1.5 sm:p-2.5 md:p-3 lg:p-2.5 flex items-center gap-1 min-w-0">
@@ -103,12 +103,12 @@ export function FinancialSlide({ total }: { total: number }) {
           </div>
         </motion.div>
 
-        <div className="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 lg:gap-4">
+        <div className="financial-bottom-row w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 lg:gap-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.7 }}
-            className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-3 sm:p-4 md:p-5 lg:p-4"
+            className="financial-card-expenses bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-3 sm:p-4 md:p-5 lg:p-4"
           >
             <div className="flex items-center gap-2 mb-2 sm:mb-3 lg:mb-2">
               <MinusCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-4 lg:h-4 text-red-400/70" />
@@ -119,7 +119,7 @@ export function FinancialSlide({ total }: { total: number }) {
                 {f.expensesTitle}
               </span>
             </div>
-            <div className="flex flex-col gap-1.5 sm:gap-2 lg:gap-1.5">
+            <div className="financial-expense-list flex flex-col gap-1.5 sm:gap-2 lg:gap-1.5">
               {f.expenseLabels.map((label) => (
                 <div key={label} className="flex items-center justify-between">
                   <span
@@ -156,7 +156,7 @@ export function FinancialSlide({ total }: { total: number }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.85 }}
-            className="bg-[#2D6A4F]/10 backdrop-blur-sm border border-[#2D6A4F]/30 rounded-xl p-3 sm:p-4 md:p-5 lg:p-4 flex flex-col justify-center"
+            className="financial-card-net bg-[#2D6A4F]/10 backdrop-blur-sm border border-[#2D6A4F]/30 rounded-xl p-3 sm:p-4 md:p-5 lg:p-4 flex flex-col justify-center"
           >
             <div className="flex items-center gap-2 mb-2 sm:mb-3 lg:mb-2">
               <BarChart3 className="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-4 lg:h-4 text-[#C9A96E]" />
@@ -167,11 +167,11 @@ export function FinancialSlide({ total }: { total: number }) {
                 {f.netIncomeTitle}
               </span>
             </div>
-            <div className="flex flex-col gap-2 sm:gap-3 lg:gap-2">
+            <div className="financial-net-list flex flex-col gap-2 sm:gap-3 lg:gap-2">
               {f.villaRows.map((row) => (
                 <div
                   key={row.name}
-                  className="flex items-center justify-between gap-2 bg-white/5 rounded-lg p-2 sm:p-3 lg:p-2.5"
+                  className="financial-net-row flex items-center justify-between gap-2 bg-white/5 rounded-lg p-2 sm:p-3 lg:p-2.5"
                 >
                   <span
                     style={{ fontFamily: "'Playfair Display', serif" }}
@@ -191,7 +191,7 @@ export function FinancialSlide({ total }: { total: number }) {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-8 lg:gap-8 mt-1">
+        <div className="financial-metrics-row grid grid-cols-3 gap-3 sm:gap-4 md:gap-8 lg:gap-8 mt-1">
           {f.metrics.map((m, i) => {
             const Icon = metricIcons[i];
             return (
