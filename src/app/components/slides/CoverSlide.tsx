@@ -1,7 +1,10 @@
 import { motion } from "motion/react";
 import coverBg from "figma:asset/0ec89edbc1b48cea234b8d4bdae1ab86d23da1fa.png";
+import { useI18n } from "@/i18n/I18nContext";
 
 export function CoverSlide({ total }: { total: number }) {
+  const { t } = useI18n();
+  const c = t.cover;
   return (
     <div className="relative w-full h-full overflow-hidden">
       {/* Background as real <img> for maximum LCP priority */}
@@ -34,7 +37,7 @@ export function CoverSlide({ total }: { total: number }) {
                   style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.4em" }}
                   className="text-[#C9A96E] uppercase text-[15px] lg-lock-22"
                 >
-                  Özel Yatırım Fırsatı
+                  {c.eyebrow}
                 </span>
               </motion.div>
 
@@ -63,7 +66,7 @@ export function CoverSlide({ total }: { total: number }) {
                   style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.2em" }}
                   className="text-white/60 uppercase lg-lock-18 text-[13px]"
                 >
-                  Sayan, Ubud &mdash; Bali, Endonezya
+                  {c.location}
                 </span>
                 <div className="w-6 sm:w-12 h-[1px] bg-white/30" />
               </motion.div>
@@ -76,9 +79,9 @@ export function CoverSlide({ total }: { total: number }) {
                 className="flex items-center gap-3 sm:gap-4"
               >
                 {[
-                  { text: "7 Villa" },
-                  { text: "2+1 - 3+1", accent: true },
-                  { text: "Özel Havuzlu" },
+                  { text: c.pill1 },
+                  { text: c.pill2, accent: true },
+                  { text: c.pill3 },
                 ].map((item) => (
                   <div
                     key={item.text}
@@ -114,8 +117,7 @@ export function CoverSlide({ total }: { total: number }) {
                   style={{ fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.7 }}
                   className="text-white/50 italic text-[15px] lg:text-[34px] mx-[2px] my-[0px] p-[0px]"
                 >
-                  Dünyanın En Güçlü Turizm Destinasyonlarından Birinde
-                  7 Özel Tropikal Rezidans
+                  {c.tagline}
                 </p>
               </motion.div>
 

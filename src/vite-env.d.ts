@@ -4,6 +4,7 @@ interface ImportMetaEnv {
   readonly VITE_CONSTRUCTION_VIDEO_EMBED?: string;
   readonly VITE_ARCHITECTURE_VIDEO_EMBED?: string;
   readonly VITE_REFERENCE_VIDEO_EMBED?: string;
+  readonly VITE_GALLERY_VIDEO_EMBED?: string;
 }
 
 interface ImportMeta {
@@ -11,6 +12,16 @@ interface ImportMeta {
 }
 
 declare module "*.webp" {
+  const src: string;
+  export default src;
+}
+
+declare module "*.jpeg" {
+  const src: string;
+  export default src;
+}
+
+declare module "*.jpg" {
   const src: string;
   export default src;
 }

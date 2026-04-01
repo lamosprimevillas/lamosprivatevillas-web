@@ -3,3 +3,8 @@ dist
 .vite
 *.local
 .DS_Store
+
+# Yerel sırlar — Vercel’de Environment Variables kullanın
+.env
+.env.local
+.env.*.local

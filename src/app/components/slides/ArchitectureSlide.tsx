@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { SlideLayout, SlideTitle, SlideSubtitle, GoldDivider } from "../SlideLayout";
 import { PremiumVideoFrame } from "../PremiumVideoFrame";
 import architectureBg from "figma:asset/ed8f29a915f28aad1fb488874529396cf81f3f89.png";
+import { useI18n } from "@/i18n/I18nContext";
 
 const architectureVideoEmbed =
   typeof import.meta.env.VITE_ARCHITECTURE_VIDEO_EMBED === "string" &&
@@ -9,17 +10,12 @@ const architectureVideoEmbed =
     ? import.meta.env.VITE_ARCHITECTURE_VIDEO_EMBED.trim()
     : undefined;
 
-const details = [
-  { title: "Çelik Yapı", desc: "Uzun ömürlü, dayanıklı çelik yapı sistemi" },
-  { title: "Yerden Tavana Cam", desc: "Panoramik orman manzaraları" },
-  { title: "Yüksek Tavanlar", desc: "Ferah, havadar tropikal yaşam alanları" },
-  { title: "Modern Tropikal", desc: "Çağdaş tasarım Bali sıcaklığıyla buluşuyor" },
-];
-
 export function ArchitectureSlide({ total }: { total: number }) {
+  const { t } = useI18n();
+  const ar = t.slides.architecture;
+
   return (
-    <SlideLayout bgImage={architectureBg} overlay="right-dark" slideNumber={6} totalSlides={total}>
-      {/* lg: video | metin eşit genişlik, yan yana sığacak şekilde */}
+    <SlideLayout bgImage={architectureBg} overlay="right-dark" slideNumber={7} totalSlides={total}>
       <div className="w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 lg:gap-6 lg:items-start">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -28,14 +24,14 @@ export function ArchitectureSlide({ total }: { total: number }) {
           className="w-full min-w-0 order-2 lg:order-1"
         >
           <PremiumVideoFrame
+            aspectVariant="9:16"
             embedUrl={architectureVideoEmbed}
-            eyebrow="Mimari tur"
-            title="Villa ve çevre"
-            emptyHint="Mimari tanıtım videosu yakında"
+            eyebrow={ar.videoEyebrow}
+            title={ar.videoTitle}
+            emptyHint={ar.videoEmpty}
           />
         </motion.div>
 
-        {/* Sağ: daha küçük tipografi, hafif sağa kaydırılmış */}
         <div
           className={[
             "flex min-h-0 w-full min-w-0 flex-col",
@@ -45,14 +41,14 @@ export function ArchitectureSlide({ total }: { total: number }) {
           ].join(" ")}
         >
           <div className="[&_p]:text-[9px] sm:[&_p]:text-[10px] lg:[&_p]:text-[8px] lg:[&_p]:tracking-[0.14em]">
-            <SlideSubtitle>Mimari Vizyon</SlideSubtitle>
+            <SlideSubtitle>{ar.subtitle}</SlideSubtitle>
           </div>
           <div className="[&_h1]:text-[19px] sm:[&_h1]:text-[22px] lg:[&_h1]:text-[16px] lg:[&_h1]:leading-[1.12]">
             <SlideTitle>
-              Modern Tropikal
+              {ar.titleLine1}
               <br />
               <span className="italic text-[#C9A96E] text-[20px] sm:text-[24px] lg:text-[17px] lg-lock-64">
-                Çelik Mimari
+                {ar.titleAccent}
               </span>
             </SlideTitle>
           </div>
@@ -65,13 +61,11 @@ export function ArchitectureSlide({ total }: { total: number }) {
             style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.55 }}
             className="text-white/70 w-full max-w-none text-[11px] lg:max-w-none lg:text-[9px] lg:leading-relaxed lg-lock-18"
           >
-            Modern tasarım, dayanıklı çelik yapı sistemiyle tropikal mimariyle buluşuyor.
-            Geniş cam açıklıkları ve yüksek tavanlar lüks iç mekanları nefes kesici
-            orman manzaralarıyla bütünleştiriyor.
+            {ar.body}
           </motion.p>
 
           <div className="mt-1 grid grid-cols-2 gap-2 sm:gap-4 lg:mt-0.5 lg:gap-x-2 lg:gap-y-1.5">
-            {details.map((d, i) => (
+            {ar.details.map((d, i) => (
               <motion.div
                 key={d.title}
                 initial={{ opacity: 0, y: 15 }}

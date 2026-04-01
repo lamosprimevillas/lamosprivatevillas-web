@@ -4,6 +4,7 @@ import { CoverSlide } from "./slides/CoverSlide";
 import { MarketSlide } from "./slides/MarketSlide";
 import { BaliLifestyleSlide } from "./slides/BaliLifestyleSlide";
 import { LocationMapSlide } from "./slides/LocationMapSlide";
+import { GalleryVideoSlide } from "./slides/GalleryVideoSlide";
 import { CollectionSlide } from "./slides/CollectionSlide";
 import { ArchitectureSlide } from "./slides/ArchitectureSlide";
 import { MasterPlanSlide } from "./slides/MasterPlanSlide";
@@ -15,6 +16,7 @@ import { PaymentSlide } from "./slides/PaymentSlide";
 import { ConstructionSlide } from "./slides/ConstructionSlide";
 import { AboutUsSlide } from "./slides/AboutUsSlide";
 import { ContactSlide } from "./slides/ContactSlide";
+import { ProjectGallerySection } from "./sections/ProjectGallerySection";
 import { ReferenceProjectSection } from "./sections/ReferenceProjectSection";
 import { ApplicationFormSection } from "./sections/ApplicationFormSection";
 import { useSequentialPreload } from "../hooks/useSequentialPreload";
@@ -23,28 +25,30 @@ import marketBg from "figma:asset/c9f4663867d5a9406c20f613231e5563eb38097e.png";
 import baliBg from "figma:asset/8629ca25f7da3679368f202246d1cede8739f913.png";
 import locationMapBg from "figma:asset/5ba4151e9d82f2b08dc11dcbf7c09f1f4934db04.png";
 
-const TOTAL = 15;
+const TOTAL = 16;
 
 function LazySection({
   children,
   id,
   className = "",
-  rootMargin = "0px 0px 2000px 0px",
+  rootMargin = "160px 0px 280px 0px",
 }: {
   children: ReactNode;
   id?: string;
   className?: string;
   rootMargin?: string;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLElement | null>(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { rootMargin }
+      ([entry]) => {
+        if (entry.isIntersecting) setVisible(true);
+      },
+      { rootMargin, threshold: 0 }
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -103,64 +107,73 @@ export function LandingPage() {
         <BaliLifestyleSlide total={TOTAL} />
       </EagerSection>
 
-      {/* 5+ : Lazy with generous rootMargin */}
-      <SlideSection rootMargin="0px 0px 2000px 0px">
+      {/* 5+ : Lazy — görünürken mount, görünmezken unmount (DOM + animasyon yükü sınırlı kalır) */}
+      <SlideSection>
         <LocationMapSlide total={TOTAL} />
       </SlideSection>
 
-      <SlideSection rootMargin="0px 0px 2000px 0px">
+      <SlideSection>
+        <GalleryVideoSlide total={TOTAL} />
+      </SlideSection>
+
+      <SlideSection>
         <CollectionSlide total={TOTAL} />
       </SlideSection>
 
-      <SlideSection rootMargin="0px 0px 2000px 0px">
+      <SlideSection>
         <ArchitectureSlide total={TOTAL} />
       </SlideSection>
 
-      <SlideSection rootMargin="0px 0px 2000px 0px">
+      <SlideSection>
         <MasterPlanSlide total={TOTAL} />
       </SlideSection>
 
-      <SlideSection rootMargin="0px 0px 2000px 0px">
+      <SlideSection>
         <LegalSlide total={TOTAL} />
       </SlideSection>
 
-      <SlideSection rootMargin="0px 0px 2000px 0px">
+      <SlideSection>
         <OwnershipSlide total={TOTAL} />
       </SlideSection>
 
-      <SlideSection rootMargin="0px 0px 2000px 0px">
+      <SlideSection>
         <FinancialSlide total={TOTAL} />
       </SlideSection>
 
-      <SlideSection rootMargin="0px 0px 2000px 0px">
+      <SlideSection>
         <ExitStrategySlide total={TOTAL} />
       </SlideSection>
 
-      <SlideSection rootMargin="0px 0px 2000px 0px">
+      <SlideSection>
         <PaymentSlide total={TOTAL} />
       </SlideSection>
 
-      <SlideSection rootMargin="0px 0px 2000px 0px">
+      <SlideSection>
         <ConstructionSlide total={TOTAL} />
       </SlideSection>
 
+      {/* Proje galerisi — foto & video */}
+      <LazySection id="proje-galerisi">
+        <ProjectGallerySection />
+      </LazySection>
+
       {/* Hakkımızda */}
-      <SlideSection id="hakkimizda" rootMargin="0px 0px 2000px 0px">
+      <SlideSection id="hakkimizda">
         <AboutUsSlide total={TOTAL} />
       </SlideSection>
 
       {/* Referans Projemiz */}
-      <LazySection id="referans" rootMargin="0px 0px 2000px 0px">
+      <LazySection id="referans">
         <ReferenceProjectSection />
       </LazySection>
 
       {/* Başvuru Formu */}
-      <LazySection id="basvuru" rootMargin="0px 0px 2000px 0px">
+      <LazySection id="basvuru">
         <ApplicationFormSection />
       </LazySection>
 
       {/* İletişim */}
-      <SlideSection id="iletisim" rootMargin="0px 0px 2000px 0px">
+      <SlideSection id="iletisim">
         <ContactSlide total={TOTAL} />
       </SlideSection>
     </div>

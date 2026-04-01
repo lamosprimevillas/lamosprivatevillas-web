@@ -8,6 +8,7 @@ import { CoverSlide } from "./slides/CoverSlide";
 import { MarketSlide } from "./slides/MarketSlide";
 import { BaliLifestyleSlide } from "./slides/BaliLifestyleSlide";
 import { LocationMapSlide } from "./slides/LocationMapSlide";
+import { GalleryVideoSlide } from "./slides/GalleryVideoSlide";
 import { CollectionSlide } from "./slides/CollectionSlide";
 import { ArchitectureSlide } from "./slides/ArchitectureSlide";
 import { MasterPlanSlide } from "./slides/MasterPlanSlide";
@@ -20,8 +21,9 @@ import { ConstructionSlide } from "./slides/ConstructionSlide";
 import { AboutUsSlide } from "./slides/AboutUsSlide";
 import { ContactSlide } from "./slides/ContactSlide";
 import { PaymentPricingSlide } from "./slides/PaymentPricingSlide";
+import { useI18n } from "@/i18n/I18nContext";
 
-const TOTAL = 15;
+const TOTAL = 16;
 const SLIDE_W = 1920;
 const SLIDE_H = 1080;
 
@@ -30,6 +32,7 @@ const allSlideComponents = [
   <MarketSlide key="c2" total={TOTAL} />,
   <BaliLifestyleSlide key="c3" total={TOTAL} />,
   <LocationMapSlide key="c4" total={TOTAL} />,
+  <GalleryVideoSlide key="c4b" total={TOTAL} />,
   <CollectionSlide key="c5" total={TOTAL} />,
   <ArchitectureSlide key="c6" total={TOTAL} />,
   <MasterPlanSlide key="c7" total={TOTAL} />,
@@ -40,7 +43,7 @@ const allSlideComponents = [
   <PaymentSlide key="c12" total={TOTAL} />,
   <ConstructionSlide key="c13" total={TOTAL} />,
   <AboutUsSlide key="c14" total={TOTAL} />,
-  <ContactSlide key="c15" total={TOTAL} />,
+  <ContactSlide key="c16" total={TOTAL} />,
 ];
 
 // Financial (slide 10) + Pricing page slides
@@ -98,6 +101,8 @@ function applyOnClone(clonedDoc: Document) {
 }
 
 export function PdfExporter() {
+  const { t } = useI18n();
+  const pdf = t.pdf;
   const [exporting, setExporting] = useState(false);
   const [progress, setProgress] = useState(0);
   const [currentSlideLabel, setCurrentSlideLabel] = useState("");
@@ -127,7 +132,7 @@ export function PdfExporter() {
       setProgress(0);
       setDone(false);
       setDonePartial(false);
-      setCurrentSlideLabel("Slide'lar hazırlanıyor...");
+      setCurrentSlideLabel(pdf.preparingSlides);
       exportMetaRef.current = { filename, slideCount: slides.length };
 
       setRenderSlides(slides);
@@ -136,7 +141,7 @@ export function PdfExporter() {
         resolveRenderRef.current = resolve;
       });
 
-      setCurrentSlideLabel("Görseller yükleniyor...");
+      setCurrentSlideLabel(pdf.loadingAssets);
       await new Promise((r) => setTimeout(r, 2000));
 
       const container = containerRef.current;
@@ -162,7 +167,7 @@ export function PdfExporter() {
 
       for (let i = 0; i < total; i++) {
         const el = slideElements[i] as HTMLElement;
-        setCurrentSlideLabel(`Slide ${i + 1} / ${total} yakalanıyor...`);
+        setCurrentSlideLabel(pdf.capturing(i + 1, total));
         setProgress((i / total) * 100);
 
         try {
@@ -186,13 +191,13 @@ export function PdfExporter() {
 
           pdf.addImage(imgData, "JPEG", 0, 0, SLIDE_W, SLIDE_H);
         } catch (err) {
-          console.error(`Slide ${i + 1} yakalanamadı:`, err);
+          console.error(pdf.captureError(i + 1), err);
         }
 
         setProgress(((i + 1) / total) * 100);
       }
 
-      setCurrentSlideLabel("PDF oluşturuluyor...");
+      setCurrentSlideLabel(pdf.buildingPdf);
       pdf.save(filename);
 
       setExporting(false);
@@ -212,7 +217,7 @@ export function PdfExporter() {
         }, 3000);
       }
     },
-    []
+    [pdf]
   );
 
   const exportFull = useCallback(() => {
@@ -232,7 +237,7 @@ export function PdfExporter() {
         onClick={exportFull}
         disabled={exporting}
         className="absolute top-3 sm:top-6 md:top-8 lg:top-6 right-16 sm:right-24 md:right-32 z-50 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white/50 hover:text-[#C9A96E] hover:border-[#C9A96E]/30 transition-all duration-300 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
-        title="Tüm sunumu PDF olarak indir"
+        title={pdf.downloadFullTitle}
       >
         {exporting && !donePartial ? (
           <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -245,7 +250,7 @@ export function PdfExporter() {
           style={{ fontFamily: "'Inter', sans-serif" }}
           className="text-[10px] sm:text-[11px] uppercase tracking-wider hidden sm:inline"
         >
-          {done ? "Tamamlandı!" : "PDF İndir"}
+          {done ? pdf.done : pdf.downloadPdf}
         </span>
       </button>
 
@@ -254,7 +259,7 @@ export function PdfExporter() {
         onClick={exportFinancialPricing}
         disabled={exporting}
         className="absolute top-3 sm:top-6 md:top-8 lg:top-6 right-32 sm:right-48 md:right-60 z-50 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white/50 hover:text-[#7DCEA0] hover:border-[#7DCEA0]/30 transition-all duration-300 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
-        title="Finansal + Fiyat PDF indir"
+        title={pdf.downloadPricingTitle}
       >
         {exporting && !done ? (
           <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -267,7 +272,7 @@ export function PdfExporter() {
           style={{ fontFamily: "'Inter', sans-serif" }}
           className="text-[10px] sm:text-[11px] uppercase tracking-wider hidden sm:inline"
         >
-          {donePartial ? "Tamamlandı!" : "Fiyat PDF"}
+          {donePartial ? pdf.done : pdf.pricingPdf}
         </span>
       </button>
 
@@ -283,7 +288,7 @@ export function PdfExporter() {
                 style={{ fontFamily: "'Playfair Display', serif" }}
                 className="text-white text-xl mb-2"
               >
-                PDF Oluşturuluyor
+                {pdf.buildingHeading}
               </h3>
               <p
                 style={{ fontFamily: "'Inter', sans-serif" }}

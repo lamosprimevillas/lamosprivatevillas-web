@@ -3,8 +3,11 @@ import { useState } from "react";
 import { Send, User, Mail, Phone, MessageSquare, CheckCircle } from "lucide-react";
 
 import bgImage from "@/assets/interior1.webp";
+import { useI18n } from "@/i18n/I18nContext";
 
 export function ApplicationFormSection() {
+  const { t } = useI18n();
+  const a = t.application;
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -46,32 +49,25 @@ export function ApplicationFormSection() {
                 style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.3em" }}
                 className="text-[#C9A96E] uppercase text-sm sm:text-base"
               >
-                Yatırım Fırsatı
+                {a.eyebrow}
               </span>
               <h2
                 style={{ fontFamily: "'Playfair Display', serif", lineHeight: 1.1 }}
                 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
               >
-                Başvuru{" "}
-                <span className="italic text-[#C9A96E]">Formu</span>
+                {a.title}{" "}
+                <span className="italic text-[#C9A96E]">{a.titleItalic}</span>
               </h2>
               <div className="w-16 h-[1px] bg-gradient-to-r from-[#C9A96E] to-transparent" />
               <p
                 style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.8 }}
                 className="text-white/60 max-w-lg text-lg sm:text-xl"
               >
-                Lamos Prime Villas yatırım fırsatı hakkında detaylı bilgi almak,
-                yerinde ziyaret planlamak veya rezervasyon yapmak için formu doldurun.
-                Ekibimiz en kısa sürede sizinle iletişime geçecektir.
+                {a.body}
               </p>
 
               <div className="flex flex-col gap-3 mt-4">
-                {[
-                  "Sınırlı sayıda 7 özel villa",
-                  "Kişiye özel yatırım danışmanlığı",
-                  "Yerinde ziyaret imkanı",
-                  "Esnek ödeme planları",
-                ].map((item, i) => (
+                {a.bullets.map((item, i) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, x: -15 }}
@@ -108,14 +104,13 @@ export function ApplicationFormSection() {
                     style={{ fontFamily: "'Playfair Display', serif" }}
                     className="text-white text-2xl"
                   >
-                    Başvurunuz Alındı
+                    {a.successTitle}
                   </h3>
                   <p
                     style={{ fontFamily: "'Inter', sans-serif" }}
                     className="text-white/50 text-sm max-w-sm"
                   >
-                    Ekibimiz en kısa sürede sizinle iletişime geçecektir.
-                    Lamos Prime Villas ailesine hoş geldiniz.
+                    {a.successBody}
                   </p>
                 </div>
               ) : (
@@ -128,7 +123,7 @@ export function ApplicationFormSection() {
                     <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
                     <input
                       type="text"
-                      placeholder="Adınız Soyadınız"
+                      placeholder={a.namePh}
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -142,7 +137,7 @@ export function ApplicationFormSection() {
                     <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
                     <input
                       type="email"
-                      placeholder="E-posta Adresiniz"
+                      placeholder={a.emailPh}
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -156,7 +151,7 @@ export function ApplicationFormSection() {
                     <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
                     <input
                       type="tel"
-                      placeholder="Telefon Numaranız"
+                      placeholder={a.phonePh}
                       required
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -174,7 +169,7 @@ export function ApplicationFormSection() {
                       formData.budget ? "text-white" : "text-white/30"
                     }`}
                   >
-                    <option value="" className="bg-black text-white/30">Yatırım Bütçeniz</option>
+                    <option value="" className="bg-black text-white/30">{a.budgetPh}</option>
                     <option value="100-150k" className="bg-black text-white">$100.000 – $150.000</option>
                     <option value="150-200k" className="bg-black text-white">$150.000 – $200.000</option>
                     <option value="200-300k" className="bg-black text-white">$200.000 – $300.000</option>
@@ -185,7 +180,7 @@ export function ApplicationFormSection() {
                   <div className="relative">
                     <MessageSquare className="absolute left-4 top-4 w-4 h-4 text-white/30" />
                     <textarea
-                      placeholder="Mesajınız (isteğe bağlı)"
+                      placeholder={a.messagePh}
                       rows={4}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -201,14 +196,14 @@ export function ApplicationFormSection() {
                     style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.05em" }}
                   >
                     <Send className="w-4 h-4" />
-                    Başvuru Gönder
+                    {a.submit}
                   </button>
 
                   <p
                     style={{ fontFamily: "'Inter', sans-serif" }}
                     className="text-white/30 text-xs text-center mt-1"
                   >
-                    Bilgileriniz gizli tutulacak ve sadece yatırım danışmanlığı amacıyla kullanılacaktır.
+                    {a.privacy}
                   </p>
                 </form>
               )}

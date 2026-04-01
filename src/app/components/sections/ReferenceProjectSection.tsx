@@ -5,42 +5,100 @@ import { ChevronLeft, ChevronRight, MapPin, Home, Calendar, Award, X } from "luc
 import { PremiumVideoFrame } from "../PremiumVideoFrame";
 
 import interiorBg from "@/assets/interior2.webp";
-import img1 from "figma:asset/0ec89edbc1b48cea234b8d4bdae1ab86d23da1fa.png";
-import img2 from "figma:asset/5ba4151e9d82f2b08dc11dcbf7c09f1f4934db04.png";
-import img3 from "figma:asset/619e7839cc517646c704b1c88c1df4032b05c437.png";
-import img4 from "figma:asset/824b55987c2a902814d98214f672927f0a231642.png";
-import img5 from "figma:asset/8629ca25f7da3679368f202246d1cede8739f913.png";
-import img6 from "figma:asset/9eba3025a7fb9754e76b817f78453cb939b49ede.png";
-import img7 from "figma:asset/b7c7d443ae2a0ace15ff25de76d18b033bd022df.png";
-import img8 from "figma:asset/c9f4663867d5a9406c20f613231e5563eb38097e.png";
-import img9 from "figma:asset/ed8f29a915f28aad1fb488874529396cf81f3f89.png";
+import referenceVillaHeroImg from "@/assets/Reference_villa.jpeg";
+import {
+  referenceGalleryImages as galleryImagesRaw,
+  getReferenceVideoEmbed,
+} from "@/app/data/referenceGalleryAssets";
+import { useI18n } from "@/i18n/I18nContext";
 
-const galleryImages = [
-  { src: img1, alt: "Villa dış görünüm ve havuz alanı" },
-  { src: img5, alt: "Tropik peyzaj ve bahçe düzenlemesi" },
-  { src: img9, alt: "Modern mimari detaylar" },
-  { src: img3, alt: "Resort alanı ve ortak mekanlar" },
-  { src: img4, alt: "Villa iç mekan tasarımı" },
-  { src: img6, alt: "Yaşam alanları" },
-  { src: img7, alt: "Doğa ile iç içe yapı" },
-  { src: img2, alt: "Çevre ve peyzaj" },
-  { src: img8, alt: "Bali geleneksel dokunuşlar" },
-];
+const referenceVideoEmbed = getReferenceVideoEmbed();
 
-const referenceVideoEmbed =
-  typeof import.meta.env.VITE_REFERENCE_VIDEO_EMBED === "string" &&
-  import.meta.env.VITE_REFERENCE_VIDEO_EMBED.trim() !== ""
-    ? import.meta.env.VITE_REFERENCE_VIDEO_EMBED.trim()
-    : undefined;
+const LIGHTBOX_HERO_INDEX = -1;
 
-const stats = [
-  { icon: Home, value: "3", label: "Villa" },
-  { icon: MapPin, value: "Canggu", label: "Konum" },
-  { icon: Calendar, value: "2025", label: "Tamamlanma" },
-  { icon: Award, value: "Teslim Edildi", label: "Durum" },
-];
+/** Video kartıyla aynı premium çerçeve; 9:16 telefon oranı */
+function ReferencePhonePhotoCard({
+  src,
+  alt,
+  onOpen,
+  eyebrow,
+  title,
+}: {
+  src: string;
+  alt: string;
+  onOpen: () => void;
+  eyebrow: string;
+  title: string;
+}) {
+  return (
+    <div className="relative w-full">
+      <div className="relative rounded-2xl p-[1px] bg-gradient-to-br from-[#C9A96E]/55 via-[#C9A96E]/15 to-white/[0.08] shadow-[0_24px_80px_-12px_rgba(0,0,0,0.85),inset_0_0_0_1px_rgba(201,169,110,0.12)]">
+        <div className="relative rounded-2xl bg-black/90 overflow-hidden ring-1 ring-white/[0.06]">
+          <div
+            className="pointer-events-none absolute top-3 left-3 z-20 h-7 w-7 rounded-tl-md border-t-2 border-l-2 border-[#C9A96E]/70 sm:h-9 sm:w-9"
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute top-3 right-3 z-20 h-7 w-7 rounded-tr-md border-t-2 border-r-2 border-[#C9A96E]/70 sm:h-9 sm:w-9"
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute bottom-3 left-3 z-20 h-7 w-7 rounded-bl-md border-b-2 border-l-2 border-[#C9A96E]/70 sm:h-9 sm:w-9"
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute bottom-3 right-3 z-20 h-7 w-7 rounded-br-md border-b-2 border-r-2 border-[#C9A96E]/70 sm:h-9 sm:w-9"
+            aria-hidden
+          />
+
+          <div className="relative z-10 border-b border-white/[0.07] bg-gradient-to-r from-black/80 via-black/40 to-transparent px-4 py-3 sm:px-5">
+            <p
+              style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.25em" }}
+              className="text-[9px] uppercase tracking-[0.2em] text-[#C9A96E]/90 sm:text-[10px]"
+            >
+              {eyebrow}
+            </p>
+            <p style={{ fontFamily: "'Playfair Display', serif" }} className="text-sm text-white/95 sm:text-base lg:text-lg">
+              {title}
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onClick={onOpen}
+            className="relative block w-full rounded-b-2xl outline-none focus-visible:ring-2 focus-visible:ring-[#C9A96E]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+          >
+            <div className="relative mx-auto aspect-[9/16] w-full max-h-[min(75vh,680px)] max-w-[min(100%,380px)] bg-zinc-950 sm:max-w-[420px]">
+              <img src={src} alt={alt} className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export function ReferenceProjectSection() {
+  const { t } = useI18n();
+  const galleryImages = galleryImagesRaw.map((img, i) => ({
+    ...img,
+    alt: t.gallery.images[i] ?? img.alt,
+  }));
+  const lightboxSlideCount = galleryImages.length + 1;
+
+  const stats = [
+    { icon: Home, value: "3", label: t.reference.stats.villas },
+    { icon: MapPin, value: t.reference.stats.locationValue, label: t.reference.stats.location },
+    { icon: Calendar, value: t.reference.stats.completionValue, label: t.reference.stats.completion },
+    { icon: Award, value: t.reference.stats.statusValue, label: t.reference.stats.status },
+  ];
+
+  const REFERENCE_VILLA_HERO = {
+    src: referenceVillaHeroImg,
+    alt: t.reference.heroPhotoAlt,
+  };
+
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -61,11 +119,21 @@ export function ReferenceProjectSection() {
   };
 
   const lightboxPrev = useCallback(() => {
-    setLightboxIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : galleryImages.length - 1));
+    setLightboxIndex((prev) => {
+      if (prev === null) return null;
+      if (prev === LIGHTBOX_HERO_INDEX) return galleryImages.length - 1;
+      if (prev === 0) return LIGHTBOX_HERO_INDEX;
+      return prev - 1;
+    });
   }, []);
 
   const lightboxNext = useCallback(() => {
-    setLightboxIndex((prev) => (prev !== null && prev < galleryImages.length - 1 ? prev + 1 : 0));
+    setLightboxIndex((prev) => {
+      if (prev === null) return null;
+      if (prev === galleryImages.length - 1) return LIGHTBOX_HERO_INDEX;
+      if (prev === LIGHTBOX_HERO_INDEX) return 0;
+      return prev + 1;
+    });
   }, []);
 
   const closeLightbox = useCallback(() => setLightboxIndex(null), []);
@@ -108,23 +176,21 @@ export function ReferenceProjectSection() {
               style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.3em" }}
               className="text-[#C9A96E] uppercase text-sm sm:text-base"
             >
-              Tamamlanmış Proje
+              {t.reference.eyebrow}
             </span>
             <h2
               style={{ fontFamily: "'Playfair Display', serif", lineHeight: 1.1 }}
               className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
             >
-              Referans{" "}
-              <span className="italic text-[#C9A96E]">Projemiz</span>
+              {t.reference.title}{" "}
+              <span className="italic text-[#C9A96E]">{t.reference.titleItalic}</span>
             </h2>
             <div className="mx-auto h-[1px] w-16 bg-gradient-to-r from-[#C9A96E] to-transparent" />
             <p
               style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.8 }}
               className="max-w-2xl text-base text-white/60 sm:text-2xl"
             >
-              Canggu'da tamamladığımız 3 özel villa projemiz, yatırımcılarımıza güçlü kira
-              getirisi ve değer artışı sağlamaya devam ediyor. 2025 tamamlanma sürecini
-              geride bırakıp Teslim Edildi statüsüne ulaştı.
+              {t.reference.body}
             </p>
           </motion.div>
 
@@ -163,14 +229,28 @@ export function ReferenceProjectSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.65, delay: 0.15 }}
-            className="mx-auto mt-5 w-full max-w-2xl sm:mt-6"
+            className="mx-auto mt-5 w-full max-w-5xl sm:mt-6"
           >
-            <PremiumVideoFrame
-              embedUrl={referenceVideoEmbed}
-              eyebrow="Referans proje"
-              title="Video turu"
-              emptyHint="Proje videosu yakında"
-            />
+            <div className="grid grid-cols-1 items-start justify-items-center gap-8 lg:grid-cols-2 lg:gap-10 lg:items-stretch">
+              <div className="w-full max-w-[420px] justify-self-center">
+                <PremiumVideoFrame
+                  aspectVariant="9:16"
+                  embedUrl={referenceVideoEmbed}
+                  eyebrow={t.reference.videoEyebrow}
+                  title={t.reference.videoTitle}
+                  emptyHint={t.reference.videoEmpty}
+                />
+              </div>
+              <div className="w-full max-w-[420px] justify-self-center">
+                <ReferencePhonePhotoCard
+                  src={REFERENCE_VILLA_HERO.src}
+                  alt={REFERENCE_VILLA_HERO.alt}
+                  eyebrow={t.reference.photoEyebrow}
+                  title={t.reference.photoTitle}
+                  onOpen={() => setLightboxIndex(LIGHTBOX_HERO_INDEX)}
+                />
+              </div>
+            </div>
           </motion.div>
         </div>
 
@@ -180,7 +260,6 @@ export function ReferenceProjectSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          id="galeri"
           className="relative"
         >
           {/* Gallery Label */}
@@ -189,7 +268,7 @@ export function ReferenceProjectSection() {
               style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.15em" }}
               className="text-white/40 uppercase text-sm"
             >
-              Proje Galerisi
+              {t.reference.galleryLabel}
             </span>
             <div className="flex items-center gap-2">
               <button
@@ -307,8 +386,16 @@ export function ReferenceProjectSection() {
               onClick={(e) => e.stopPropagation()}
             >
               <img
-                src={galleryImages[lightboxIndex].src}
-                alt={galleryImages[lightboxIndex].alt}
+                src={
+                  lightboxIndex === LIGHTBOX_HERO_INDEX
+                    ? REFERENCE_VILLA_HERO.src
+                    : galleryImages[lightboxIndex].src
+                }
+                alt={
+                  lightboxIndex === LIGHTBOX_HERO_INDEX
+                    ? REFERENCE_VILLA_HERO.alt
+                    : galleryImages[lightboxIndex].alt
+                }
                 className="max-w-full max-h-[78vh] object-contain rounded-xl"
               />
               <div className="flex items-center gap-3">
@@ -316,10 +403,15 @@ export function ReferenceProjectSection() {
                   style={{ fontFamily: "'Inter', sans-serif" }}
                   className="text-white/70 text-sm"
                 >
-                  {galleryImages[lightboxIndex].alt}
+                  {lightboxIndex === LIGHTBOX_HERO_INDEX
+                    ? REFERENCE_VILLA_HERO.alt
+                    : galleryImages[lightboxIndex].alt}
                 </p>
                 <span className="text-white/30 text-xs">
-                  {lightboxIndex + 1} / {galleryImages.length}
+                  {lightboxIndex === LIGHTBOX_HERO_INDEX
+                    ? 1
+                    : lightboxIndex + 2}{" "}
+                  / {lightboxSlideCount}
                 </span>
               </div>
             </motion.div>

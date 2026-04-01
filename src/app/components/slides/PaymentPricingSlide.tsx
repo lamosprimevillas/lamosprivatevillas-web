@@ -2,6 +2,8 @@ import { motion } from "motion/react";
 import { SlideLayout, SlideTitle, SlideSubtitle, GoldDivider } from "../SlideLayout";
 import { Home, CalendarClock, ShieldCheck } from "lucide-react";
 import paymentBg from "figma:asset/0ec89edbc1b48cea234b8d4bdae1ab86d23da1fa.png";
+import { useI18n } from "@/i18n/I18nContext";
+import type { TranslationTree } from "@/i18n/translations";
 
 interface VillaData {
   name: string;
@@ -27,13 +29,22 @@ const premiumVilla: VillaData = {
   taksit: "$10.833",
 };
 
-const installmentLabels = [
-  "1. Taksit", "2. Taksit", "3. Taksit",
-  "4. Taksit", "5. Taksit", "6. Taksit",
-  "7. Taksit", "8. Taksit", "9. Taksit",
-];
+type PaymentSlice = TranslationTree["slides"]["payment"];
+type PricingPdfSlice = TranslationTree["slides"]["pricingPdf"];
 
-function VillaPricingBlock({ villa, accent, delay }: { villa: VillaData; accent: string; delay: number }) {
+function VillaPricingBlock({
+  villa,
+  accent,
+  delay,
+  p,
+  pp,
+}: {
+  villa: VillaData;
+  accent: string;
+  delay: number;
+  p: PaymentSlice;
+  pp: PricingPdfSlice;
+}) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -41,13 +52,9 @@ function VillaPricingBlock({ villa, accent, delay }: { villa: VillaData; accent:
       transition={{ duration: 0.8, delay }}
       className="flex flex-col gap-3 sm:gap-4 lg:gap-2.5"
     >
-      {/* Villa Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2.5">
-          <div
-            className="w-3 h-3 rounded-full"
-            style={{ backgroundColor: accent }}
-          />
+          <div className="w-3 h-3 rounded-full" style={{ backgroundColor: accent }} />
           <span
             style={{ fontFamily: "'Playfair Display', serif" }}
             className="text-white text-[24px] lg-lock-26"
@@ -65,16 +72,14 @@ function VillaPricingBlock({ villa, accent, delay }: { villa: VillaData; accent:
         </div>
       </div>
 
-      {/* 2 Steps Row */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 lg:gap-3">
-        {/* Adım 1 - Birinci Ödeme */}
         <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 pt-6 sm:p-5 sm:pt-7 lg:p-4 lg:pt-6 flex flex-col items-center text-center gap-1.5 lg:gap-1">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <span
               style={{ fontFamily: "'Inter', sans-serif" }}
               className="bg-black/90 border border-white/15 text-white/50 text-[12px] lg:text-[14px] px-3 py-1 rounded-full uppercase tracking-wider whitespace-nowrap"
             >
-              Adım 1
+              {p.step1}
             </span>
           </div>
           <Home className="w-5 h-5 lg:w-5 lg:h-5" style={{ color: accent }} />
@@ -88,24 +93,26 @@ function VillaPricingBlock({ villa, accent, delay }: { villa: VillaData; accent:
             style={{ fontFamily: "'Playfair Display', serif" }}
             className="text-white text-[22px] lg-lock-24"
           >
-            Birinci Ödeme
+            {p.firstPayment}
           </div>
           <p
             style={{ fontFamily: "'Inter', sans-serif" }}
             className="text-white/40 text-[16px] lg-lock-18"
           >
-            %50 · Arsa devri yapılır
+            {pp.step1Short}
           </p>
         </div>
 
-        {/* Adım 2 - İkinci Ödeme */}
-        <div className="relative bg-white/5 backdrop-blur-sm border rounded-xl p-4 pt-6 sm:p-5 sm:pt-7 lg:p-4 lg:pt-6 flex flex-col items-center text-center gap-1.5 lg:gap-1" style={{ borderColor: `${accent}30` }}>
+        <div
+          className="relative bg-white/5 backdrop-blur-sm border rounded-xl p-4 pt-6 sm:p-5 sm:pt-7 lg:p-4 lg:pt-6 flex flex-col items-center text-center gap-1.5 lg:gap-1"
+          style={{ borderColor: `${accent}30` }}
+        >
           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <span
               style={{ fontFamily: "'Inter', sans-serif" }}
               className="bg-black/90 border border-white/15 text-white/50 text-[12px] lg:text-[14px] px-3 py-1 rounded-full uppercase tracking-wider whitespace-nowrap"
             >
-              Adım 2
+              {p.step2}
             </span>
           </div>
           <CalendarClock className="w-5 h-5 lg:w-5 lg:h-5" style={{ color: accent }} />
@@ -119,18 +126,17 @@ function VillaPricingBlock({ villa, accent, delay }: { villa: VillaData; accent:
             style={{ fontFamily: "'Playfair Display', serif" }}
             className="text-white text-[22px] lg-lock-24"
           >
-            İkinci Ödeme
+            {p.secondPayment}
           </div>
           <p
             style={{ fontFamily: "'Inter', sans-serif" }}
             className="text-white/40 text-[16px] lg-lock-18"
           >
-            %50 · İnşaat yapıldıkça 9 eşit taksit
+            {pp.step2Short}
           </p>
         </div>
       </div>
 
-      {/* 9 Taksit Grid */}
       <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-3 sm:p-4 lg:p-3">
         <div className="flex items-center gap-2 mb-2 lg:mb-1.5">
           <div className="flex-1 h-[1px] bg-white/10" />
@@ -138,12 +144,12 @@ function VillaPricingBlock({ villa, accent, delay }: { villa: VillaData; accent:
             style={{ fontFamily: "'Inter', sans-serif" }}
             className="text-white/40 uppercase tracking-wider text-[14px] lg-lock-20"
           >
-            9 Eşit Taksit
+            {pp.nineInstallments}
           </span>
           <div className="flex-1 h-[1px] bg-white/10" />
         </div>
         <div className="grid grid-cols-3 gap-1.5 sm:gap-2 lg:gap-1.5">
-          {installmentLabels.map((label, i) => (
+          {p.installments.map((label, i) => (
             <motion.div
               key={label}
               initial={{ opacity: 0, scale: 0.9 }}
@@ -172,30 +178,30 @@ function VillaPricingBlock({ villa, accent, delay }: { villa: VillaData; accent:
 }
 
 export function PaymentPricingSlide() {
+  const { t } = useI18n();
+  const p = t.slides.payment;
+  const pp = t.slides.pricingPdf;
+
   return (
     <SlideLayout bgImage={paymentBg} overlay="darker" slideNumber={1} totalSlides={1}>
       <div className="w-full max-w-7xl mx-auto flex flex-col items-center text-center gap-3 sm:gap-4 lg:gap-2">
-        <SlideSubtitle>Detaylı Fiyat Tablosu</SlideSubtitle>
+        <SlideSubtitle>{pp.subtitle}</SlideSubtitle>
         <SlideTitle>
-          Aşamalı Ödeme{" "}
-          <span className="italic text-[#C9A96E]">Fiyatlandırması</span>
+          {pp.titleBefore}{" "}
+          <span className="italic text-[#C9A96E]">{pp.titleAccent}</span>
         </SlideTitle>
         <GoldDivider />
 
-        {/* Two Villa Blocks */}
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6 lg:gap-5 mt-2 lg:mt-1">
-          {/* Prime Villa */}
           <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-4 sm:p-5 lg:p-4">
-            <VillaPricingBlock villa={primeVilla} accent="#C9A96E" delay={0.4} />
+            <VillaPricingBlock villa={primeVilla} accent="#C9A96E" delay={0.4} p={p} pp={pp} />
           </div>
 
-          {/* Premium Villa */}
           <div className="bg-white/[0.03] border border-[#7DCEA0]/20 rounded-2xl p-4 sm:p-5 lg:p-4">
-            <VillaPricingBlock villa={premiumVilla} accent="#7DCEA0" delay={0.6} />
+            <VillaPricingBlock villa={premiumVilla} accent="#7DCEA0" delay={0.6} p={p} pp={pp} />
           </div>
         </div>
 
-        {/* Bottom notes */}
         <div className="w-full flex flex-col items-center gap-1.5 lg:gap-1 mt-2 lg:mt-1">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -208,7 +214,7 @@ export function PaymentPricingSlide() {
               style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.08em" }}
               className="text-[#2D6A4F] uppercase lg-lock-20 font-bold text-[16px]"
             >
-              Böylece risk minimize edilmiş olur
+              {p.riskNote}
             </span>
           </motion.div>
           <motion.div
@@ -221,7 +227,9 @@ export function PaymentPricingSlide() {
             <span
               style={{ fontFamily: "'Inter', sans-serif" }}
               className="text-white/30 text-[16px] lg-lock-22 text-[#ffffffb3]"
-            >Tüm işlemler Noterden Onaylı Sözleşmeler ile güvence altındadır.</span>
+            >
+              {p.notaryNote}
+            </span>
           </motion.div>
         </div>
       </div>

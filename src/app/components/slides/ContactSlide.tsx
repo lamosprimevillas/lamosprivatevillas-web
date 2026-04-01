@@ -2,12 +2,16 @@ import { motion } from "motion/react";
 import { SlideLayout } from "../SlideLayout";
 import { Mail, MapPin, Globe } from "lucide-react";
 import contactBg from "figma:asset/619e7839cc517646c704b1c88c1df4032b05c437.png";
+import { useI18n } from "@/i18n/I18nContext";
 
 export function ContactSlide({ total }: { total: number }) {
+  const { t, locale } = useI18n();
+  const s = t.slides.contactSlide;
+  const loc = t.contact.locationLine;
+
   return (
-    <SlideLayout bgImage={contactBg} overlay="darker" slideNumber={15} totalSlides={total}>
+    <SlideLayout bgImage={contactBg} overlay="darker" slideNumber={16} totalSlides={total}>
       <div className="w-full flex flex-col items-center text-center gap-3 sm:gap-5 md:gap-6 lg:gap-3">
-        {/* Decorative Top */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -19,11 +23,10 @@ export function ContactSlide({ total }: { total: number }) {
             style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.3em" }}
             className="text-[#C9A96E] uppercase text-[11px] lg-lock-20"
           >
-            İletişim ve Kapanış
+            {s.eyebrow}
           </span>
         </motion.div>
 
-        {/* Main Title */}
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -31,9 +34,20 @@ export function ContactSlide({ total }: { total: number }) {
           style={{ fontFamily: "'Playfair Display', serif", lineHeight: 1.1 }}
           className="text-white lg-lock-72 text-[22px]"
         >
-          <span style={{ fontWeight: 700, fontSize: "1.3em" }}>BALİ</span>'de Özel Bir Dünyaya
-          <br />
-          <span className="italic text-[#C9A96E]">Adım Atın</span>
+          {locale === "tr" ? (
+            <>
+              <span style={{ fontWeight: 700, fontSize: "1.3em" }}>{s.titleBold}</span>
+              {s.titleAfterBold}
+              <br />
+              <span className="italic text-[#C9A96E]">{s.titleAccent}</span>
+            </>
+          ) : (
+            <>
+              {s.titleAfterBold}
+              <br />
+              <span className="italic text-[#C9A96E]">{s.titleAccent}</span>
+            </>
+          )}
         </motion.h1>
 
         <motion.p
@@ -43,11 +57,9 @@ export function ContactSlide({ total }: { total: number }) {
           style={{ fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.7 }}
           className="text-white/50 italic max-w-lg text-[14px] lg-lock-28"
         >
-          Sizi bu özel ve sınırlı topluluğun bir parçası olmaya davet ediyoruz.
-          Detaylı bilgi ve yerinde ziyaret için bizimle iletişime geçin.
+          {s.body}
         </motion.p>
 
-        {/* Contact Info */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -58,10 +70,12 @@ export function ContactSlide({ total }: { total: number }) {
             <div className="flex items-center gap-2 sm:gap-3 lg:gap-2.5">
               <Mail className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-[#C9A96E] shrink-0" />
               <a
-                href="mailto:balifamilyworld@gmail.com"
+                href="mailto:lamosprimevillas@gmail.com"
                 style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.05em" }}
                 className="text-white hover:text-[#C9A96E] transition-colors text-[12px] lg-lock-24"
-              >lamosprimevillas@gmail.com</a>
+              >
+                lamosprimevillas@gmail.com
+              </a>
             </div>
 
             <div className="w-full h-[1px] bg-white/10" />
@@ -72,7 +86,7 @@ export function ContactSlide({ total }: { total: number }) {
                 style={{ fontFamily: "'Inter', sans-serif" }}
                 className="text-white/60 text-[11px] lg-lock-20"
               >
-                Sayan, Ubud, Bali, Endonezya
+                {loc}
               </span>
             </div>
 
@@ -88,7 +102,6 @@ export function ContactSlide({ total }: { total: number }) {
           </div>
         </motion.div>
 
-        {/* Tagline */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -100,13 +113,13 @@ export function ContactSlide({ total }: { total: number }) {
             style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.2em" }}
             className="text-white/70 uppercase lg-lock-24 text-[11px]"
           >
-            Lamos Prime Villas &mdash; Sayan, Ubud
+            {s.footerBrand}
           </span>
           <span
             style={{ fontFamily: "'Inter', sans-serif" }}
             className="text-white/70 uppercase lg-lock-20 text-[10px]"
           >
-            Sadece 7 Özel Rezidans
+            {s.footerSub}
           </span>
         </motion.div>
       </div>

@@ -2,16 +2,20 @@ import { motion } from "motion/react";
 import { SlideLayout, SlideTitle, SlideSubtitle, GoldDivider } from "../SlideLayout";
 import { Wallet, ArrowUpRight } from "lucide-react";
 import exitBg from "figma:asset/c9f4663867d5a9406c20f613231e5563eb38097e.png";
+import { useI18n } from "@/i18n/I18nContext";
 
 export function ExitStrategySlide({ total }: { total: number }) {
+  const { t } = useI18n();
+  const e = t.slides.exitStrategy;
+
   return (
-    <SlideLayout bgImage={exitBg} overlay="left-dark" slideNumber={11} totalSlides={total}>
+    <SlideLayout bgImage={exitBg} overlay="left-dark" slideNumber={12} totalSlides={total}>
       <div className="w-full max-w-5xl mx-auto flex flex-col items-center text-center gap-2 sm:gap-4 md:gap-5 lg:gap-2">
-        <SlideSubtitle>Çıkış Stratejisi</SlideSubtitle>
+        <SlideSubtitle>{e.subtitle}</SlideSubtitle>
         <SlideTitle>
-          Çift Kâr:
+          {e.titleLine1}
           <br />
-          <span className="italic text-[#C9A96E]">Kira Geliri ve Değer Artışı</span>
+          <span className="italic text-[#C9A96E]">{e.titleAccent}</span>
         </SlideTitle>
         <GoldDivider />
 
@@ -22,11 +26,9 @@ export function ExitStrategySlide({ total }: { total: number }) {
           style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.8 }}
           className="text-white/60 max-w-xl text-[11px] lg-lock-20"
         >
-          Kısa vadeli yüksek kira gelirine ek olarak, hızla değerlenen bölgesel değer
-          yatırımcılara kârlı bir yeniden satış çıkış fırsatı sunuyor.
+          {e.body}
         </motion.p>
 
-        {/* Growth Visualization */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -34,7 +36,6 @@ export function ExitStrategySlide({ total }: { total: number }) {
           className="max-w-4xl w-full"
         >
           <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-6 md:p-8 lg:p-6">
-            {/* Growth Chart Mockup */}
             <div className="flex items-end gap-1 sm:gap-2 md:gap-3 lg:gap-3 h-24 sm:h-32 md:h-40 lg:h-40 mb-4 sm:mb-6 lg:mb-4">
               {[
                 { h: 25, y: "Y1", v: "$30K" },
@@ -73,7 +74,6 @@ export function ExitStrategySlide({ total }: { total: number }) {
               ))}
             </div>
 
-            {/* Dual Profit Cards */}
             <div className="grid grid-cols-2 gap-2 sm:gap-4 lg:gap-4 mt-6 sm:mt-8 lg:mt-5">
               <div className="flex items-center gap-2 sm:gap-4 lg:gap-3 bg-[#2D6A4F]/10 border border-[#2D6A4F]/20 rounded-lg p-2.5 sm:p-4 lg:p-3.5">
                 <Wallet className="w-5 h-5 sm:w-8 sm:h-8 lg:w-7 lg:h-7 text-[#2D6A4F] shrink-0" />
@@ -82,13 +82,13 @@ export function ExitStrategySlide({ total }: { total: number }) {
                     style={{ fontFamily: "'Playfair Display', serif" }}
                     className="text-white text-[13px] lg-lock-24"
                   >
-                    Kira Geliri
+                    {e.rentalTitle}
                   </div>
                   <div
                     style={{ fontFamily: "'Inter', sans-serif" }}
                     className="text-white/40 text-[10px] lg-lock-16"
                   >
-                    İlk günden istikrarlı nakit akışı
+                    {e.rentalSub}
                   </div>
                 </div>
               </div>
@@ -99,13 +99,13 @@ export function ExitStrategySlide({ total }: { total: number }) {
                     style={{ fontFamily: "'Playfair Display', serif" }}
                     className="text-white text-[13px] lg-lock-24"
                   >
-                    Sermaye Değer Artışı
+                    {e.capitalTitle}
                   </div>
                   <div
                     style={{ fontFamily: "'Inter', sans-serif" }}
                     className="text-white/40 text-[10px] lg-lock-16"
                   >
-                    Zamanla artan mülk değeri
+                    {e.capitalSub}
                   </div>
                 </div>
               </div>

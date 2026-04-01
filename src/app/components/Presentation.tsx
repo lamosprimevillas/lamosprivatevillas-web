@@ -5,6 +5,7 @@ import { CoverSlide } from "./slides/CoverSlide";
 import { MarketSlide } from "./slides/MarketSlide";
 import { BaliLifestyleSlide } from "./slides/BaliLifestyleSlide";
 import { LocationMapSlide } from "./slides/LocationMapSlide";
+import { GalleryVideoSlide } from "./slides/GalleryVideoSlide";
 import { CollectionSlide } from "./slides/CollectionSlide";
 import { ArchitectureSlide } from "./slides/ArchitectureSlide";
 import { MasterPlanSlide } from "./slides/MasterPlanSlide";
@@ -18,7 +19,7 @@ import { AboutUsSlide } from "./slides/AboutUsSlide";
 import { ContactSlide } from "./slides/ContactSlide";
 import { PdfExporter } from "./PdfExporter";
 
-const TOTAL_SLIDES = 15;
+const TOTAL_SLIDES = 16;
 
 export function Presentation() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -97,6 +98,7 @@ export function Presentation() {
     <MarketSlide key="market" total={TOTAL_SLIDES} />,
     <BaliLifestyleSlide key="balilifestyle" total={TOTAL_SLIDES} />,
     <LocationMapSlide key="locationmap" total={TOTAL_SLIDES} />,
+    <GalleryVideoSlide key="galleryvideo" total={TOTAL_SLIDES} />,
     <CollectionSlide key="collection" total={TOTAL_SLIDES} />,
     <ArchitectureSlide key="architecture" total={TOTAL_SLIDES} />,
     <MasterPlanSlide key="masterplan" total={TOTAL_SLIDES} />,

@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react";
-import { motion, AnimatePresence } from "motion/react";
 import { Play } from "lucide-react";
+import { buildYoutubeEmbedSrc } from "@/app/utils/youtubeEmbed";
+import { useI18n } from "@/i18n/I18nContext";
 
 export type PremiumVideoFrameProps = {
   /** Tam YouTube embed URL’si, örn. https://www.youtube-nocookie.com/embed/VIDEO_ID */
@@ -13,28 +14,26 @@ export type PremiumVideoFrameProps = {
   /** Boş durumda kısa metin */
   emptyHint?: string;
   className?: string;
+  /**
+   * `16:9` varsayılan (yatay). `9:16` telefonla çekilmiş dikey video için.
+   */
+  aspectVariant?: "16:9" | "9:16";
 };
-
-function buildAutoplayEmbed(url: string) {
-  try {
-    const u = new URL(url);
-    if (!u.searchParams.has("autoplay")) u.searchParams.set("autoplay", "1");
-    if (!u.searchParams.has("rel")) u.searchParams.set("rel", "0");
-    return u.toString();
-  } catch {
-    return `${url}${url.includes("?") ? "&" : "?"}autoplay=1`;
-  }
-}
 
 export function PremiumVideoFrame({
   embedUrl,
   videoSrc,
   posterSrc,
-  eyebrow = "Özel içerik",
-  title = "Video",
-  emptyHint = "Yakında",
+  eyebrow,
+  title,
+  emptyHint,
   className = "",
+  aspectVariant = "16:9",
 }: PremiumVideoFrameProps) {
+  const { t } = useI18n();
+  const eyebrowText = eyebrow ?? "";
+  const titleText = title ?? "";
+  const emptyHintText = emptyHint ?? "";
   const [active, setActive] = useState(false);
   const hasMedia = Boolean(embedUrl || videoSrc);
   const start = useCallback(() => {
@@ -71,13 +70,13 @@ export function PremiumVideoFrame({
                 style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.25em" }}
                 className="text-[#C9A96E]/90 uppercase text-[9px] sm:text-[10px] tracking-[0.2em]"
               >
-                {eyebrow}
+                {eyebrowText}
               </p>
               <p
                 style={{ fontFamily: "'Playfair Display', serif" }}
                 className="text-white/95 text-sm sm:text-base lg:text-lg"
               >
-                {title}
+                {titleText}
               </p>
             </div>
             <div className="hidden sm:flex items-center gap-2 text-white/25">
@@ -86,88 +85,82 @@ export function PremiumVideoFrame({
                 style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.12em" }}
                 className="text-[9px] uppercase"
               >
-                HD
+                {t.premiumVideo.hd}
               </span>
             </div>
           </div>
 
-          {/* 16:9 alan */}
-          <div className="relative aspect-video w-full bg-gradient-to-b from-zinc-950 to-black">
-            <AnimatePresence mode="wait">
-              {!active && (
-                <motion.button
-                  key="poster"
-                  type="button"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.35 }}
-                  onClick={start}
-                  disabled={!hasMedia}
-                  className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-4 group cursor-pointer disabled:cursor-default"
-                >
-                  {posterSrc && (
-                    <img
-                      src={posterSrc}
-                      alt=""
-                      className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-50 transition-opacity duration-500"
-                    />
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/30" />
-
-                  <div className="relative flex flex-col items-center gap-3 px-6">
-                    <span className="relative flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full border border-[#C9A96E]/40 bg-black/50 backdrop-blur-md shadow-[0_0_40px_rgba(201,169,110,0.15)] group-hover:border-[#C9A96E]/70 group-hover:shadow-[0_0_48px_rgba(201,169,110,0.25)] transition-all duration-300">
-                      <Play
-                        className="w-7 h-7 sm:w-9 sm:h-9 text-[#C9A96E] ml-1"
-                        fill="#C9A96E"
-                        stroke="#C9A96E"
-                        strokeWidth={1}
-                      />
-                    </span>
-                    <span
-                      style={{ fontFamily: "'Cormorant Garamond', serif" }}
-                      className="text-white/70 text-sm sm:text-base italic"
-                    >
-                      {hasMedia ? "Oynatmak için dokunun" : emptyHint}
-                    </span>
-                  </div>
-                </motion.button>
-              )}
-
-              {active && embedUrl && (
-                <motion.div
-                  key="iframe"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.4 }}
-                  className="absolute inset-0 h-full w-full"
-                >
-                  <iframe
-                    title={title}
-                    src={buildAutoplayEmbed(embedUrl)}
-                    className="absolute inset-0 h-full w-full border-0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
+          {/* Oynatma alanı: yatay 16:9 veya dikey 9:16 (telefon videosu) */}
+          <div
+            className={`relative w-full bg-gradient-to-b from-zinc-950 to-black ${
+              aspectVariant === "9:16"
+                ? "aspect-[9/16] max-h-[min(75vh,680px)] max-w-[min(100%,380px)] mx-auto sm:max-w-[420px]"
+                : "aspect-video"
+            }`}
+          >
+            {!active && (
+              <button
+                type="button"
+                onClick={start}
+                disabled={!hasMedia}
+                className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-4 group cursor-pointer disabled:cursor-default"
+              >
+                {posterSrc && (
+                  <img
+                    src={posterSrc}
+                    alt=""
+                    decoding="async"
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-50 transition-opacity duration-500"
                   />
-                </motion.div>
-              )}
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/30" />
 
-              {active && videoSrc && !embedUrl && (
-                <motion.video
-                  key="video"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.4 }}
-                  className="absolute inset-0 h-full w-full object-cover"
-                  controls
-                  playsInline
-                  autoPlay
-                  poster={posterSrc}
-                >
-                  <source src={videoSrc} type="video/mp4" />
-                </motion.video>
-              )}
-            </AnimatePresence>
+                <div className="relative flex flex-col items-center gap-3 px-6">
+                  <span className="relative flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full border border-[#C9A96E]/40 bg-black/50 backdrop-blur-md shadow-[0_0_40px_rgba(201,169,110,0.15)] group-hover:border-[#C9A96E]/70 group-hover:shadow-[0_0_48px_rgba(201,169,110,0.25)] transition-all duration-300">
+                    <Play
+                      className="w-7 h-7 sm:w-9 sm:h-9 text-[#C9A96E] ml-1"
+                      fill="#C9A96E"
+                      stroke="#C9A96E"
+                      strokeWidth={1}
+                    />
+                  </span>
+                  <span
+                    style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                    className="text-white/70 text-sm sm:text-base italic"
+                  >
+                    {hasMedia ? t.premiumVideo.tapToPlay : emptyHintText}
+                  </span>
+                </div>
+              </button>
+            )}
+
+            {active && embedUrl && (
+              <div className="absolute inset-0 z-[5] h-full w-full bg-black">
+                <iframe
+                  title={titleText}
+                  src={buildYoutubeEmbedSrc(embedUrl, { autoplay: true })}
+                  className="absolute inset-0 h-full w-full border-0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  referrerPolicy="strict-origin-when-cross-origin"
+                />
+              </div>
+            )}
+
+            {active && videoSrc && !embedUrl && (
+              <video
+                className={`absolute inset-0 z-[5] h-full w-full ${
+                  aspectVariant === "9:16" ? "object-contain" : "object-cover"
+                }`}
+                controls
+                playsInline
+                autoPlay
+                poster={posterSrc}
+              >
+                <source src={videoSrc} type="video/mp4" />
+              </video>
+            )}
           </div>
         </div>
       </div>
