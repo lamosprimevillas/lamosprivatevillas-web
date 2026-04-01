@@ -86,7 +86,10 @@ function SlideSection({
 
 function EagerSection({ children, id }: { children: ReactNode; id?: string }) {
   return (
-    <section id={id} className="w-full min-h-screen h-screen">
+    <section
+      id={id}
+      className="w-full min-h-screen h-screen scroll-mt-20 md:scroll-mt-28 lg:scroll-mt-24"
+    >
       <div className="w-full h-screen">{children}</div>
     </section>
   );

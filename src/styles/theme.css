@@ -133,6 +133,20 @@
 
   html {
     scroll-behavior: smooth;
+    /* Sabit navbar: #proje-galerisi vb. anchor hedefleri taşmasın */
+    scroll-padding-top: max(4rem, env(safe-area-inset-top, 0px));
+  }
+
+  @media (min-width: 768px) {
+    html {
+      scroll-padding-top: 7rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    html {
+      scroll-padding-top: 5rem;
+    }
   }
 
   body {

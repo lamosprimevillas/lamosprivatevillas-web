@@ -22,7 +22,7 @@ export function CoverSlide({ total }: { total: number }) {
 
       {/* Content */}
       <div className="relative z-10 w-full h-full flex flex-col">
-        <div className="flex-1 min-h-0 overflow-y-auto lg:overflow-hidden px-4 sm:px-8 md:px-16 lg:px-20 py-4 md:py-0">
+        <div className="flex-1 min-h-0 overflow-y-auto lg:overflow-hidden px-4 sm:px-8 md:px-16 lg:px-20 pb-4 md:pb-0 pt-[max(4rem,env(safe-area-inset-top,0px))] sm:pt-[4.25rem] md:pt-[7rem] lg:pt-20">
           <div className="min-h-full flex items-center">
             <div className="w-full flex flex-col items-center text-center gap-4 sm:gap-6 md:gap-8">
               {/* Logo Mark */}
