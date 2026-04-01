@@ -76,7 +76,7 @@ export function CoverSlide({ total }: { total: number }) {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.75 }}
-                className="flex items-center gap-3 sm:gap-4"
+                className="flex w-full max-w-full flex-wrap items-center justify-center gap-3 sm:gap-4 max-lg:gap-1.5 max-lg:px-0.5 max-[360px]:flex-col max-[360px]:gap-2 max-[360px]:px-2"
               >
                 {[
                   { text: c.pill1 },
@@ -85,18 +85,18 @@ export function CoverSlide({ total }: { total: number }) {
                 ].map((item) => (
                   <div
                     key={item.text}
-                    className={`px-4 sm:px-5 py-1.5 sm:py-2 rounded-full border ${
+                    className={`shrink-0 px-4 sm:px-5 py-1.5 sm:py-2 max-lg:px-2.5 max-lg:py-1 rounded-full border ${
                       item.accent
                         ? "border-[#C9A96E]/50 bg-[#C9A96E]/10"
                         : "border-white/15 bg-white/5"
-                    } backdrop-blur-sm`}
+                    } backdrop-blur-sm max-[360px]:mx-auto max-[360px]:w-full max-[360px]:max-w-[220px]`}
                   >
                     <span
                       style={{
                         fontFamily: "'Inter', sans-serif",
                         letterSpacing: "0.15em",
                       }}
-                      className={`uppercase lg-lock-15 text-[12px] ${
+                      className={`block text-center uppercase text-[12px] max-lg:text-[10px] max-lg:tracking-[0.1em] lg-lock-15 whitespace-nowrap ${
                         item.accent ? "text-[#C9A96E]" : "text-white/50"
                       }`}
                     >

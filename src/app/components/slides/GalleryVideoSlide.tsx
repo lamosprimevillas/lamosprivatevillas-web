@@ -2,6 +2,7 @@ import { SlideTitle, SlideSubtitle, GoldDivider } from "../SlideLayout";
 import { PremiumVideoFrame } from "../PremiumVideoFrame";
 import { getGalleryVideoEmbed, referenceGalleryImages } from "@/app/data/referenceGalleryAssets";
 import { useI18n } from "@/i18n/I18nContext";
+import { useIsMaxLg } from "@/app/hooks/useIsMaxLg";
 import interiorBg from "@/assets/interior2.webp";
 
 const galleryVideoEmbed = getGalleryVideoEmbed();
@@ -10,6 +11,7 @@ const posterSrc = referenceGalleryImages[0]?.src ?? "";
 export function GalleryVideoSlide({ total: _total }: { total: number }) {
   const { t } = useI18n();
   const gv = t.slides.galleryVideoSlide;
+  const isMaxLg = useIsMaxLg();
 
   return (
     <div className="relative h-full w-full overflow-hidden">
@@ -26,8 +28,8 @@ export function GalleryVideoSlide({ total: _total }: { total: number }) {
       />
 
       <div className="relative z-10 flex h-full w-full flex-col">
-        <div className="min-h-0 flex-1 overflow-y-auto px-4 py-6 sm:px-8 sm:py-8 md:px-16 lg:overflow-hidden lg:px-20 lg:py-6">
-          <div className="mx-auto flex min-h-full w-full max-w-5xl flex-col items-center justify-center gap-4 text-center sm:gap-5 lg:gap-4">
+        <div className="min-h-0 flex-1 overflow-hidden px-4 py-4 sm:px-8 sm:py-8 md:px-16 lg:overflow-hidden lg:px-20 lg:py-6">
+          <div className="mx-auto flex min-h-full w-full max-w-5xl flex-col items-center justify-center gap-3 text-center sm:gap-5 max-lg:gap-3 lg:gap-4">
             <SlideSubtitle>{gv.subtitle}</SlideSubtitle>
             <SlideTitle>
               {gv.title}{" "}
@@ -35,11 +37,11 @@ export function GalleryVideoSlide({ total: _total }: { total: number }) {
             </SlideTitle>
             <GoldDivider delay={0.35} />
 
-            <div className="mt-1 w-full max-w-4xl px-0 sm:px-2 lg:mt-2">
+            <div className="mt-0 w-full max-w-4xl px-0 sm:px-2 lg:mt-2">
               <PremiumVideoFrame
                 embedUrl={galleryVideoEmbed}
                 posterSrc={posterSrc}
-                aspectVariant="16:9"
+                aspectVariant={isMaxLg ? "9:16" : "16:9"}
                 eyebrow={t.gallery.videoTour}
                 title={t.gallery.videoCaption}
                 emptyHint={t.gallery.videoUnavailableHint}

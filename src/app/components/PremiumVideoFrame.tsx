@@ -1,7 +1,9 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { Play } from "lucide-react";
 import { buildYoutubeEmbedSrc } from "@/app/utils/youtubeEmbed";
 import { useI18n } from "@/i18n/I18nContext";
+import { useIsMaxLg } from "@/app/hooks/useIsMaxLg";
+import { PREMIUM_VIDEO_916_AREA_CLASSNAME } from "@/app/components/videoFrameSizing";
 
 export type PremiumVideoFrameProps = {
   /** Tam YouTube embed URL’si, örn. https://www.youtube-nocookie.com/embed/VIDEO_ID */
@@ -35,10 +37,16 @@ export function PremiumVideoFrame({
   const titleText = title ?? "";
   const emptyHintText = emptyHint ?? "";
   const [active, setActive] = useState(false);
+  const isMaxLg = useIsMaxLg();
   const hasMedia = Boolean(embedUrl || videoSrc);
   const start = useCallback(() => {
     if (hasMedia) setActive(true);
   }, [hasMedia]);
+
+  const iframeSrc = useMemo(() => {
+    if (!embedUrl || !active) return "";
+    return buildYoutubeEmbedSrc(embedUrl, { autoplay: true, useNoCookie: isMaxLg });
+  }, [embedUrl, active, isMaxLg]);
 
   return (
     <div className={`relative w-full ${className}`}>
@@ -93,9 +101,7 @@ export function PremiumVideoFrame({
           {/* Oynatma alanı: yatay 16:9 veya dikey 9:16 (telefon videosu) */}
           <div
             className={`relative w-full bg-gradient-to-b from-zinc-950 to-black ${
-              aspectVariant === "9:16"
-                ? "aspect-[9/16] max-h-[min(75vh,680px)] max-w-[min(100%,380px)] mx-auto sm:max-w-[420px]"
-                : "aspect-video"
+              aspectVariant === "9:16" ? PREMIUM_VIDEO_916_AREA_CLASSNAME : "aspect-video"
             }`}
           >
             {!active && (
@@ -139,7 +145,7 @@ export function PremiumVideoFrame({
               <div className="absolute inset-0 z-[5] h-full w-full bg-black">
                 <iframe
                   title={titleText}
-                  src={buildYoutubeEmbedSrc(embedUrl, { autoplay: true })}
+                  src={iframeSrc}
                   className="absolute inset-0 h-full w-full border-0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen

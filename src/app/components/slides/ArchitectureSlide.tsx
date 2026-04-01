@@ -36,7 +36,9 @@ export function ArchitectureSlide({ total }: { total: number }) {
           className={[
             "flex min-h-0 w-full min-w-0 flex-col",
             "gap-2 sm:gap-4 md:gap-5 lg:gap-1.5",
+            "max-lg:gap-2",
             "rounded-2xl border border-white/5 bg-black/50 p-4 backdrop-blur-md sm:p-6 md:p-8 lg:p-3",
+            "max-lg:p-3",
             "order-1 lg:order-2 lg:pl-5 lg:pr-1",
           ].join(" ")}
         >

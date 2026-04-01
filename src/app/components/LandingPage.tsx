@@ -32,11 +32,14 @@ function LazySection({
   id,
   className = "",
   rootMargin = "160px 0px 280px 0px",
+  minHeight = "screen" as "screen" | "auto",
 }: {
   children: ReactNode;
   id?: string;
   className?: string;
   rootMargin?: string;
+  /** `auto`: içerik kadar (galeri altı boş siyah şeridi önler). `screen`: tam ekran minimum */
+  minHeight?: "screen" | "auto";
 }) {
   const ref = useRef<HTMLElement | null>(null);
   const [visible, setVisible] = useState(false);
@@ -54,9 +57,13 @@ function LazySection({
     return () => observer.disconnect();
   }, [rootMargin]);
 
+  const minHClass = minHeight === "screen" ? "min-h-screen" : "min-h-0";
+  const placeholderMin =
+    minHeight === "screen" ? "min-h-screen" : "min-h-[45vh]";
+
   return (
-    <section id={id} ref={ref} className={`w-full min-h-screen ${className}`}>
-      {visible ? children : <div className="w-full min-h-screen bg-black" />}
+    <section id={id} ref={ref} className={`w-full ${minHClass} ${className}`}>
+      {visible ? children : <div className={`w-full bg-black ${placeholderMin}`} />}
     </section>
   );
 }
@@ -152,8 +159,8 @@ export function LandingPage() {
         <ConstructionSlide total={TOTAL} />
       </SlideSection>
 
-      {/* Proje galerisi — foto & video */}
-      <LazySection id="proje-galerisi">
+      {/* Proje galerisi — foto & video (içerik yüksekliği; min-h-screen boş siyah şerit yaratmasın) */}
+      <LazySection id="proje-galerisi" minHeight="auto">
         <ProjectGallerySection />
       </LazySection>
 

@@ -43,8 +43,14 @@ export function extractYoutubeVideoId(input: string): string | null {
   return null;
 }
 
-/** iframe src — www.youtube.com (Shorts dahil en sorunsuz varyant) */
-export function buildYoutubeEmbedSrc(raw: string, opts?: { autoplay?: boolean }): string {
+export type BuildYoutubeEmbedOpts = {
+  autoplay?: boolean;
+  /** Mobil Safari / üçüncü taraf çerez: nocookie embed (masaüstünde false bırakın) */
+  useNoCookie?: boolean;
+};
+
+/** iframe src — youtube.com veya youtube-nocookie.com */
+export function buildYoutubeEmbedSrc(raw: string, opts?: BuildYoutubeEmbedOpts): string {
   const id = extractYoutubeVideoId(raw);
   if (!id) {
     try {
@@ -54,7 +60,10 @@ export function buildYoutubeEmbedSrc(raw: string, opts?: { autoplay?: boolean })
     }
   }
 
-  const u = new URL(`https://www.youtube.com/embed/${id}`);
+  const origin = opts?.useNoCookie
+    ? "https://www.youtube-nocookie.com"
+    : "https://www.youtube.com";
+  const u = new URL(`${origin}/embed/${id}`);
   u.searchParams.set("rel", "0");
   u.searchParams.set("modestbranding", "1");
   u.searchParams.set("playsinline", "1");

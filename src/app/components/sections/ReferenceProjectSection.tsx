@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { useRef, useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight, MapPin, Home, Calendar, Award, X } from "lucide-react";
 import { PremiumVideoFrame } from "../PremiumVideoFrame";
+import { PREMIUM_VIDEO_916_AREA_CLASSNAME } from "@/app/components/videoFrameSizing";
 
 import interiorBg from "@/assets/interior2.webp";
 import referenceVillaHeroImg from "@/assets/Reference_villa.jpeg";
@@ -68,7 +69,7 @@ function ReferencePhonePhotoCard({
             onClick={onOpen}
             className="relative block w-full rounded-b-2xl outline-none focus-visible:ring-2 focus-visible:ring-[#C9A96E]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
           >
-            <div className="relative mx-auto aspect-[9/16] w-full max-h-[min(75vh,680px)] max-w-[min(100%,380px)] bg-zinc-950 sm:max-w-[420px]">
+            <div className={`relative w-full bg-zinc-950 ${PREMIUM_VIDEO_916_AREA_CLASSNAME}`}>
               <img src={src} alt={alt} className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
             </div>

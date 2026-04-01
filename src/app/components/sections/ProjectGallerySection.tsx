@@ -15,6 +15,7 @@ import {
 } from "@/app/data/referenceGalleryAssets";
 import { buildYoutubeEmbedSrc } from "@/app/utils/youtubeEmbed";
 import { useI18n } from "@/i18n/I18nContext";
+import { useIsMaxLg } from "@/app/hooks/useIsMaxLg";
 import interiorBg from "@/assets/interior2.webp";
 import type { TranslationTree } from "@/i18n/translations";
 
@@ -63,6 +64,7 @@ const SLIDE_MEDIA_BOX =
 
 export function ProjectGallerySection() {
   const { t } = useI18n();
+  const isMaxLg = useIsMaxLg();
   const slides = useMemo(() => buildGallerySlides(t), [t]);
   const slideCount = slides.length;
   const [api, setApi] = useState<CarouselApi>();
@@ -180,6 +182,7 @@ export function ProjectGallerySection() {
                       isActive={current === i}
                       onOpenLightbox={() => setLightboxIndex(i)}
                       mediaBoxClass={SLIDE_MEDIA_BOX}
+                      useNoCookieEmbed={isMaxLg}
                     />
                   ) : (
                     <GalleryImageCard
@@ -321,7 +324,10 @@ export function ProjectGallerySection() {
                     {slides[lightboxIndex].embedUrl ? (
                       <iframe
                         title={slides[lightboxIndex].label}
-                        src={buildYoutubeEmbedSrc(slides[lightboxIndex].embedUrl!, { autoplay: true })}
+                        src={buildYoutubeEmbedSrc(slides[lightboxIndex].embedUrl!, {
+                          autoplay: true,
+                          useNoCookie: isMaxLg,
+                        })}
                         className="absolute inset-0 h-full w-full border-0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowFullScreen
@@ -424,11 +430,13 @@ const VideoCarouselSlide = memo(function VideoCarouselSlide({
   isActive,
   onOpenLightbox,
   mediaBoxClass,
+  useNoCookieEmbed,
 }: {
   slide: Extract<GallerySlide, { kind: "video" }>;
   isActive: boolean;
   onOpenLightbox: () => void;
   mediaBoxClass: string;
+  useNoCookieEmbed: boolean;
 }) {
   const { t } = useI18n();
   const hasEmbed = Boolean(slide.embedUrl);
@@ -440,7 +448,10 @@ const VideoCarouselSlide = memo(function VideoCarouselSlide({
           <>
             <iframe
               title={slide.label}
-              src={buildYoutubeEmbedSrc(slide.embedUrl!, { autoplay: true })}
+              src={buildYoutubeEmbedSrc(slide.embedUrl!, {
+                autoplay: true,
+                useNoCookie: useNoCookieEmbed,
+              })}
               className="absolute inset-0 z-0 h-full w-full border-0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
