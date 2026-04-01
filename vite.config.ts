@@ -1,7 +1,25 @@
-import { defineConfig, Plugin } from 'vite'
+import { defineConfig, loadEnv, Plugin } from 'vite'
 import path from 'path'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
+
+/**
+ * WhatsApp / Facebook OG tarayıcıları göreli og:image URL’sini güvenilir çözmez.
+ * index.html içinde __LAMOS_SITE_ORIGIN__ → canlı site kökü (sondaki / yok).
+ */
+function siteOriginMetaPlugin(mode: string): Plugin {
+  return {
+    name: 'site-origin-meta',
+    transformIndexHtml(html) {
+      const env = loadEnv(mode, process.cwd(), '')
+      const origin = (env.VITE_SITE_ORIGIN || 'https://www.lamosprimevillas.com').replace(
+        /\/$/,
+        '',
+      )
+      return html.replaceAll('__LAMOS_SITE_ORIGIN__', origin)
+    },
+  }
+}
 
 function figmaAssetPlugin(): Plugin {
   const FIGMA_PREFIX = 'figma:asset/'
@@ -18,11 +36,12 @@ function figmaAssetPlugin(): Plugin {
   }
 }
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [
     figmaAssetPlugin(),
     react(),
     tailwindcss(),
+    siteOriginMetaPlugin(mode),
   ],
   resolve: {
     alias: {
@@ -30,4 +49,4 @@ export default defineConfig({
     },
   },
   assetsInclude: ['**/*.svg', '**/*.csv'],
-})
+}))
