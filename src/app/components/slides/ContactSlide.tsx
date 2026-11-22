@@ -1,7 +1,8 @@
 import { motion } from "motion/react";
 import { SlideLayout } from "../SlideLayout";
 import { Mail, MapPin, Globe } from "lucide-react";
-import contactBg from "figma:asset/619e7839cc517646c704b1c88c1df4032b05c437.png";
+import { backgrounds } from "@/app/data/renders";
+const contactBg = backgrounds.contact;
 import { useI18n } from "@/i18n/I18nContext";
 
 export function ContactSlide({ total }: { total: number }) {

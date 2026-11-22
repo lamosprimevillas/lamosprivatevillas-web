@@ -1,10 +1,29 @@
+import { useMemo, useState } from "react";
 import { motion } from "motion/react";
-import coverBg from "figma:asset/0ec89edbc1b48cea234b8d4bdae1ab86d23da1fa.png";
+import { Images } from "lucide-react";
+import { ImageLightbox } from "../ImageLightbox";
+import { PresentationDownload } from "../PresentationDownload";
+import { projectGalleryImages } from "@/app/data/renders";
+import { backgrounds } from "@/app/data/renders";
+const coverBg = backgrounds.cover;
 import { useI18n } from "@/i18n/I18nContext";
 
-export function CoverSlide({ total }: { total: number }) {
+const HERO_THUMBS = 5;
+
+/** `showExtras`: ana sayfadaki kapak — sunum indirme + fotoğraf galerisi (sunum/PDF modunda gizli) */
+export function CoverSlide({ total: _total, showExtras = false }: { total: number; showExtras?: boolean }) {
   const { t } = useI18n();
   const c = t.cover;
+  const [lightbox, setLightbox] = useState<number | null>(null);
+  const galleryImages = useMemo(
+    () =>
+      projectGalleryImages.map((img, i) => ({
+        src: img.src,
+        alt: t.gallery.projectImages[i] ?? "Lamos Prime Villas",
+      })),
+    [t],
+  );
+  const extra = galleryImages.length - HERO_THUMBS;
   return (
     <div className="relative w-full h-full overflow-hidden">
       {/* Background as real <img> for maximum LCP priority */}
@@ -111,28 +130,102 @@ export function CoverSlide({ total }: { total: number }) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 0.9 }}
-                className="mt-2 sm:mt-4 md:mt-8 max-w-xl"
+                className={`max-w-xl ${showExtras ? "mt-0 md:mt-2" : "mt-2 sm:mt-4 md:mt-8"}`}
               >
                 <p
                   style={{ fontFamily: "'Cormorant Garamond', serif", lineHeight: 1.7 }}
-                  className="text-white/50 italic text-[15px] lg:text-[34px] mx-[2px] my-[0px] p-[0px]"
+                  className={`text-white/50 italic text-[15px] mx-[2px] my-[0px] p-[0px] ${showExtras ? "lg:text-[26px]" : "lg:text-[34px]"}`}
                 >
                   {c.tagline}
                 </p>
               </motion.div>
 
-              {/* CTA Hint */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 1.3 }}
-                className="mt-2 sm:mt-6 md:mt-10 flex flex-col items-center gap-2"
-              >
-              </motion.div>
+              {showExtras && (
+                <motion.div
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 1.1 }}
+                  className="mt-1 flex w-full flex-col items-center gap-4 sm:mt-3 sm:gap-5"
+                >
+                  <PresentationDownload variant="hero" />
+
+                  {/* Fotoğraf galerisi — tıklayınca tam ekran */}
+                  <div className="flex w-full max-w-2xl flex-col items-center gap-2">
+                    <span
+                      style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.3em" }}
+                      className="flex items-center gap-2 text-[11px] uppercase text-[#C9A96E]/90 sm:text-sm"
+                    >
+                      <Images className="h-3.5 w-3.5" />
+                      {t.heroGallery.label}
+                    </span>
+                    <div className="grid w-full grid-cols-3 gap-1.5 sm:grid-cols-6 sm:gap-2">
+                      {galleryImages.slice(0, HERO_THUMBS).map((img, i) => (
+                        <button
+                          key={img.src}
+                          type="button"
+                          onClick={() => setLightbox(i)}
+                          aria-label={`${t.heroGallery.open}: ${img.alt}`}
+                          className={`group relative aspect-[4/3] overflow-hidden rounded-lg border border-white/15 outline-none transition-colors hover:border-[#C9A96E]/70 focus-visible:ring-2 focus-visible:ring-[#C9A96E]/60 ${
+                            i >= 2 ? "max-sm:hidden" : ""
+                          }`}
+                        >
+                          <img
+                            src={img.src}
+                            alt=""
+                            loading="lazy"
+                            decoding="async"
+                            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                          />
+                        </button>
+                      ))}
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setLightbox(
+                            typeof window !== "undefined" && window.matchMedia("(max-width: 639px)").matches
+                              ? 2
+                              : HERO_THUMBS,
+                          )
+                        }
+                        className="group relative aspect-[4/3] overflow-hidden rounded-lg border border-[#C9A96E]/40 outline-none focus-visible:ring-2 focus-visible:ring-[#C9A96E]/60"
+                      >
+                        <img
+                          src={galleryImages[HERO_THUMBS]?.src}
+                          alt=""
+                          loading="lazy"
+                          decoding="async"
+                          className="h-full w-full object-cover brightness-[0.35] transition-transform duration-500 group-hover:scale-110"
+                        />
+                        <span className="absolute inset-0 flex flex-col items-center justify-center text-[#C9A96E]">
+                          <span style={{ fontFamily: "'Playfair Display', serif" }} className="text-base sm:text-lg">
+                            <span className="sm:hidden">+{galleryImages.length - 2}</span>
+                            <span className="max-sm:hidden">+{extra}</span>
+                          </span>
+                          <span
+                            style={{ fontFamily: "'Inter', sans-serif" }}
+                            className="text-[9px] uppercase tracking-[0.15em] text-white/70 sm:text-[10px]"
+                          >
+                            {t.heroGallery.viewAll}
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
             </div>
           </div>
         </div>
       </div>
+
+      {showExtras && (
+        <ImageLightbox
+          images={galleryImages}
+          index={lightbox}
+          onClose={() => setLightbox(null)}
+          onIndexChange={setLightbox}
+        />
+      )}
     </div>
   );
 }

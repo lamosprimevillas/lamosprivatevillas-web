@@ -9,14 +9,13 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from "@/app/components/ui/carousel";
-import {
-  referenceGalleryImages,
-  getGalleryVideoEmbed,
-} from "@/app/data/referenceGalleryAssets";
+import { getGalleryVideoEmbed } from "@/app/data/referenceGalleryAssets";
+import { projectGalleryImages, renders } from "@/app/data/renders";
 import { buildYoutubeEmbedSrc } from "@/app/utils/youtubeEmbed";
 import { useI18n } from "@/i18n/I18nContext";
 import { useIsMaxLg } from "@/app/hooks/useIsMaxLg";
-import interiorBg from "@/assets/interior2.webp";
+import { backgrounds } from "@/app/data/renders";
+const interiorBg = backgrounds.galleryVideo;
 import type { TranslationTree } from "@/i18n/translations";
 
 type GallerySlide =
@@ -27,7 +26,7 @@ type GallerySlide =
       caption: string;
       posterSrc: string;
     }
-  | ({ kind: "image" } & (typeof referenceGalleryImages)[number]);
+  | { kind: "image"; src: string; alt: string };
 
 /** Döngülü carouselde komşu slaytlar (wrap dahil) — sadece bunlarda tam çözünürlük yüklenir */
 function isNeighborSlide(current: number, index: number, len: number) {
@@ -38,10 +37,10 @@ function isNeighborSlide(current: number, index: number, len: number) {
 
 function buildGallerySlides(t: TranslationTree): GallerySlide[] {
   const embed = getGalleryVideoEmbed();
-  const posterSrc = referenceGalleryImages[0]?.src ?? "";
-  const images = referenceGalleryImages.map((img, i) => ({
-    ...img,
-    alt: t.gallery.images[i] ?? img.alt,
+  const posterSrc = renders.living1;
+  const images = projectGalleryImages.map((img, i) => ({
+    src: img.src,
+    alt: t.gallery.projectImages[i] ?? "Lamos Prime Villas",
   }));
   return [
     {
@@ -440,11 +439,16 @@ const VideoCarouselSlide = memo(function VideoCarouselSlide({
 }) {
   const { t } = useI18n();
   const hasEmbed = Boolean(slide.embedUrl);
+  // Otomatik başlamaz: kullanıcı kapak görseline tıklayınca oynar; slayttan çıkınca durur
+  const [playing, setPlaying] = useState(false);
+  useEffect(() => {
+    if (!isActive) setPlaying(false);
+  }, [isActive]);
 
   return (
     <div className="relative w-full overflow-hidden rounded-xl border border-white/10 sm:rounded-2xl">
       <div className={`relative bg-black/50 ${mediaBoxClass}`}>
-        {hasEmbed && isActive ? (
+        {hasEmbed && isActive && playing ? (
           <>
             <iframe
               title={slide.label}
@@ -466,23 +470,23 @@ const VideoCarouselSlide = memo(function VideoCarouselSlide({
               <Maximize2 className="h-4 w-4" />
             </button>
           </>
-        ) : hasEmbed && !isActive ? (
+        ) : hasEmbed ? (
           <button
             type="button"
-            onClick={onOpenLightbox}
+            onClick={() => (isActive ? setPlaying(true) : onOpenLightbox())}
             className="absolute inset-0 block h-full w-full text-left"
             aria-label={t.gallery.videoPreview}
           >
             <img
               src={slide.posterSrc}
               alt=""
-              className="absolute inset-0 h-full w-full object-cover object-center opacity-95"
+              className="absolute inset-0 h-full w-full object-cover object-center"
               loading="lazy"
               decoding="async"
             />
-            <div className="absolute inset-0 bg-black/30" />
+            <div className="absolute inset-0 bg-black/20" />
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="rounded-full border border-[#C9A96E]/35 bg-black/50 p-4 sm:p-5">
+              <div className="rounded-full border border-[#C9A96E]/50 bg-black/55 p-4 backdrop-blur-sm transition-transform hover:scale-105 sm:p-5">
                 <Play className="h-10 w-10 text-[#C9A96E] sm:h-12 sm:w-12" fill="currentColor" strokeWidth={0.5} />
               </div>
             </div>

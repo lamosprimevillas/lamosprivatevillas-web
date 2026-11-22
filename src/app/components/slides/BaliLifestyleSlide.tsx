@@ -11,7 +11,8 @@ import {
   BadgePercent,
   UsersRound,
 } from "lucide-react";
-import baliBg from "figma:asset/8629ca25f7da3679368f202246d1cede8739f913.png";
+import { backgrounds } from "@/app/data/renders";
+const baliBg = backgrounds.baliLifestyle;
 import { useI18n } from "@/i18n/I18nContext";
 
 const lifestyleIcons = [

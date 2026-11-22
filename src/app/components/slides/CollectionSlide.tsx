@@ -17,7 +17,8 @@ import {
   Trees,
   Maximize,
 } from "lucide-react";
-import collectionBg from "figma:asset/9eba3025a7fb9754e76b817f78453cb939b49ede.png";
+import { backgrounds } from "@/app/data/renders";
+const collectionBg = backgrounds.collection;
 import { useI18n } from "@/i18n/I18nContext";
 
 const furnitureIcons = [

@@ -1,7 +1,8 @@
 import { motion } from "motion/react";
 import { SlideLayout, SlideTitle, SlideSubtitle, GoldDivider } from "../SlideLayout";
 import { PremiumVideoFrame } from "../PremiumVideoFrame";
-import architectureBg from "figma:asset/ed8f29a915f28aad1fb488874529396cf81f3f89.png";
+import { backgrounds } from "@/app/data/renders";
+const architectureBg = backgrounds.architecture;
 import { useI18n } from "@/i18n/I18nContext";
 
 const architectureVideoEmbed =

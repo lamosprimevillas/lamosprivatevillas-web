@@ -1,12 +1,14 @@
 import { SlideTitle, SlideSubtitle, GoldDivider } from "../SlideLayout";
 import { PremiumVideoFrame } from "../PremiumVideoFrame";
-import { getGalleryVideoEmbed, referenceGalleryImages } from "@/app/data/referenceGalleryAssets";
+import { getGalleryVideoEmbed } from "@/app/data/referenceGalleryAssets";
+import { renders } from "@/app/data/renders";
 import { useI18n } from "@/i18n/I18nContext";
 import { useIsMaxLg } from "@/app/hooks/useIsMaxLg";
-import interiorBg from "@/assets/interior2.webp";
+import { backgrounds } from "@/app/data/renders";
+const interiorBg = backgrounds.galleryVideo;
 
 const galleryVideoEmbed = getGalleryVideoEmbed();
-const posterSrc = referenceGalleryImages[0]?.src ?? "";
+const posterSrc = renders.premiumHero;
 
 export function GalleryVideoSlide({ total: _total }: { total: number }) {
   const { t } = useI18n();

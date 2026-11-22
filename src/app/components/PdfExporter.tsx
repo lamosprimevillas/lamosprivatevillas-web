@@ -11,7 +11,7 @@ import { LocationMapSlide } from "./slides/LocationMapSlide";
 import { GalleryVideoSlide } from "./slides/GalleryVideoSlide";
 import { CollectionSlide } from "./slides/CollectionSlide";
 import { ArchitectureSlide } from "./slides/ArchitectureSlide";
-import { MasterPlanSlide } from "./slides/MasterPlanSlide";
+import { VillaLayoutSlide } from "./slides/VillaLayoutSlide";
 import { LegalSlide } from "./slides/LegalSlide";
 import { OwnershipSlide } from "./slides/OwnershipSlide";
 import { FinancialSlide } from "./slides/FinancialSlide";
@@ -23,7 +23,7 @@ import { ContactSlide } from "./slides/ContactSlide";
 import { PaymentPricingSlide } from "./slides/PaymentPricingSlide";
 import { useI18n } from "@/i18n/I18nContext";
 
-const TOTAL = 16;
+const TOTAL = 18;
 const SLIDE_W = 1920;
 const SLIDE_H = 1080;
 
@@ -34,8 +34,10 @@ const allSlideComponents = [
   <LocationMapSlide key="c4" total={TOTAL} />,
   <GalleryVideoSlide key="c4b" total={TOTAL} />,
   <CollectionSlide key="c5" total={TOTAL} />,
+  <VillaLayoutSlide key="c5a" type="premium" />,
+  <VillaLayoutSlide key="c5b" type="primePlus" />,
+  <VillaLayoutSlide key="c5c" type="prime" />,
   <ArchitectureSlide key="c6" total={TOTAL} />,
-  <MasterPlanSlide key="c7" total={TOTAL} />,
   <LegalSlide key="c8" total={TOTAL} />,
   <OwnershipSlide key="c9" total={TOTAL} />,
   <FinancialSlide key="c10" total={TOTAL} />,

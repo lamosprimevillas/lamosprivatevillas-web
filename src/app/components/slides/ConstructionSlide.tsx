@@ -1,7 +1,8 @@
 import { motion } from "motion/react";
 import { SlideLayout, SlideTitle, SlideSubtitle, GoldDivider } from "../SlideLayout";
 import { HardHat, Camera, FileText, Calendar } from "lucide-react";
-import constructionBg from "figma:asset/5ba4151e9d82f2b08dc11dcbf7c09f1f4934db04.png";
+import { backgrounds } from "@/app/data/renders";
+const constructionBg = backgrounds.construction;
 import { useI18n } from "@/i18n/I18nContext";
 
 const featureIcons = [Calendar, Camera, FileText, HardHat] as const;

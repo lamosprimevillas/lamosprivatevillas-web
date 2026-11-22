@@ -1,6 +1,6 @@
 import { useState, useCallback, useMemo } from "react";
 import { Play } from "lucide-react";
-import { buildYoutubeEmbedSrc } from "@/app/utils/youtubeEmbed";
+import { buildYoutubeEmbedSrc, extractYoutubeVideoId } from "@/app/utils/youtubeEmbed";
 import { useI18n } from "@/i18n/I18nContext";
 import { useIsMaxLg } from "@/app/hooks/useIsMaxLg";
 import { PREMIUM_VIDEO_916_AREA_CLASSNAME } from "@/app/components/videoFrameSizing";
@@ -42,6 +42,13 @@ export function PremiumVideoFrame({
   const start = useCallback(() => {
     if (hasMedia) setActive(true);
   }, [hasMedia]);
+
+  // Kapak: verilen görsel, yoksa YouTube'un kendi küçük resmi (siyah ekran yerine)
+  const poster = useMemo(() => {
+    if (posterSrc) return posterSrc;
+    const id = embedUrl ? extractYoutubeVideoId(embedUrl) : null;
+    return id ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg` : undefined;
+  }, [posterSrc, embedUrl]);
 
   const iframeSrc = useMemo(() => {
     if (!embedUrl || !active) return "";
@@ -111,16 +118,16 @@ export function PremiumVideoFrame({
                 disabled={!hasMedia}
                 className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-4 group cursor-pointer disabled:cursor-default"
               >
-                {posterSrc && (
+                {poster && (
                   <img
-                    src={posterSrc}
+                    src={poster}
                     alt=""
                     decoding="async"
                     loading="lazy"
-                    className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-50 transition-opacity duration-500"
+                    className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
                   />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/30" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-black/10" />
 
                 <div className="relative flex flex-col items-center gap-3 px-6">
                   <span className="relative flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full border border-[#C9A96E]/40 bg-black/50 backdrop-blur-md shadow-[0_0_40px_rgba(201,169,110,0.15)] group-hover:border-[#C9A96E]/70 group-hover:shadow-[0_0_48px_rgba(201,169,110,0.25)] transition-all duration-300">
@@ -162,7 +169,7 @@ export function PremiumVideoFrame({
                 controls
                 playsInline
                 autoPlay
-                poster={posterSrc}
+                poster={poster}
               >
                 <source src={videoSrc} type="video/mp4" />
               </video>

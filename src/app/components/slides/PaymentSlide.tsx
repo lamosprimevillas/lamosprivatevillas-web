@@ -1,7 +1,8 @@
 import { motion } from "motion/react";
 import { SlideLayout, SlideTitle, SlideSubtitle, GoldDivider } from "../SlideLayout";
 import { Home, CalendarClock, ShieldCheck } from "lucide-react";
-import paymentBg from "figma:asset/0ec89edbc1b48cea234b8d4bdae1ab86d23da1fa.png";
+import { backgrounds } from "@/app/data/renders";
+const paymentBg = backgrounds.payment;
 import { useI18n } from "@/i18n/I18nContext";
 
 export function PaymentSlide({ total }: { total: number }) {
@@ -46,7 +47,7 @@ export function PaymentSlide({ total }: { total: number }) {
                   style={{ fontFamily: "'Playfair Display', serif" }}
                   className="text-[#7DCEA0] lg-lock-56 text-[24px]"
                 >
-                  %50
+                  %35
                 </div>
                 <div
                   style={{ fontFamily: "'Playfair Display', serif" }}
@@ -106,7 +107,7 @@ export function PaymentSlide({ total }: { total: number }) {
                   style={{ fontFamily: "'Playfair Display', serif" }}
                   className="text-[#C9A96E] lg-lock-56 text-[24px]"
                 >
-                  %50
+                  %65
                 </div>
                 <div
                   style={{ fontFamily: "'Playfair Display', serif" }}
@@ -161,7 +162,7 @@ export function PaymentSlide({ total }: { total: number }) {
                     style={{ fontFamily: "'Inter', sans-serif" }}
                     className="text-[#C9A96E]/70 text-[9px] lg-lock-15"
                   >
-                    ~%5.55
+                    ~%7.22
                   </span>
                 </motion.div>
               ))}

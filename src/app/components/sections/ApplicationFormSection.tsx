@@ -2,7 +2,8 @@ import { motion } from "motion/react";
 import { useState } from "react";
 import { Send, User, Mail, Phone, MessageSquare, CheckCircle } from "lucide-react";
 
-import bgImage from "@/assets/interior1.webp";
+import { backgrounds } from "@/app/data/renders";
+const bgImage = backgrounds.application;
 import { useI18n } from "@/i18n/I18nContext";
 
 export function ApplicationFormSection() {

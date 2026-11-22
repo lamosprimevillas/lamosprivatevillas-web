@@ -1,7 +1,8 @@
 import { motion } from "motion/react";
 import { SlideLayout, SlideTitle, SlideSubtitle, GoldDivider } from "../SlideLayout";
 import { Home, CalendarClock, ShieldCheck } from "lucide-react";
-import paymentBg from "figma:asset/0ec89edbc1b48cea234b8d4bdae1ab86d23da1fa.png";
+import { backgrounds } from "@/app/data/renders";
+const paymentBg = backgrounds.payment;
 import { useI18n } from "@/i18n/I18nContext";
 import type { TranslationTree } from "@/i18n/translations";
 
@@ -16,17 +17,17 @@ interface VillaData {
 const primeVilla: VillaData = {
   name: "Prime Villa",
   total: "$170.000",
-  ilkOdeme: "$85.000",
-  kalan: "$85.000",
-  taksit: "$9.444",
+  ilkOdeme: "$59.500",
+  kalan: "$110.500",
+  taksit: "$12.278",
 };
 
 const premiumVilla: VillaData = {
   name: "Premium Villa",
   total: "$195.000",
-  ilkOdeme: "$97.500",
-  kalan: "$97.500",
-  taksit: "$10.833",
+  ilkOdeme: "$68.250",
+  kalan: "$126.750",
+  taksit: "$14.083",
 };
 
 type PaymentSlice = TranslationTree["slides"]["payment"];

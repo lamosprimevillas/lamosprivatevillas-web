@@ -1,7 +1,8 @@
 import { motion } from "motion/react";
 import { SlideLayout, SlideTitle, SlideSubtitle, GoldDivider } from "../SlideLayout";
 import { Clock, ArrowRight, RefreshCw } from "lucide-react";
-import ownershipBg from "figma:asset/824b55987c2a902814d98214f672927f0a231642.png";
+import { backgrounds } from "@/app/data/renders";
+const ownershipBg = backgrounds.ownership;
 import { useI18n } from "@/i18n/I18nContext";
 
 export function OwnershipSlide({ total }: { total: number }) {
