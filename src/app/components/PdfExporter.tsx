@@ -67,11 +67,22 @@ function applyOnClone(clonedDoc: Document) {
     }
   });
 
-  // Fix backdrop-blur: html2canvas cannot render CSS backdrop-filter.
+  // Türkçe büyük harf: html2canvas text-transform'u dil bağımsız toUpperCase() ile
+  // uyguluyor (i → I). Büyük harfe çevrilen metni dil kuralıyla önceden çevir.
+  const docLang = (document.documentElement.lang || "en").toLowerCase();
   const allEls = clonedDoc.querySelectorAll("*");
   allEls.forEach((node) => {
     const htmlEl = node as HTMLElement;
     const cs = getComputedStyle(htmlEl);
+    if (cs.textTransform === "uppercase") {
+      const lang = (htmlEl.closest("[lang]")?.getAttribute("lang") || docLang).toLowerCase();
+      htmlEl.childNodes.forEach((child) => {
+        if (child.nodeType === Node.TEXT_NODE && child.textContent) {
+          child.textContent = child.textContent.toLocaleUpperCase(lang);
+        }
+      });
+      htmlEl.style.textTransform = "none";
+    }
     const bf =
       cs.getPropertyValue("backdrop-filter") ||
       cs.getPropertyValue("-webkit-backdrop-filter");

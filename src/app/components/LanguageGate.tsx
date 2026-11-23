@@ -85,12 +85,14 @@ export function LanguageGate() {
             <div className="flex flex-col items-center gap-3">
               <div className="h-px w-14 bg-gradient-to-r from-transparent via-[#C9A96E] to-transparent" />
               <p
+                lang="tr"
                 style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.22em" }}
                 className="text-2xl uppercase text-[#C9A96E] sm:text-4xl"
               >
                 Dil seçin
               </p>
               <p
+                lang="en"
                 style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: "0.2em" }}
                 className="text-lg uppercase text-white/75 sm:text-2xl"
               >
@@ -102,6 +104,7 @@ export function LanguageGate() {
               {options.map((o, i) => (
                 <motion.button
                   key={o.code}
+                  lang={o.code}
                   type="button"
                   onClick={() => choose(o.code)}
                   initial={{ opacity: 0, y: 12 }}

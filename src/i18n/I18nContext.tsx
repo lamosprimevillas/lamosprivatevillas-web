@@ -31,9 +31,15 @@ function readStoredLocale(): Locale {
 }
 
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>(() => readStoredLocale());
+  const [locale, setLocaleState] = useState<Locale>(() => {
+    const l = readStoredLocale();
+    // İlk boyamadan önce: CSS uppercase Türkçe kuralını (i → İ) <html lang> ile uygular
+    if (typeof document !== "undefined") document.documentElement.lang = l;
+    return l;
+  });
 
   const setLocale = useCallback((next: Locale) => {
+    document.documentElement.lang = next;
     setLocaleState(next);
     try {
       window.localStorage.setItem(STORAGE_KEY, next);
