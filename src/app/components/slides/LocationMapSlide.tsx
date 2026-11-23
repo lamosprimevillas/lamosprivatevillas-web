@@ -1,7 +1,8 @@
 import { motion } from "motion/react";
 import { SlideLayout, SlideSubtitle, GoldDivider } from "../SlideLayout";
 import { MapPin } from "lucide-react";
-import locationMapBg from "figma:asset/5ba4151e9d82f2b08dc11dcbf7c09f1f4934db04.png";
+import { backgrounds } from "@/app/data/renders";
+const locationMapBg = backgrounds.locationMap;
 import locationMapImageTr from "figma:asset/20d1ad4c7a7d9df060eed7ddcded96d2309e3e46.png";
 import locationMapImageEn from "@/assets/location_english.webp";
 import { useI18n } from "@/i18n/I18nContext";

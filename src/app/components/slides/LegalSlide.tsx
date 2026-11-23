@@ -1,7 +1,8 @@
 import { motion } from "motion/react";
 import { SlideLayout, SlideTitle, SlideSubtitle, GoldDivider } from "../SlideLayout";
 import { ShieldCheck, FileCheck, Leaf } from "lucide-react";
-import legalBg from "figma:asset/b7c7d443ae2a0ace15ff25de76d18b033bd022df.png";
+import { backgrounds } from "@/app/data/renders";
+const legalBg = backgrounds.legal;
 import { useI18n } from "@/i18n/I18nContext";
 
 const permitIcons = [ShieldCheck, FileCheck, Leaf] as const;

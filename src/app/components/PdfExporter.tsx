@@ -11,7 +11,7 @@ import { LocationMapSlide } from "./slides/LocationMapSlide";
 import { GalleryVideoSlide } from "./slides/GalleryVideoSlide";
 import { CollectionSlide } from "./slides/CollectionSlide";
 import { ArchitectureSlide } from "./slides/ArchitectureSlide";
-import { MasterPlanSlide } from "./slides/MasterPlanSlide";
+import { VillaLayoutSlide } from "./slides/VillaLayoutSlide";
 import { LegalSlide } from "./slides/LegalSlide";
 import { OwnershipSlide } from "./slides/OwnershipSlide";
 import { FinancialSlide } from "./slides/FinancialSlide";
@@ -23,7 +23,7 @@ import { ContactSlide } from "./slides/ContactSlide";
 import { PaymentPricingSlide } from "./slides/PaymentPricingSlide";
 import { useI18n } from "@/i18n/I18nContext";
 
-const TOTAL = 16;
+const TOTAL = 18;
 const SLIDE_W = 1920;
 const SLIDE_H = 1080;
 
@@ -34,8 +34,10 @@ const allSlideComponents = [
   <LocationMapSlide key="c4" total={TOTAL} />,
   <GalleryVideoSlide key="c4b" total={TOTAL} />,
   <CollectionSlide key="c5" total={TOTAL} />,
+  <VillaLayoutSlide key="c5a" type="premium" />,
+  <VillaLayoutSlide key="c5b" type="primePlus" />,
+  <VillaLayoutSlide key="c5c" type="prime" />,
   <ArchitectureSlide key="c6" total={TOTAL} />,
-  <MasterPlanSlide key="c7" total={TOTAL} />,
   <LegalSlide key="c8" total={TOTAL} />,
   <OwnershipSlide key="c9" total={TOTAL} />,
   <FinancialSlide key="c10" total={TOTAL} />,
@@ -65,11 +67,22 @@ function applyOnClone(clonedDoc: Document) {
     }
   });
 
-  // Fix backdrop-blur: html2canvas cannot render CSS backdrop-filter.
+  // Türkçe büyük harf: html2canvas text-transform'u dil bağımsız toUpperCase() ile
+  // uyguluyor (i → I). Büyük harfe çevrilen metni dil kuralıyla önceden çevir.
+  const docLang = (document.documentElement.lang || "en").toLowerCase();
   const allEls = clonedDoc.querySelectorAll("*");
   allEls.forEach((node) => {
     const htmlEl = node as HTMLElement;
     const cs = getComputedStyle(htmlEl);
+    if (cs.textTransform === "uppercase") {
+      const lang = (htmlEl.closest("[lang]")?.getAttribute("lang") || docLang).toLowerCase();
+      htmlEl.childNodes.forEach((child) => {
+        if (child.nodeType === Node.TEXT_NODE && child.textContent) {
+          child.textContent = child.textContent.toLocaleUpperCase(lang);
+        }
+      });
+      htmlEl.style.textTransform = "none";
+    }
     const bf =
       cs.getPropertyValue("backdrop-filter") ||
       cs.getPropertyValue("-webkit-backdrop-filter");

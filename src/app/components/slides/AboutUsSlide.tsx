@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { SlideLayout, SlideTitle, SlideSubtitle, GoldDivider } from "../SlideLayout";
-import aboutBg from "figma:asset/c9f4663867d5a9406c20f613231e5563eb38097e.png";
+import { backgrounds } from "@/app/data/renders";
+const aboutBg = backgrounds.about;
 import { useI18n } from "@/i18n/I18nContext";
 
 export function AboutUsSlide({ total }: { total: number }) {

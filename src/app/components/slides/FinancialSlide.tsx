@@ -1,7 +1,8 @@
 import { motion } from "motion/react";
 import { SlideLayout, SlideTitle, SlideSubtitle, GoldDivider } from "../SlideLayout";
 import { DollarSign, Percent, BarChart3, MinusCircle } from "lucide-react";
-import financialBg from "figma:asset/619e7839cc517646c704b1c88c1df4032b05c437.png";
+import { backgrounds } from "@/app/data/renders";
+const financialBg = backgrounds.financial;
 import { useI18n } from "@/i18n/I18nContext";
 
 const FIN_TABLE_COLS = "minmax(10rem, 1.75fr) minmax(0, 1fr) minmax(0, 0.85fr) minmax(0, 1fr)" as const;

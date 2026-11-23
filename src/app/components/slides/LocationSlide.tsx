@@ -1,7 +1,8 @@
 import { motion } from "motion/react";
 import { SlideLayout, SlideTitle, SlideSubtitle, GoldDivider } from "../SlideLayout";
 import { MapPin, TreePine, Heart, Sparkles } from "lucide-react";
-import locationBg from "figma:asset/619e7839cc517646c704b1c88c1df4032b05c437.png";
+import { backgrounds } from "@/app/data/renders";
+const locationBg = backgrounds.financial;
 
 const features = [
   { icon: MapPin, title: "Birinci Sınıf Konum", desc: "Ubud merkezine dakikalar" },

@@ -7,7 +7,7 @@ import { LocationMapSlide } from "./slides/LocationMapSlide";
 import { GalleryVideoSlide } from "./slides/GalleryVideoSlide";
 import { CollectionSlide } from "./slides/CollectionSlide";
 import { ArchitectureSlide } from "./slides/ArchitectureSlide";
-import { MasterPlanSlide } from "./slides/MasterPlanSlide";
+import { VillaLayoutSlide } from "./slides/VillaLayoutSlide";
 import { LegalSlide } from "./slides/LegalSlide";
 import { OwnershipSlide } from "./slides/OwnershipSlide";
 import { FinancialSlide } from "./slides/FinancialSlide";
@@ -21,11 +21,12 @@ import { ReferenceProjectSection } from "./sections/ReferenceProjectSection";
 import { ApplicationFormSection } from "./sections/ApplicationFormSection";
 import { useSequentialPreload } from "../hooks/useSequentialPreload";
 
-import marketBg from "figma:asset/c9f4663867d5a9406c20f613231e5563eb38097e.png";
-import baliBg from "figma:asset/8629ca25f7da3679368f202246d1cede8739f913.png";
-import locationMapBg from "figma:asset/5ba4151e9d82f2b08dc11dcbf7c09f1f4934db04.png";
+import { backgrounds } from "@/app/data/renders";
+const marketBg = backgrounds.market;
+const baliBg = backgrounds.baliLifestyle;
+const locationMapBg = backgrounds.locationMap;
 
-const TOTAL = 16;
+const TOTAL = 18;
 
 function LazySection({
   children,
@@ -104,8 +105,13 @@ export function LandingPage() {
 
       {/* 1 - Hero: always eager */}
       <EagerSection id="hero">
-        <CoverSlide total={TOTAL} />
+        <CoverSlide total={TOTAL} showExtras />
       </EagerSection>
+
+      {/* 2 - Proje galerisi (Premium / Prime seçmeli) — hero'nun hemen ardından */}
+      <section id="proje-galerisi" className="w-full scroll-mt-16">
+        <ProjectGallerySection />
+      </section>
 
       {/* 2 - Market: eager (preloaded sequentially) */}
       <EagerSection>
@@ -130,12 +136,19 @@ export function LandingPage() {
         <CollectionSlide total={TOTAL} />
       </SlideSection>
 
+      {/* Villa yerleşim planları — sunum PDF s. 11-13 */}
+      <SlideSection id="yerlesim">
+        <VillaLayoutSlide type="premium" total={TOTAL} />
+      </SlideSection>
       <SlideSection>
-        <ArchitectureSlide total={TOTAL} />
+        <VillaLayoutSlide type="primePlus" total={TOTAL} />
+      </SlideSection>
+      <SlideSection>
+        <VillaLayoutSlide type="prime" total={TOTAL} />
       </SlideSection>
 
       <SlideSection>
-        <MasterPlanSlide total={TOTAL} />
+        <ArchitectureSlide total={TOTAL} />
       </SlideSection>
 
       <SlideSection>
@@ -161,11 +174,6 @@ export function LandingPage() {
       <SlideSection>
         <ConstructionSlide total={TOTAL} />
       </SlideSection>
-
-      {/* Proje galerisi — foto & video (içerik yüksekliği; min-h-screen boş siyah şerit yaratmasın) */}
-      <LazySection id="proje-galerisi" minHeight="auto">
-        <ProjectGallerySection />
-      </LazySection>
 
       {/* Hakkımızda */}
       <SlideSection id="hakkimizda">

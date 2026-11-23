@@ -3,6 +3,7 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import logoImg from "@/assets/logowoname.webp";
 import { useI18n } from "@/i18n/I18nContext";
 import type { Locale } from "@/i18n/translations";
+import { PresentationDownload } from "./PresentationDownload";
 
 const LANGUAGE_OPTIONS: { code: Locale; label: string }[] = [
   { code: "tr", label: "TR" },
@@ -100,6 +101,7 @@ export function Navbar() {
                 </a>
               ))}
             </div>
+            <PresentationDownload variant="nav" />
           </div>
 
           <button
@@ -116,7 +118,7 @@ export function Navbar() {
 
       <div
         className={`md:hidden overflow-hidden transition-all duration-300 ${
-          mobileOpen ? "max-h-[28rem] border-t border-white/5" : "max-h-0"
+          mobileOpen ? "max-h-[34rem] border-t border-white/5" : "max-h-0"
         }`}
       >
         <div className="flex flex-col gap-2 bg-black/95 px-4 py-3 backdrop-blur-xl">
@@ -155,6 +157,7 @@ export function Navbar() {
               {link.label}
             </a>
           ))}
+          <PresentationDownload variant="mobile" />
         </div>
       </div>
     </nav>
