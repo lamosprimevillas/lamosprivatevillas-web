@@ -32,9 +32,9 @@ export const slidesContentTr = {
     items: [
       "Kültür, tapınaklar, geleneksel danslar",
       "Şelaleler, göller, pirinç terasları",
-      "Yoga, spiritüel merkezler, arınma seremonileri",
+      "Yoga, spiritüel merkezler, ritüeller",
       "Sörf, dalış, rafting, ATV",
-      "Dünyaca ünlü beach club'lar ve DJ performansları",
+      "Dünyaca ünlü beach club'lar",
       "Uluslararası okullar ve hastaneler",
       "20'den fazla dünya mutfağı",
       "Düşük vergi oranları",
@@ -301,9 +301,9 @@ export const slidesContentEn: SlidesContent = {
     items: [
       "Culture, temples, traditional dance",
       "Waterfalls, lakes, rice terraces",
-      "Yoga, spiritual centres, cleansing rituals",
+      "Yoga, spiritual centres, rituals",
       "Surfing, diving, rafting, ATV",
-      "World-famous beach clubs and DJ sets",
+      "World-famous beach clubs",
       "International schools and hospitals",
       "20+ global cuisines",
       "Low tax rates",

@@ -108,6 +108,11 @@ export function LandingPage() {
         <CoverSlide total={TOTAL} showExtras />
       </EagerSection>
 
+      {/* 2 - Proje galerisi (Premium / Prime seçmeli) — hero'nun hemen ardından */}
+      <section id="proje-galerisi" className="w-full scroll-mt-16">
+        <ProjectGallerySection />
+      </section>
+
       {/* 2 - Market: eager (preloaded sequentially) */}
       <EagerSection>
         <MarketSlide total={TOTAL} />
@@ -169,11 +174,6 @@ export function LandingPage() {
       <SlideSection>
         <ConstructionSlide total={TOTAL} />
       </SlideSection>
-
-      {/* Proje galerisi — foto & video (içerik yüksekliği; min-h-screen boş siyah şerit yaratmasın) */}
-      <LazySection id="proje-galerisi" minHeight="auto">
-        <ProjectGallerySection />
-      </LazySection>
 
       {/* Hakkımızda */}
       <SlideSection id="hakkimizda">
